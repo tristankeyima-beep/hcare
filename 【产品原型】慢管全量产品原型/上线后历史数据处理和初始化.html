@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>上线后历史数据处理和初始化</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="data/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="files/上线后历史数据处理和初始化/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+    <script src="resources/scripts/jquery-3.7.1.min.js"></script>
+    <script src="resources/scripts/axure/axQuery.js"></script>
+    <script src="resources/scripts/axure/globals.js"></script>
+    <script src="resources/scripts/axutils.js"></script>
+    <script src="resources/scripts/axure/annotation.js"></script>
+    <script src="resources/scripts/axure/axQuery.std.js"></script>
+    <script src="resources/scripts/axure/doc.js"></script>
+    <script src="resources/scripts/messagecenter.js"></script>
+    <script src="resources/scripts/axure/events.js"></script>
+    <script src="resources/scripts/axure/recording.js"></script>
+    <script src="resources/scripts/axure/action.js"></script>
+    <script src="resources/scripts/axure/expr.js"></script>
+    <script src="resources/scripts/axure/geometry.js"></script>
+    <script src="resources/scripts/axure/flyout.js"></script>
+    <script src="resources/scripts/axure/model.js"></script>
+    <script src="resources/scripts/axure/repeater.js"></script>
+    <script src="resources/scripts/axure/sto.js"></script>
+    <script src="resources/scripts/axure/utils.temp.js"></script>
+    <script src="resources/scripts/axure/variables.js"></script>
+    <script src="resources/scripts/axure/drag.js"></script>
+    <script src="resources/scripts/axure/move.js"></script>
+    <script src="resources/scripts/axure/visibility.js"></script>
+    <script src="resources/scripts/axure/style.js"></script>
+    <script src="resources/scripts/axure/adaptive.js"></script>
+    <script src="resources/scripts/axure/tree.js"></script>
+    <script src="resources/scripts/axure/init.temp.js"></script>
+    <script src="resources/scripts/axure/legacy.js"></script>
+    <script src="resources/scripts/axure/viewer.js"></script>
+    <script src="resources/scripts/axure/math.js"></script>
+    <script src="resources/scripts/axure/jquery.nicescroll.min.js"></script>
+    <script src="data/document.js"></script>
+    <script src="files/上线后历史数据处理和初始化/data.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body>
+    <div id="base" class="">
+
+      <!-- Unnamed (矩形) -->
+      <div id="u16827" class="ax_default _文本段落 transition notrs">
+        <div id="u16827_div" class=""></div>
+        <div id="u16827_text" class="text ">
+          <p><span style="font-family:'PingFangSC-Regular', 'PingFang SC', sans-serif;">处理事项</span><span style="font-family:'ArialMT', 'Arial', sans-serif;">1</span><span style="font-family:'PingFangSC-Regular', 'PingFang SC', sans-serif;">：</span></p><p><span style="font-family:'ArialMT', 'Arial', sans-serif;">1</span><span style="font-family:'PingFangSC-Regular', 'PingFang SC', sans-serif;">、所有已创建的服务产品， 需要填入「管理病种」和「签约有效期」</span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC', sans-serif;">2、以下服务产品的签约记录， 需要填入「有效期」</span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC', sans-serif;"><br></span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC', sans-serif;"><br></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u16828" class="ax_default _文本段落 transition notrs">
+        <div id="u16828_div" class=""></div>
+        <div id="u16828_text" class="text ">
+          <p><span style="font-family:'PingFangSC-Regular', 'PingFang SC', sans-serif;">处理事项</span><span style="font-family:'ArialMT', 'Arial', sans-serif;">3</span><span style="font-family:'PingFangSC-Regular', 'PingFang SC', sans-serif;">：</span></p><p><span style="font-family:'ArialMT', 'Arial', sans-serif;">1</span><span style="font-family:'PingFangSC-Regular', 'PingFang SC', sans-serif;">、来源为“减重管理”的任务，且计划执行时间在上线日期之后的，需要删除</span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC', sans-serif;">且只留计划执行日期最近的1个任务，多余的删除</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u16829" class="ax_default _文本段落 transition notrs">
+        <div id="u16829_div" class=""></div>
+        <div id="u16829_text" class="text ">
+          <p><span style="font-family:'PingFangSC-Regular', 'PingFang SC', sans-serif;">处理事项</span><span style="font-family:'ArialMT', 'Arial', sans-serif;">2</span><span style="font-family:'PingFangSC-Regular', 'PingFang SC', sans-serif;">：</span></p><p><span style="font-family:'ArialMT', 'Arial', sans-serif;"><br></span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC', sans-serif;">由于线上的签约记录由于转签，已经发生混乱，故需要进行 原签约记录的复原：</span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC', sans-serif;"><br></span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC', sans-serif;">1、针对签约团队是“泰安中心医院管理团队”的签约记录</span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC', sans-serif;">- 只保留“服务产品：基础健康管理服务包”，其他服务包均不需要</span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC', sans-serif;">- 其签约时间为“最早的签约记录的签约时间”</span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC', sans-serif;">- 其有效期：无限</span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC', sans-serif;">- 其主责健管师为签约时间最新的签约记录上的</span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC', sans-serif;"><br></span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC', sans-serif;">2、针对签约团队是“小青蛙”的签约记录</span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC', sans-serif;">- 找到签约时间最早，且签约产品只有一个的记录，作为签约产品</span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC', sans-serif;">- 其签约时间和有效期开始日期，为该条签约记录的签约时间</span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC', sans-serif;">- 其有效期结束时间为该开始日期+对应有效期</span></p><p><span style="font-family:'PingFangSC-Regular', 'PingFang SC', sans-serif;">- 其主责健管师为签约时间最新的签约记录上的</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u16830" class="ax_default _形状 transition notrs">
+        <svg data="images/上线后历史数据处理和初始化/u16830.svg" id="u16830_img" class="img generatedImage">
+
+  <defs>
+    <pattern id="u16830_img_bgp" patternUnits="userSpaceOnUse" alignment="0 0" imageRepeat="None" />
+    <mask fill="white" id="u16830_img_cl464">
+      <path d="M 0 23  L 0 3  C 0 1.32  1.3199999999999996 0  2.9999999999999996 0  L 91 0  C 92.67999999999999 0  94 1.32  94 3  L 94 23  C 94 24.68  92.67999999999999 26  91 26  L 2.9999999999999996 26  C 1.3199999999999996 26  0 24.68  0 23  Z " fill-rule="evenodd" />
+    </mask>
+  </defs>
+  <g transform="matrix(1 0 0 1 -274 -467 )">
+    <path d="M 0 23  L 0 3  C 0 1.32  1.3199999999999996 0  2.9999999999999996 0  L 91 0  C 92.67999999999999 0  94 1.32  94 3  L 94 23  C 94 24.68  92.67999999999999 26  91 26  L 2.9999999999999996 26  C 1.3199999999999996 26  0 24.68  0 23  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 0)" stroke="none" transform="matrix(1 0 0 1 274 467 )" class="fill" />
+    <path d="M 0 23  L 0 3  C 0 1.32  1.3199999999999996 0  2.9999999999999996 0  L 91 0  C 92.67999999999999 0  94 1.32  94 3  L 94 23  C 94 24.68  92.67999999999999 26  91 26  L 2.9999999999999996 26  C 1.3199999999999996 26  0 24.68  0 23  Z " stroke-width="4" stroke-dasharray="6,2" stroke="rgba(255, 0, 0, 1)" fill="none" transform="matrix(1 0 0 1 274 467 )" class="stroke" mask="url(#u16830_img_cl464)" />
+  </g>
+        </svg>
+        <div id="u16830_text" class="text " style="display:none; visibility: hidden">
+          <p></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u16831" class="ax_default _文本段落 transition notrs">
+        <div id="u16831_div" class=""></div>
+        <div id="u16831_text" class="text ">
+          <p><span>1223新增</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (图片) -->
+      <div id="u16832" class="ax_default image1 transition notrs">
+        <img id="u16832_img" class="img " src="images/上线后历史数据处理和初始化/u16832.png"/>
+        <div id="u16832_text" class="text " style="display:none; visibility: hidden">
+          <p></p>
+        </div>
+      </div>
+    </div>
+    <script src="resources/scripts/axure/ios.js"></script>
+  </body>
+</html>

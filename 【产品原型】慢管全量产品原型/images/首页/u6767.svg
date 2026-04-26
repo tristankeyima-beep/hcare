@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="10px" height="15px" xmlns="http://www.w3.org/2000/svg">
+  <g transform="matrix(1 0 0 1 -1080 -1192 )">
+    <image preserveAspectRatio="none" style="overflow:visible" width="10" height="15" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAoCAYAAAAVBmHYAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAF6ADAAQAAAABAAAAKAAAAACFlv7+AAAAxklEQVRIDe2X6wmFMAyFfWzhCK7jHeo6lKP4z0HMgRqK+GiT478EQlLB7yuhUNo03GgFN0miUgPAWXJNte1JeID/kr/EG6VuqXeVfMfYte7cRZWfA6wTjFHEKHQC2sSpiFHoBLT57FR0qvigOa65RdiDJK4nBCrW+G6OAw4AXZDD6YIznCq4gtMEd3CK4AnuFrzBXYISuFlQCjcJauDVglp4lcACLxZY4UUCD/xV4IU/ChjwOwHl2QI4Ir8u8fDCmhoA6lNxBzexZzoSMPw3AAAAAElFTkSuQmCC" x="1080px" y="1192px" />
+    <path d="M 1080.5 1206.5  L 1080.5 1192.5  L 1089.5 1192.5  L 1089.5 1206.5  L 1080.5 1206.5  Z " stroke-width="1" stroke-dasharray="0" stroke="rgba(217, 217, 217, 1)" fill="none" class="stroke" />
+  </g>
+</svg>

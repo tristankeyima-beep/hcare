@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Intervention Plan",
+  "type": "object",
+  "required": [
+    "plan_name",
+    "plan_title",
+    "plan_summary",
+    "execution_points",
+    "groups"
+  ],
+  "properties": {
+    "plan_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "plan_title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "plan_summary": {
+      "type": "string"
+    },
+    "execution_points": {
+      "type": "string"
+    },
+    "groups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "group_title",
+          "items"
+        ],
+        "properties": {
+          "group_title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "content",
+                "focus_point",
+                "importance"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string"
+                },
+                "focus_point": {
+                  "type": "string"
+                },
+                "importance": {
+                  "type": "string",
+                  "enum": [
+                    "重点执行",
+                    "常规建议",
+                    "补充建议"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

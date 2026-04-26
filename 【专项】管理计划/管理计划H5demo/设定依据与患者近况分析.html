@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>设定依据与患者近况分析</title>
+  <style>
+    :root {
+      --bg: #f3f7fa;
+      --card: #ffffff;
+      --line: #d7e2ea;
+      --text: #1f2c3a;
+      --muted: #5b6d7e;
+      --brand: #0b7285;
+      --brand-soft: #e7f4f7;
+      --risk-high: #b42318;
+      --risk-mid: #a16207;
+      --risk-low: #1f7a4f;
+      --shadow: 0 8px 26px rgba(16, 39, 61, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 0% 0%, #d8edf3 0, transparent 36%),
+        radial-gradient(circle at 100% 0%, #e5f3e8 0, transparent 30%),
+        var(--bg);
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 18px 14px 34px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      padding: 14px;
+    }
+
+    h1, h2, h3, p { margin: 0; }
+
+    .hero {
+      background: linear-gradient(130deg, #075768 0%, #0b7285 74%);
+      color: #fff;
+    }
+
+    .hero-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.2);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .hero h1 { margin-top: 8px; font-size: 25px; }
+
+    .hero-sub { margin-top: 5px; font-size: 14px; opacity: 0.92; }
+
+    .risk {
+      min-width: 180px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: rgba(0, 0, 0, 0.18);
+      border-radius: 12px;
+      padding: 10px;
+    }
+
+    .risk .v { font-size: 28px; font-weight: 800; margin-top: 2px; }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 9px;
+      margin-top: 10px;
+    }
+
+    .metric {
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 10px;
+      padding: 9px;
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .metric .k { font-size: 12px; opacity: 0.9; }
+    .metric .v { margin-top: 3px; font-size: 18px; font-weight: 700; }
+
+    .head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 9px;
+    }
+
+    .head h2 { font-size: 18px; }
+
+    .pill {
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: var(--brand-soft);
+      color: var(--brand);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .principles {
+      display: grid;
+      gap: 8px;
+    }
+
+    .principle {
+      border: 1px solid #d7e4ec;
+      border-left: 4px solid var(--brand);
+      border-radius: 10px;
+      padding: 9px 10px;
+      background: #f9fcfd;
+    }
+
+    .principle h3 { font-size: 15px; margin-bottom: 2px; }
+
+    .muted { color: var(--muted); font-size: 13px; }
+
+    .analysis-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 10px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 8px;
+    }
+
+    .event {
+      border: 1px solid #dbe6ee;
+      border-radius: 10px;
+      background: #fbfdff;
+      padding: 9px 10px;
+    }
+
+    .event-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 3px;
+    }
+
+    .event-time { font-weight: 700; }
+
+    .level {
+      font-size: 12px;
+      font-weight: 700;
+      border-radius: 999px;
+      padding: 2px 8px;
+    }
+
+    .high { color: var(--risk-high); background: #fdeceb; }
+    .mid { color: var(--risk-mid); background: #fff5e4; }
+    .low { color: var(--risk-low); background: #eaf8f1; }
+
+    .factors {
+      display: grid;
+      gap: 8px;
+    }
+
+    .factor {
+      border: 1px solid #dae5ec;
+      border-radius: 10px;
+      padding: 9px 10px;
+      background: #fff;
+    }
+
+    .factor h3 { font-size: 15px; margin-bottom: 2px; }
+
+    .factor-score {
+      margin-top: 6px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .bar {
+      margin-top: 4px;
+      height: 8px;
+      border-radius: 999px;
+      background: #e8eff4;
+      overflow: hidden;
+    }
+
+    .bar > span {
+      display: block;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #1d8ca1 0%, #6cb88e 100%);
+    }
+
+    .summary {
+      border: 1px dashed #b8cddd;
+      border-radius: 10px;
+      background: #f7fbfe;
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    .summary p + p { margin-top: 6px; }
+
+    @media (max-width: 880px) {
+      .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .analysis-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 22px; }
+      .grid-4 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page" id="app"></main>
+
+  <script>
+    const data = {
+      patient: {
+        name: "张先生",
+        age: 59,
+        diagnosis: "2型糖尿病 + 高血压 + 睡眠障碍",
+        generatedAt: "2026-04-23 16:20",
+        riskScore: 78,
+        metrics: [
+          { key: "近7天血糖达标率", value: "41%" },
+          { key: "漏服药次数", value: "3次" },
+          { key: "夜间血压异常", value: "5次" },
+          { key: "平均睡眠时长", value: "5.8h" }
+        ]
+      },
+      principles: [
+        {
+          title: "原则1：先处理高风险行为",
+          source: "分层规则：风险事件 > 稳态管理 > 习惯改善",
+          detail: "漏服药和错误运动时段会直接触发血糖/血压波动，优先纳入本轮计划。"
+        },
+        {
+          title: "原则2：任务必须可验证",
+          source: "履约规则：有时间点、有责任人、有回传证据",
+          detail: "所有任务要求明确到 yyyy-mm-dd hh:mm，并绑定执行人和复核路径。"
+        },
+        {
+          title: "原则3：患者与团队形成闭环",
+          source: "升级规则：患者未达标 -> 团队干预 -> 医生评估",
+          detail: "连续异常时由系统自动升级，避免任务停留在提醒层。"
+        }
+      ],
+      timeline: [
+        {
+          time: "2026-04-19 07:10",
+          title: "空腹血糖 9.8 mmol/L（超目标）",
+          level: "high",
+          note: "前一晚服药记录缺失。"
+        },
+        {
+          time: "2026-04-20 19:05",
+          title: "晚饭后快走出现头晕",
+          level: "high",
+          note: "运动前后收缩压波动超过 20mmHg。"
+        },
+        {
+          time: "2026-04-21 06:50",
+          title: "晨起血糖连续偏高",
+          level: "mid",
+          note: "近4日睡眠不足 6 小时。"
+        },
+        {
+          time: "2026-04-22 21:00",
+          title: "服药文字打卡，无图片证据",
+          level: "mid",
+          note: "历史任务缺少真实性核验。"
+        }
+      ],
+      factors: [
+        {
+          name: "用药依从性",
+          score: 82,
+          insight: "漏服导致次日空腹血糖明显上移，是当前最主要风险源。"
+        },
+        {
+          name: "运动时段与强度匹配",
+          score: 69,
+          insight: "现有运动安排与个体血压波动不匹配，需重新定义时间窗。"
+        },
+        {
+          name: "睡眠与代谢关联",
+          score: 63,
+          insight: "睡眠不足与晨起血糖升高呈现同步变化。"
+        },
+        {
+          name: "数据可追溯性",
+          score: 74,
+          insight: "文字打卡占比高，客观证据不足，影响后续临床判断。"
+        }
+      ],
+      conclusion: [
+        "本次方案不是简单加任务，而是先替换高风险的旧任务，再新增可验证、可升级的干预任务。",
+        "患者当前处于“血糖波动 + 夜间血压风险 + 睡眠不足”叠加阶段，建议优先执行高优先级任务并在7天内复评。"
+      ]
+    };
+
+    const levelMap = {
+      high: { label: "高风险", cls: "high" },
+      mid: { label: "中风险", cls: "mid" },
+      low: { label: "低风险", cls: "low" }
+    };
+
+    const app = document.getElementById("app");
+
+    app.innerHTML = `
+      <section class="card hero">
+        <div class="hero-top">
+          <div>
+            <span class="tag">AI 分析报告 · 设定依据</span>
+            <h1>${data.patient.name}｜设定依据与患者近况分析</h1>
+            <p class="hero-sub">${data.patient.age}岁 · ${data.patient.diagnosis} · 分析时间：${data.patient.generatedAt}</p>
+          </div>
+          <div class="risk">
+            综合风险分
+            <div class="v">${data.patient.riskScore}</div>
+            <small>建议：先处理高风险触发点</small>
+          </div>
+        </div>
+        <div class="grid-4">
+          ${data.patient.metrics
+            .map(
+              (item) => `
+                <div class="metric">
+                  <div class="k">${item.key}</div>
+                  <div class="v">${item.value}</div>
+                </div>
+              `
+            )
+            .join("")}
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="head">
+          <h2>方案设定依据（AI 大原则）</h2>
+          <span class="pill">可用于医生/健管师解释</span>
+        </div>
+        <div class="principles">
+          ${data.principles
+            .map(
+              (p) => `
+                <article class="principle">
+                  <h3>${p.title}</h3>
+                  <p class="muted">依据规则：${p.source}</p>
+                  <p>${p.detail}</p>
+                </article>
+              `
+            )
+            .join("")}
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="head">
+          <h2>患者近况分析</h2>
+          <span class="pill">近7天关键信号</span>
+        </div>
+        <div class="analysis-grid">
+          <div>
+            <h3 style="font-size:15px; margin-bottom:8px;">风险事件时间线</h3>
+            <div class="timeline">
+              ${data.timeline
+                .map((item) => {
+                  const lv = levelMap[item.level];
+                  return `
+                    <article class="event">
+                      <div class="event-top">
+                        <span class="event-time">${item.time}</span>
+                        <span class="level ${lv.cls}">${lv.label}</span>
+                      </div>
+                      <p><strong>${item.title}</strong></p>
+                      <p class="muted">${item.note}</p>
+                    </article>
+                  `;
+                })
+                .join("")}
+            </div>
+          </div>
+          <div>
+            <h3 style="font-size:15px; margin-bottom:8px;">影响因子评分</h3>
+            <div class="factors">
+              ${data.factors
+                .map(
+                  (f) => `
+                    <article class="factor">
+                      <h3>${f.name}</h3>
+                      <p>${f.insight}</p>
+                      <div class="factor-score">影响权重：${f.score}/100</div>
+                      <div class="bar"><span style="width:${f.score}%;"></span></div>
+                    </article>
+                  `
+                )
+                .join("")}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card summary">
+        <p><strong>分析结论 1：</strong>${data.conclusion[0]}</p>
+        <p><strong>分析结论 2：</strong>${data.conclusion[1]}</p>
+      </section>
+    `;
+  </script>
+</body>
+</html>

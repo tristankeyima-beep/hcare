@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="450px" height="786px" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="BGPattern" patternUnits="userSpaceOnUse" alignment="0 0" imageRepeat="None" />
+  </defs>
+  <g transform="matrix(1 0 0 1 -100 -1077 )">
+    <path d="M 0 0  L 0 771.3182897862233  C 0 773.3800475059383  0.3424822695035443 775  0.7783687943262411 775  L 438.22163120567376 775  C 438.6575177304964 775  439 773.3800475059383  439 771.3182897862233  L 439 0  L 0 0  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 100 1077 )" class="fill" />
+    <path d="M 0 0  L 0 771.3182897862233  C 0 773.3800475059383  0.3424822695035443 775  0.7783687943262411 775  L 438.22163120567376 775  C 438.6575177304964 775  439 773.3800475059383  439 771.3182897862233  L 439 0  " stroke-width="0" stroke-dasharray="0" stroke="rgba(233, 233, 233, 1)" fill="none" transform="matrix(1 0 0 1 100 1077 )" class="stroke" />
+  </g>
+  <style>svg { filter: drop-shadow(5px 5px 2.5px rgba(0, 0, 0, 0.10196078431372549)); }</style>
+</svg>

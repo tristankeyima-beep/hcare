@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>干预方案列表</title>
+  <style>
+    :root {
+      --color-primary: #4fa99f;
+      --color-primary-deep: #3b8f86;
+      --color-primary-dark: #2f736d;
+      --color-primary-soft: #edf7f5;
+      --color-primary-pale: #f4fbf9;
+      --color-success: #7bbf9a;
+      --color-warning: #f1b36b;
+      --color-danger: #e88484;
+      --color-bg: #f7f9f8;
+      --color-weak-bg: #f8fbfa;
+      --color-card: #ffffff;
+      --color-line: #e9efed;
+      --color-line-strong: #dfe9e6;
+      --color-text-main: #24313a;
+      --color-text-secondary: #6f7b83;
+      --color-text-muted: #9aa5ac;
+      --color-white: #ffffff;
+      --font-xs: 11px;
+      --font-sm: 12px;
+      --font-body: 14px;
+      --font-md: 15px;
+      --font-card: 16px;
+      --font-title: 17px;
+      --font-page: 24px;
+      --space-page: 16px;
+      --space-section: 20px;
+      --space-card: 16px;
+      --space-gap: 10px;
+      --radius-sm: 10px;
+      --radius-md: 14px;
+      --radius-lg: 18px;
+      --radius-nav: 20px;
+      --shadow-card: 0 4px 14px rgba(36, 49, 58, 0.04);
+      --shadow-primary: 0 8px 22px rgba(62, 156, 146, 0.08);
+      --shadow-shell: 0 24px 52px rgba(36, 49, 58, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: var(--color-bg);
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 28px 16px;
+      font-family: "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif;
+      font-size: var(--font-body);
+      color: var(--color-text-main);
+      background: linear-gradient(180deg, rgba(237, 247, 245, 0.8) 0%, rgba(247, 249, 248, 0.95) 42%, var(--color-bg) 100%);
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .phone-shell {
+      width: min(100%, 430px);
+      padding: 10px;
+      border-radius: 34px;
+      background: rgba(255, 255, 255, 0.76);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: var(--shadow-shell);
+    }
+
+    .phone {
+      position: relative;
+      min-height: 932px;
+      overflow: hidden;
+      border-radius: 26px;
+      background: linear-gradient(180deg, rgba(237, 247, 245, 0.92) 0%, rgba(247, 249, 248, 0.98) 250px, var(--color-bg) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.96);
+    }
+
+    .status-bar {
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px var(--space-page) 6px;
+      color: #111;
+      font-size: var(--font-body);
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .status-icons {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .cellular {
+      width: 17px;
+      height: 12px;
+      background:
+        linear-gradient(to top, #111 100%, #111 100%) left 0 bottom 0 / 3px 4px no-repeat,
+        linear-gradient(to top, #111 100%, #111 100%) left 5px bottom 0 / 3px 7px no-repeat,
+        linear-gradient(to top, #111 100%, #111 100%) left 10px bottom 0 / 3px 9px no-repeat,
+        linear-gradient(to top, #111 100%, #111 100%) left 15px bottom 0 / 2px 12px no-repeat;
+    }
+
+    .wifi {
+      position: relative;
+      width: 16px;
+      height: 12px;
+      border: 2px solid #111;
+      border-color: #111 transparent transparent transparent;
+      border-radius: 50%;
+    }
+
+    .wifi::after {
+      content: "";
+      position: absolute;
+      left: 4px;
+      top: -1px;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #111;
+    }
+
+    .battery {
+      position: relative;
+      width: 24px;
+      height: 12px;
+      border: 1.8px solid #111;
+      border-radius: 4px;
+    }
+
+    .battery::before {
+      content: "";
+      position: absolute;
+      inset: 2px 5px 2px 2px;
+      border-radius: 2px;
+      background: #111;
+    }
+
+    .battery::after {
+      content: "";
+      position: absolute;
+      right: -4px;
+      top: 3px;
+      width: 2px;
+      height: 6px;
+      border-radius: 1px;
+      background: #111;
+    }
+
+    .page-bar {
+      position: relative;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4px var(--space-page) 0;
+    }
+
+    .back-btn {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: transparent;
+      border: none;
+      color: var(--color-text-main);
+      z-index: 2;
+    }
+
+    .back-btn svg {
+      width: 22px;
+      height: 22px;
+      stroke: currentColor;
+    }
+
+    .page-title {
+      position: absolute;
+      left: 82px;
+      right: 82px;
+      top: 5px;
+      text-align: center;
+    }
+
+    .page-title h1 {
+      margin: 0;
+      font-size: var(--font-title);
+      line-height: 38px;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .wechat-menu {
+      width: 82px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(36, 49, 58, 0.1);
+      z-index: 2;
+    }
+
+    .dots {
+      display: flex;
+      gap: 3px;
+    }
+
+    .dots i {
+      width: 3.5px;
+      height: 3.5px;
+      border-radius: 50%;
+      background: #1f2a31;
+    }
+
+    .menu-divider {
+      width: 1px;
+      height: 17px;
+      background: rgba(36, 49, 58, 0.18);
+    }
+
+    .circle {
+      width: 16px;
+      height: 16px;
+      border: 2px solid #1f2a31;
+      border-radius: 50%;
+    }
+
+    .content {
+      padding: 12px var(--space-page) 28px;
+    }
+
+    .summary-strip,
+    .plan-card,
+    .note-card {
+      border-radius: var(--radius-lg);
+      background: var(--color-card);
+      border: 1px solid var(--color-line);
+      box-shadow: var(--shadow-card);
+    }
+
+    .summary-strip {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 15px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow-primary);
+    }
+
+    .summary-strip p {
+      margin: 0;
+      color: var(--color-text-secondary);
+      font-size: var(--font-sm);
+      line-height: 1.5;
+    }
+
+    .summary-strip strong {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--color-text-main);
+      font-size: var(--font-card);
+      line-height: 1.3;
+      font-weight: 700;
+    }
+
+    .count-pill {
+      min-width: 56px;
+      height: 56px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      color: var(--color-primary-dark);
+      background: var(--color-primary-soft);
+      border: 1px solid rgba(79, 169, 159, 0.18);
+      font-size: var(--font-xs);
+      font-weight: 700;
+      line-height: 1.1;
+      text-align: center;
+    }
+
+    .count-pill b {
+      display: block;
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .type-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 14px;
+      overflow: hidden;
+    }
+
+    .type-tab {
+      flex: 1 1 0;
+      min-width: 0;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      color: var(--color-text-secondary);
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--color-line);
+      font-size: var(--font-sm);
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .type-tab.active {
+      color: var(--color-primary-dark);
+      background: var(--color-primary-soft);
+      border-color: rgba(79, 169, 159, 0.22);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 0 0 10px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: var(--font-title);
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    .section-head span {
+      color: var(--color-text-muted);
+      font-size: var(--font-sm);
+      line-height: 1.35;
+    }
+
+    .plan-stack {
+      display: grid;
+      gap: 10px;
+    }
+
+    .plan-card {
+      display: block;
+      padding: 15px;
+    }
+
+    .plan-main {
+      display: grid;
+      grid-template-columns: 42px 1fr auto;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .icon-box {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      color: var(--color-primary-deep);
+      background: var(--color-primary-soft);
+    }
+
+    .icon-box.warning {
+      color: #a66c27;
+      background: #fff6e8;
+    }
+
+    .icon-box.green {
+      color: #548564;
+      background: #eef8f1;
+    }
+
+    .icon-box svg {
+      width: 22px;
+      height: 22px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .plan-title {
+      min-width: 0;
+    }
+
+    .plan-title h3 {
+      margin: 0;
+      font-size: var(--font-card);
+      font-weight: 700;
+      line-height: 1.32;
+      letter-spacing: 0;
+    }
+
+    .plan-title p {
+      margin: 6px 0 0;
+      color: var(--color-text-secondary);
+      font-size: var(--font-sm);
+      line-height: 1.5;
+    }
+
+    .chevron {
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      color: var(--color-text-muted);
+    }
+
+    .chevron svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .plan-date {
+      margin-top: 10px;
+      padding-left: 54px;
+      color: var(--color-text-muted);
+      font-size: var(--font-xs);
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .note-card {
+      margin-top: 12px;
+      padding: 14px 15px;
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: none;
+    }
+
+    .note-card p {
+      margin: 0;
+      color: var(--color-text-secondary);
+      font-size: var(--font-sm);
+      line-height: 1.55;
+    }
+
+  </style>
+</head>
+<body>
+  <main class="phone-shell">
+    <section class="phone" aria-label="干预方案列表">
+      <div class="status-bar">
+        <span>9:41</span>
+        <div class="status-icons" aria-hidden="true">
+          <span class="cellular"></span>
+          <span class="wifi"></span>
+          <span class="battery"></span>
+        </div>
+      </div>
+
+      <div class="page-bar">
+        <a class="back-btn" href="./档案页-干预方案tab.html" aria-label="返回档案">
+          <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+        </a>
+        <div class="page-title">
+          <h1>干预方案</h1>
+        </div>
+        <div class="wechat-menu" aria-hidden="true">
+          <span class="dots"><i></i><i></i><i></i></span>
+          <span class="menu-divider"></span>
+          <span class="circle"></span>
+        </div>
+      </div>
+
+      <div class="content">
+        <section class="summary-strip">
+          <div>
+            <strong>当前正在生效的方案</strong>
+            <p>服务团队已为您整理好，建议优先关注正在执行的内容。</p>
+          </div>
+          <div class="count-pill"><b>4</b>份</div>
+        </section>
+
+        <nav class="type-tabs" aria-label="方案类型筛选">
+          <span class="type-tab active">全部</span>
+          <span class="type-tab">饮食</span>
+          <span class="type-tab">运动</span>
+          <span class="type-tab">监测</span>
+        </nav>
+
+        <div class="section-head">
+          <div>
+            <h2>生效中的方案</h2>
+          </div>
+          <span>共 4 份</span>
+        </div>
+
+        <section class="plan-stack">
+          <a class="plan-card" href="./干预方案详情.html">
+            <div class="plan-main">
+              <div class="icon-box">
+                <svg viewBox="0 0 24 24"><path d="M6 3v18"/><path d="M10 3v7a4 4 0 0 1-4 4"/><path d="M17 3v18"/><path d="M14 3h6"/></svg>
+              </div>
+              <div class="plan-title">
+                <h3>26年5月饮食方案</h3>
+                <p>本周重点控制晚餐主食和总热量，保持蛋白质摄入。</p>
+              </div>
+              <span class="chevron" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+              </span>
+            </div>
+            <div class="plan-date">生效时间：2026.05.01-05.31</div>
+          </a>
+
+          <a class="plan-card" href="./干预方案详情.html">
+            <div class="plan-main">
+              <div class="icon-box green">
+                <svg viewBox="0 0 24 24"><path d="M14 3c3 1 5 4 5 7a7 7 0 0 1-14 0c0-3 2-6 5-7"/><path d="M12 13l3-3"/><path d="M9 10l3 3"/><path d="M12 3v4"/></svg>
+              </div>
+              <div class="plan-title">
+                <h3>居家运动方案</h3>
+                <p>以低到中等强度有氧为主，结合每周 2 次抗阻训练。</p>
+              </div>
+              <span class="chevron" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+              </span>
+            </div>
+            <div class="plan-date">生效时间：2026.05.01-05.31</div>
+          </a>
+
+          <a class="plan-card" href="./干预方案详情.html">
+            <div class="plan-main">
+              <div class="icon-box warning">
+                <svg viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect x="4" y="5" width="16" height="17" rx="3"/><path d="M4 10h16"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/></svg>
+              </div>
+              <div class="plan-title">
+                <h3>血糖监测方案</h3>
+                <p>本周继续关注空腹和晚餐后血糖，按计划完成记录。</p>
+              </div>
+              <span class="chevron" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+              </span>
+            </div>
+            <div class="plan-date">本周执行：空腹、晚餐后重点记录</div>
+          </a>
+
+          <a class="plan-card" href="./干预方案详情.html">
+            <div class="plan-main">
+              <div class="icon-box">
+                <svg viewBox="0 0 24 24"><path d="M4 19.5V5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-1.5z"/><path d="M8 7h6"/><path d="M8 11h8"/><path d="M8 15h5"/></svg>
+              </div>
+              <div class="plan-title">
+                <h3>5月健康周报</h3>
+                <p>服务团队已整理阶段重点，适合查看本月执行反馈。</p>
+              </div>
+              <span class="chevron" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+              </span>
+            </div>
+            <div class="plan-date">更新时间：5月24日</div>
+          </a>
+        </section>
+
+        <section class="note-card">
+          <p>优先展示正在生效中的方案，便于您关注当前正在执行的健康管理内容。历史方案可咨询服务团队。</p>
+        </section>
+      </div>
+
+    </section>
+  </main>
+</body>
+</html>

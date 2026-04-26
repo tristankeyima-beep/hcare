@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="429px" height="271px" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="BGPattern" patternUnits="userSpaceOnUse" alignment="0 0" imageRepeat="None" />
+  </defs>
+  <g transform="matrix(1 0 0 1 -279 -698 )">
+    <path d="M 0 0  L 0 69.5959595959596  L 0 99.48356807511738  L 0 124.74747474747474  L 0 258.7648456057007  C 0 259.4565320665083  0.30816382978723056 260  0.7003723404255294 260  L 394.30962765957446 260  C 394.7018361702128 260  395.01 259.4565320665083  395 258.7648456057007  L 395 97.63408735239719  L 417.1021830985916 82.83824157063599  L 395 66.19291506615453  L 395 0  L 0 0  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" transform="matrix(1 0 0 1 279 698 )" class="fill" />
+    <path d="M 0 0  L 0 69.5959595959596  L 0 99.48356807511738  L 0 124.74747474747474  L 0 258.7648456057007  C 0 259.4565320665083  0.30816382978723056 260  0.7003723404255294 260  L 394.30962765957446 260  C 394.7018361702128 260  395.01 259.4565320665083  395 258.7648456057007  L 395 97.63408735239719  L 417.1021830985916 82.83824157063599  L 395 66.19291506615453  L 395 0  " stroke-width="0" stroke-dasharray="0" stroke="rgba(233, 233, 233, 1)" fill="none" transform="matrix(1 0 0 1 279 698 )" class="stroke" />
+  </g>
+  <style>svg { filter: drop-shadow(5px 5px 2.5px rgba(0, 0, 0, 0.10196078431372549)); }</style>
+</svg>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="31px" height="40px" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="BGPattern" patternUnits="userSpaceOnUse" alignment="0 0" imageRepeat="None" />
+    <mask fill="white" id="Clip279">
+      <path d="M 21 10.5  C 21 18  14.7 22.5  10.5 30  C 6.3 22.5  0 18  0 10.5  C 0 6.6  2.1 0  10.5 0  C 18.900000000000002 0  21 6.6  21 10.5  Z " fill-rule="evenodd" />
+    </mask>
+  </defs>
+  <g transform="matrix(1 0 0 1 -199 -110 )">
+    <path d="M 21 10.5  C 21 18  14.7 22.5  10.5 30  C 6.3 22.5  0 18  0 10.5  C 0 6.6  2.1 0  10.5 0  C 18.900000000000002 0  21 6.6  21 10.5  Z " fill-rule="nonzero" fill="rgba(0, 157, 217, 1)" stroke="none" transform="matrix(1 0 0 1 203 114 )" class="fill" />
+    <path d="M 21 10.5  C 21 18  14.7 22.5  10.5 30  C 6.3 22.5  0 18  0 10.5  C 0 6.6  2.1 0  10.5 0  C 18.900000000000002 0  21 6.6  21 10.5  Z " stroke-width="2" stroke-dasharray="0" stroke="rgba(255, 255, 255, 1)" fill="none" transform="matrix(1 0 0 1 203 114 )" class="stroke" mask="url(#Clip279)" />
+  </g>
+  <style>svg { filter: drop-shadow(1px 1px 2.5px rgba(0, 0, 0, 0.6980392156862745)); }</style>
+</svg>
