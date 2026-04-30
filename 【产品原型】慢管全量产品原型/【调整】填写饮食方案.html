@@ -4677,6 +4677,411 @@
         </div>
       </div>
     </div>
+    <style>
+      .aih-ai-enhance-root {
+        font-family: "PingFangSC-Regular", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+        color: #1f2a3d;
+      }
+
+      .aih-ai-planning-panel {
+        position: absolute;
+        left: 300px;
+        top: 1122px;
+        width: 980px;
+        min-height: 390px;
+        background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+        border: 1px solid rgba(24, 144, 255, 0.18);
+        border-radius: 14px;
+        box-shadow: 0 18px 48px rgba(15, 72, 130, 0.14);
+        overflow: hidden;
+        z-index: 1200;
+      }
+
+      .aih-ai-planning-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 22px;
+        background: linear-gradient(90deg, rgba(20, 135, 255, 0.12), rgba(42, 223, 197, 0.12));
+        border-bottom: 1px solid rgba(24, 144, 255, 0.12);
+      }
+
+      .aih-ai-planning-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      .aih-ai-orb {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: conic-gradient(from 180deg, #1890ff, #35d2b6, #7c3aed, #1890ff);
+        box-shadow: 0 0 0 6px rgba(24, 144, 255, 0.08);
+        animation: aihSpin 3.2s linear infinite;
+      }
+
+      .aih-ai-status-pill {
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: rgba(24, 144, 255, 0.12);
+        color: #096dd9;
+        font-size: 12px;
+        font-weight: 500;
+      }
+
+      .aih-ai-planning-body {
+        display: grid;
+        grid-template-columns: 1fr 260px;
+        gap: 20px;
+        padding: 22px;
+      }
+
+      .aih-ai-steps {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .aih-ai-steps::before {
+        content: "";
+        position: absolute;
+        left: 16px;
+        top: 10px;
+        width: 2px;
+        height: calc(100% - 20px);
+        background: linear-gradient(#1890ff 0%, #52c41a 62%, rgba(24, 144, 255, 0.18) 62%);
+      }
+
+      .aih-ai-step {
+        position: relative;
+        display: grid;
+        grid-template-columns: 34px 1fr;
+        column-gap: 12px;
+      }
+
+      .aih-ai-step-dot {
+        position: relative;
+        z-index: 1;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+        border: 2px solid #1890ff;
+        color: #1890ff;
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .aih-ai-step.active .aih-ai-step-dot {
+        color: #fff;
+        background: #1890ff;
+        box-shadow: 0 0 0 8px rgba(24, 144, 255, 0.1);
+      }
+
+      .aih-ai-step.done .aih-ai-step-dot {
+        color: #fff;
+        background: #52c41a;
+        border-color: #52c41a;
+      }
+
+      .aih-ai-step-card {
+        padding: 12px 14px;
+        border: 1px solid #e8eef7;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.88);
+      }
+
+      .aih-ai-step-card strong {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 14px;
+        color: #172033;
+      }
+
+      .aih-ai-step-card span {
+        display: block;
+        font-size: 12px;
+        line-height: 18px;
+        color: #637083;
+      }
+
+      .aih-ai-live-card {
+        padding: 16px;
+        border-radius: 12px;
+        background: #111827;
+        color: #e6f4ff;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+      }
+
+      .aih-ai-live-card h4 {
+        margin: 0 0 12px;
+        font-size: 14px;
+        color: #8ee6d1;
+      }
+
+      .aih-ai-live-line {
+        position: relative;
+        padding-left: 16px;
+        margin: 0 0 10px;
+        font-size: 12px;
+        line-height: 18px;
+      }
+
+      .aih-ai-live-line::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 7px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #52c41a;
+      }
+
+      .aih-ai-live-cursor {
+        display: inline-block;
+        width: 8px;
+        height: 14px;
+        margin-left: 3px;
+        background: #8ee6d1;
+        vertical-align: -2px;
+        animation: aihBlink 1s steps(2, start) infinite;
+      }
+
+      .aih-ai-discussion {
+        position: fixed;
+        top: 92px;
+        right: 24px;
+        width: 310px;
+        max-height: calc(100vh - 128px);
+        background: rgba(255, 255, 255, 0.96);
+        border: 1px solid rgba(24, 144, 255, 0.22);
+        border-radius: 14px;
+        box-shadow: 0 16px 42px rgba(15, 72, 130, 0.18);
+        z-index: 2000;
+        overflow: hidden;
+      }
+
+      .aih-ai-discussion-head {
+        padding: 14px 16px;
+        background: linear-gradient(90deg, #f0f8ff, #f5fffb);
+        border-bottom: 1px solid #edf3fb;
+      }
+
+      .aih-ai-discussion-head strong {
+        display: block;
+        font-size: 15px;
+        margin-bottom: 4px;
+      }
+
+      .aih-ai-discussion-head span {
+        font-size: 12px;
+        color: #66758a;
+      }
+
+      .aih-ai-topic-list {
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .aih-ai-topic {
+        padding: 10px 12px;
+        border: 1px solid #e8eef7;
+        border-radius: 10px;
+        background: #fbfdff;
+      }
+
+      .aih-ai-topic b {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 13px;
+        color: #1f2a3d;
+      }
+
+      .aih-ai-topic span {
+        display: block;
+        font-size: 12px;
+        line-height: 18px;
+        color: #66758a;
+      }
+
+      .aih-ai-chatbox {
+        margin: 0 12px 12px;
+        padding: 10px 12px;
+        min-height: 56px;
+        border: 1px solid #d6e9ff;
+        border-radius: 10px;
+        color: #9aa7b7;
+        font-size: 12px;
+        background: #fff;
+      }
+
+      .aih-ai-quick-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 0 12px 14px;
+      }
+
+      .aih-ai-quick-actions button {
+        border: 1px solid #b7dcff;
+        border-radius: 999px;
+        padding: 6px 10px;
+        background: #f5fbff;
+        color: #096dd9;
+        font-size: 12px;
+        cursor: pointer;
+      }
+
+      .aih-ai-hotspot {
+        border-color: #85c7ff !important;
+        box-shadow: 0 0 0 3px rgba(24, 144, 255, 0.08) !important;
+      }
+
+      .aih-ai-tip {
+        position: absolute;
+        display: none;
+        width: 280px;
+        padding: 12px 14px;
+        border-radius: 10px;
+        background: #152033;
+        color: #eff7ff;
+        box-shadow: 0 12px 32px rgba(15, 30, 52, 0.22);
+        font-size: 12px;
+        line-height: 18px;
+        z-index: 2200;
+      }
+
+      .aih-ai-tip::before {
+        content: "";
+        position: absolute;
+        left: -6px;
+        top: 18px;
+        border-top: 6px solid transparent;
+        border-bottom: 6px solid transparent;
+        border-right: 6px solid #152033;
+      }
+
+      .aih-ai-tip strong {
+        display: block;
+        margin-bottom: 5px;
+        color: #8ee6d1;
+        font-size: 13px;
+      }
+
+      @keyframes aihSpin {
+        to { transform: rotate(360deg); }
+      }
+
+      @keyframes aihBlink {
+        50% { opacity: 0; }
+      }
+    </style>
+    <script>
+      (function () {
+        function ready(fn) {
+          if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", fn);
+          } else {
+            fn();
+          }
+        }
+
+        ready(function () {
+          var base = document.getElementById("base") || document.body;
+          var root = document.createElement("div");
+          root.className = "aih-ai-enhance-root";
+          root.innerHTML =
+            '<section class="aih-ai-planning-panel" aria-label="AI生成规划过程">' +
+              '<div class="aih-ai-planning-head">' +
+                '<div class="aih-ai-planning-title"><span class="aih-ai-orb"></span><span>AI 正在拆解饮食干预方案</span></div>' +
+                '<span class="aih-ai-status-pill">生成中 · 预计 1分42秒</span>' +
+              '</div>' +
+              '<div class="aih-ai-planning-body">' +
+                '<div class="aih-ai-steps">' +
+                  '<div class="aih-ai-step done"><div class="aih-ai-step-dot">1</div><div class="aih-ai-step-card"><strong>读取患者上下文</strong><span>整合基础档案、近 1 年指标、饮食记录、运动记录和当前干预方案。</span></div></div>' +
+                  '<div class="aih-ai-step done"><div class="aih-ai-step-dot">2</div><div class="aih-ai-step-card"><strong>识别风险与约束</strong><span>发现餐后血糖波动、主食结构、运动依从性和用药时间之间的关键关系。</span></div></div>' +
+                  '<div class="aih-ai-step active"><div class="aih-ai-step-dot">3</div><div class="aih-ai-step-card"><strong>规划干预框架</strong><span>把建议拆成饮食干预、运动配合、监测提醒、异常处理 4 个可执行模块。</span></div></div>' +
+                  '<div class="aih-ai-step"><div class="aih-ai-step-dot">4</div><div class="aih-ai-step-card"><strong>生成患者端表达</strong><span>把专业依据转成患者可理解、可照做、可追踪的方案内容。</span></div></div>' +
+                '</div>' +
+                '<div class="aih-ai-live-card">' +
+                  '<h4>实时推理摘要</h4>' +
+                  '<p class="aih-ai-live-line">优先控制晚餐后血糖峰值，建议从主食份量和餐后活动切入。</p>' +
+                  '<p class="aih-ai-live-line">患者近期饮食记录不足，需把“补充记录”放入关注点。</p>' +
+                  '<p class="aih-ai-live-line">正在校验建议是否与当前用药和低血糖风险冲突<span class="aih-ai-live-cursor"></span></p>' +
+                '</div>' +
+              '</div>' +
+            '</section>' +
+            '<aside class="aih-ai-discussion" aria-label="AI讨论点">' +
+              '<div class="aih-ai-discussion-head"><strong>和 AI 讨论修改点</strong><span>基于当前方案结构，AI 会主动提出可优化项</span></div>' +
+              '<div class="aih-ai-topic-list">' +
+                '<div class="aih-ai-topic"><b>主食建议是否过严？</b><span>患者近 2 周晚餐主食波动较大，可讨论改为“循序递减”而不是一次性限制。</span></div>' +
+                '<div class="aih-ai-topic"><b>是否加入外食场景？</b><span>已有多次晚餐外食记录，建议补充便利店、食堂、聚餐三类替代方案。</span></div>' +
+                '<div class="aih-ai-topic"><b>执行优先级可再收敛</b><span>当前重点较多，建议保留 2 个重点执行，其余降为常规建议。</span></div>' +
+              '</div>' +
+              '<div class="aih-ai-chatbox">输入：把方案改得更适合经常加班、晚餐外食的人...</div>' +
+              '<div class="aih-ai-quick-actions"><button type="button">降低执行难度</button><button type="button">补充医学依据</button><button type="button">改写给患者看</button></div>' +
+            '</aside>' +
+            '<div class="aih-ai-tip" id="aihAiTip"><strong>AI 解读</strong><span></span></div>';
+
+          base.appendChild(root);
+
+          var tips = {
+            u19717: "这是患者端主标题。AI 会把专业方案转换成患者愿意点开看的表达，避免过度医疗化。",
+            u19722: "这是方案角标。AI 建议用短标签承载方案类型，方便患者在列表里快速识别。",
+            u19596: "方案概述会影响患者的第一印象。AI 会压缩为目标、收益、执行边界三部分。",
+            u19602: "执行要点用于强调本阶段最重要的动作，AI 会避免一次塞入过多要求。",
+            u19586: "条目标题是患者端分组标题。AI 会按生活场景或干预目标自动拆组。",
+            u19611: "内容字段承载具体怎么做，AI 会优先生成可量化、可执行的行为建议。",
+            u19617: "关注点用于解释为什么这么做，以及异常情况如何处理，减少患者执行阻力。",
+            u19623: "重要程度决定患者端标签样式，建议固定为重点执行、常规建议、补充建议。"
+          };
+
+          var tip = document.getElementById("aihAiTip");
+          Object.keys(tips).forEach(function (id) {
+            var node = document.getElementById(id);
+            if (!node || !tip) return;
+            node.classList.add("aih-ai-hotspot");
+            node.setAttribute("data-ai-tip", tips[id]);
+            node.addEventListener("mouseenter", function () {
+              var rect = node.getBoundingClientRect();
+              tip.querySelector("span").textContent = tips[id];
+              tip.style.left = window.scrollX + rect.right + 12 + "px";
+              tip.style.top = window.scrollY + rect.top - 4 + "px";
+              tip.style.display = "block";
+            });
+            node.addEventListener("mouseleave", function () {
+              tip.style.display = "none";
+            });
+          });
+
+          document.addEventListener("mousemove", function (event) {
+            if (!tip) return;
+            var node = event.target && event.target.closest ? event.target.closest(".aih-ai-hotspot") : null;
+            if (!node) {
+              tip.style.display = "none";
+              return;
+            }
+            var text = node.getAttribute("data-ai-tip");
+            if (!text) return;
+            var rect = node.getBoundingClientRect();
+            tip.querySelector("span").textContent = text;
+            tip.style.left = window.scrollX + rect.right + 12 + "px";
+            tip.style.top = window.scrollY + rect.top - 4 + "px";
+            tip.style.display = "block";
+          });
+        });
+      })();
+    </script>
     <script src="resources/scripts/axure/ios.js"></script>
   </body>
 </html>
