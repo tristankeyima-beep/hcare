@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>C端我的任务一期线框图</title>
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;background:#f4f5f7;color:#111827;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}
+    .page{max-width:980px;margin:0 auto;padding:32px}
+    h1{font-size:26px;margin:0 0 8px}.note{color:#6b7280;margin:0 0 26px;line-height:1.6}
+    .wireframe-wrap{display:grid;grid-template-columns:repeat(2,minmax(320px,390px));gap:28px;align-items:start}
+    .phone{width:360px;min-height:800px;border:2px solid #1f2937;border-radius:28px;background:#f7f7f7;padding:14px}
+    .status{display:flex;justify-content:space-between;font-size:12px;color:#111827;padding:2px 8px 12px}.topbar{display:flex;justify-content:space-between;align-items:center;padding:8px 6px 12px}.title{font-size:22px;font-weight:700}
+    .block{border:1px solid #9ca3af;border-radius:14px;background:#fff;padding:12px;margin-bottom:10px}.block-muted{background:#f3f4f6}.label-row{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:8px;font-size:12px;color:#4b5563}
+    .date-row{display:grid;grid-template-columns:28px 1fr 28px;gap:8px;align-items:center;margin-bottom:10px}.arrow{width:28px;height:28px;border:1px solid #9ca3af;border-radius:50%;display:grid;place-items:center;background:#fff;font-size:14px}.date-card{border:1px solid #9ca3af;border-radius:999px;padding:8px 10px;text-align:center;background:#fff;font-size:13px;font-weight:700}
+    .week-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:10px}.day{position:relative;border:1px solid #d1d5db;border-radius:12px;text-align:center;padding:7px 0;background:#fff;font-size:11px;color:#4b5563}.day.active{border-color:#111827;background:#e5e7eb;color:#111827;font-weight:700}.day.dim{border-style:dashed;color:#9ca3af}.dot{position:absolute;right:8px;top:6px;width:6px;height:6px;border-radius:50%;background:#9ca3af}.dot.missed{background:#6b7280}
+    .line{height:9px;border-radius:99px;background:#d1d5db;margin:7px 0}.line.short{width:52%}.line.mid{width:72%}.line.long{width:92%}
+    .missed-card{border:1px dashed #9ca3af;border-radius:14px;background:#f9fafb;padding:10px;margin-bottom:10px;display:grid;grid-template-columns:1fr 88px;gap:10px;align-items:center}.missed-card strong{display:block;font-size:13px}
+    .category-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}.category{border:1px solid #9ca3af;border-radius:14px;padding:10px 6px;text-align:center;font-size:12px;background:#fff}.category.active{background:#e5e7eb;border-color:#111827;font-weight:700}
+    .task{display:grid;grid-template-columns:46px 1fr 74px;gap:10px;align-items:center}.iconbox{width:46px;height:46px;border:1px solid #9ca3af;border-radius:12px;background:#f9fafb}.image-mark{border-style:dashed;position:relative}.image-mark:after{content:"图";position:absolute;inset:0;display:grid;place-items:center;font-size:12px;color:#6b7280}
+    .tag{display:inline-block;border:1px solid #9ca3af;border-radius:999px;padding:2px 7px;font-size:10px;margin-right:4px;background:#fff}.button{border:1px solid #111827;border-radius:999px;padding:8px 4px;text-align:center;font-size:12px;background:#fff}
+    .divider{height:1px;background:#d1d5db;margin:12px 0}.detail-head{display:grid;grid-template-columns:54px 1fr;gap:12px;align-items:center}.large-icon{width:54px;height:54px;border:1px solid #9ca3af;border-radius:16px;background:#f9fafb}
+    .preview-strip{display:flex;gap:8px;overflow-x:auto;padding:2px 0 10px;margin-bottom:6px;scroll-snap-type:x mandatory}.preview{flex:0 0 96px;height:96px;border:1px dashed #9ca3af;border-radius:12px;background:#f9fafb;display:grid;place-items:center;text-align:center;color:#6b7280;font-size:12px;scroll-snap-align:start}
+    .step{display:grid;grid-template-columns:22px 1fr;gap:8px;align-items:start;margin:10px 0;font-size:12px;color:#374151}.num{width:22px;height:22px;border-radius:50%;border:1px solid #9ca3af;text-align:center;line-height:22px;background:#fff}
+    .inline-help{margin-top:10px}.bottom-actions{position:sticky;bottom:0;background:#f7f7f7;padding-top:10px}.primary-action{border:1px solid #111827;border-radius:999px;padding:10px;text-align:center;font-size:13px;background:#fff;font-weight:700}
+    .caption{margin-top:10px;color:#4b5563;font-size:13px;line-height:1.5}
+    @media(max-width:820px){.wireframe-wrap{grid-template-columns:1fr}.phone{width:100%;max-width:360px}}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <h1>C端「我的任务」一期线框图</h1>
+    <p class="note">一期不做积分激励。列表页以日期、未完成提示、任务分类和任务卡片为主；详情页以为什么做、怎么做、问问健管师和完成动作承接。</p>
+    <div class="wireframe-wrap">
+      <section>
+        <div class="phone">
+          <div class="status"><span>9:41</span><span>信号 电量</span></div>
+          <div class="topbar"><div class="title">我的任务</div></div>
+          <div class="date-row"><div class="arrow">‹</div><div class="date-card">今天 5月5日 周二</div><div class="arrow">›</div></div>
+          <div class="week-strip"><div class="day dim">周日<br>3<span class="dot missed"></span></div><div class="day">周一<br>4<span class="dot missed"></span></div><div class="day active">今天<br>5</div><div class="day">周三<br>6<span class="dot"></span></div><div class="day">周四<br>7</div></div>
+          <div class="missed-card"><div><strong>今日之前有 2 项未完成任务</strong></div><div class="button">去查看</div></div>
+          <div class="category-grid">
+            <div class="category active">优先处理<br><strong>1</strong></div>
+            <div class="category">轻松完成<br><strong>2</strong></div>
+            <div class="category">需准备<br><strong>1</strong></div>
+          </div>
+          <div class="block"><div class="task"><div class="iconbox image-mark"></div><div><div><strong>确认胰岛素旋钮剂量</strong></div><div><span class="tag">含图示</span></div><div class="line mid"></div></div><div class="button">去查看</div></div></div>
+          <div class="block"><div class="task"><div class="iconbox"></div><div><div><strong>记录早餐后血糖</strong></div><div><span class="tag">约1分钟</span></div><div class="line long"></div></div><div class="button">去记录</div></div></div>
+          <div class="block"><div class="task"><div class="iconbox"></div><div><div><strong>完成15分钟步行</strong></div><div><span class="tag">今天内</span></div><div class="line short"></div></div><div class="button">去打卡</div></div></div>
+          <div class="block"><div class="task"><div class="iconbox image-mark"></div><div><div><strong>扫码加入复诊群</strong></div><div><span class="tag">二维码</span></div><div class="line mid"></div></div><div class="button">查看</div></div></div>
+        </div>
+        <div class="caption">列表页：日期切换 + 今日之前未完成提示 + 任务分类 + 任务卡。</div>
+      </section>
+      <section>
+        <div class="phone">
+          <div class="status"><span>9:41</span><span>信号 电量</span></div>
+          <div class="topbar"><div class="title">任务详情</div><div>来自用药指导</div></div>
+          <div class="block"><div class="detail-head"><div class="large-icon image-mark"></div><div><div><strong>确认胰岛素旋钮剂量</strong></div><div><span class="tag">优先处理</span><span class="tag">含图示</span></div><div class="line long"></div></div></div></div>
+          <div class="block block-muted"><div class="label-row"><strong>为什么要做</strong></div><div class="line long"></div><div class="line mid"></div><div class="divider"></div><div class="label-row"><span>关联指标</span><span>空腹血糖 / 用药记录</span></div></div>
+          <div class="block">
+            <div class="label-row"><strong>怎么完成</strong></div>
+            <div class="preview-strip"><div class="preview">图1<br>旋钮位置</div><div class="preview">图2<br>剂量刻度</div><div class="preview">图3<br>注意事项</div><div class="preview">二维码<br>可选</div></div>
+            <div class="step"><div class="num">1</div><div>对照上方图片，确认旋钮位置和当前剂量刻度。</div></div>
+            <div class="step"><div class="num">2</div><div>如与医生/健管师说明不一致，先不要自行调整。</div></div>
+            <div class="step"><div class="num">3</div><div>确认无误后点击完成，并按提醒记录相关指标。</div></div>
+            <div class="inline-help"><div class="button">问问健管师</div></div>
+          </div>
+          <div class="bottom-actions"><div class="primary-action">我已确认</div></div>
+        </div>
+        <div class="caption">详情页：原因说明 + 执行指导 + 统一咨询入口 + 主动作。</div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
