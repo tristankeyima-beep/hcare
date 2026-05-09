@@ -4680,7 +4680,7 @@
     <style>
       .aih-ai-enhance-root {
         font-family: "PingFangSC-Regular", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
-        color: #1f2a3d;
+        color: #202124;
       }
 
       .aih-ai-planning-panel {
@@ -4689,149 +4689,214 @@
         top: 1122px;
         width: 980px;
         min-height: 390px;
-        background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
-        border: 1px solid rgba(24, 144, 255, 0.18);
-        border-radius: 14px;
-        box-shadow: 0 18px 48px rgba(15, 72, 130, 0.14);
+        background:
+          radial-gradient(circle at 12% 0%, rgba(66, 133, 244, 0.12), transparent 30%),
+          radial-gradient(circle at 84% 10%, rgba(52, 168, 83, 0.12), transparent 28%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(248, 250, 255, 0.92) 100%);
+        border: 1px solid rgba(60, 64, 67, 0.1);
+        border-radius: 20px;
+        box-shadow: 0 12px 36px rgba(60, 64, 67, 0.1);
         overflow: hidden;
         z-index: 1200;
+        backdrop-filter: blur(16px);
       }
 
       .aih-ai-planning-head {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 18px 22px;
-        background: linear-gradient(90deg, rgba(20, 135, 255, 0.12), rgba(42, 223, 197, 0.12));
-        border-bottom: 1px solid rgba(24, 144, 255, 0.12);
+        padding: 20px 24px 18px;
+        background: rgba(255, 255, 255, 0.58);
+        border-bottom: 1px solid rgba(60, 64, 67, 0.08);
       }
 
       .aih-ai-planning-title {
         display: flex;
         align-items: center;
-        gap: 10px;
-        font-size: 18px;
+        gap: 12px;
+        font-size: 17px;
         font-weight: 600;
+        letter-spacing: 0;
       }
 
       .aih-ai-orb {
-        width: 28px;
-        height: 28px;
+        width: 34px;
+        height: 34px;
         border-radius: 50%;
-        background: conic-gradient(from 180deg, #1890ff, #35d2b6, #7c3aed, #1890ff);
-        box-shadow: 0 0 0 6px rgba(24, 144, 255, 0.08);
+        background:
+          radial-gradient(circle at 34% 28%, rgba(255, 255, 255, 0.86) 0 10%, transparent 11%),
+          conic-gradient(from 210deg, #4285f4, #34a853, #fbbc04, #ea4335, #8ab4f8, #4285f4);
+        box-shadow: 0 8px 22px rgba(66, 133, 244, 0.22);
         animation: aihSpin 3.2s linear infinite;
       }
 
       .aih-ai-status-pill {
-        padding: 4px 10px;
+        padding: 7px 13px;
         border-radius: 999px;
-        background: rgba(24, 144, 255, 0.12);
-        color: #096dd9;
+        background: rgba(232, 240, 254, 0.9);
+        color: #1a73e8;
         font-size: 12px;
-        font-weight: 500;
+        font-weight: 600;
+        box-shadow: inset 0 0 0 1px rgba(66, 133, 244, 0.08);
       }
 
       .aih-ai-planning-body {
         display: grid;
-        grid-template-columns: 1fr 260px;
-        gap: 20px;
-        padding: 22px;
+        grid-template-columns: 1fr 292px;
+        gap: 24px;
+        padding: 24px;
       }
 
       .aih-ai-steps {
         position: relative;
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        gap: 12px;
       }
 
       .aih-ai-steps::before {
         content: "";
         position: absolute;
-        left: 16px;
-        top: 10px;
+        left: 17px;
+        top: 18px;
         width: 2px;
-        height: calc(100% - 20px);
-        background: linear-gradient(#1890ff 0%, #52c41a 62%, rgba(24, 144, 255, 0.18) 62%);
+        height: calc(100% - 36px);
+        background: linear-gradient(#34a853 0%, #34a853 34%, #4285f4 66%, rgba(60, 64, 67, 0.1) 66%);
       }
 
       .aih-ai-step {
         position: relative;
         display: grid;
-        grid-template-columns: 34px 1fr;
+        grid-template-columns: 36px 1fr;
         column-gap: 12px;
       }
 
       .aih-ai-step-dot {
         position: relative;
         z-index: 1;
-        width: 34px;
-        height: 34px;
-        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        border-radius: 12px;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: #fff;
-        border: 2px solid #1890ff;
-        color: #1890ff;
-        font-size: 13px;
+        background: rgba(255, 255, 255, 0.86);
+        border: 1px solid rgba(66, 133, 244, 0.3);
+        color: #1a73e8;
+        font-size: 12px;
         font-weight: 700;
+        box-shadow: 0 3px 10px rgba(60, 64, 67, 0.08);
       }
 
       .aih-ai-step.active .aih-ai-step-dot {
         color: #fff;
-        background: #1890ff;
-        box-shadow: 0 0 0 8px rgba(24, 144, 255, 0.1);
+        background: linear-gradient(135deg, #4285f4, #7b61ff);
+        border-color: transparent;
+        box-shadow: 0 0 0 8px rgba(66, 133, 244, 0.1), 0 10px 24px rgba(66, 133, 244, 0.24);
       }
 
       .aih-ai-step.done .aih-ai-step-dot {
         color: #fff;
-        background: #52c41a;
-        border-color: #52c41a;
+        background: #34a853;
+        border-color: #34a853;
+      }
+
+      .aih-ai-step.done .aih-ai-step-dot {
+        font-size: 0;
+      }
+
+      .aih-ai-step.done .aih-ai-step-dot::after {
+        content: "";
+        width: 13px;
+        height: 7px;
+        border-left: 2px solid #fff;
+        border-bottom: 2px solid #fff;
+        transform: rotate(-45deg) translate(1px, -1px);
       }
 
       .aih-ai-step-card {
-        padding: 12px 14px;
-        border: 1px solid #e8eef7;
-        border-radius: 10px;
-        background: rgba(255, 255, 255, 0.88);
+        position: relative;
+        padding: 13px 15px;
+        border: 1px solid rgba(60, 64, 67, 0.1);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.68);
+        box-shadow: 0 4px 14px rgba(60, 64, 67, 0.045);
+      }
+
+      .aih-ai-step.active .aih-ai-step-card {
+        background:
+          linear-gradient(white, white) padding-box,
+          linear-gradient(135deg, rgba(66, 133, 244, 0.42), rgba(123, 97, 255, 0.34), rgba(52, 168, 83, 0.28)) border-box;
+        border-color: transparent;
+      }
+
+      .aih-ai-step-card::after {
+        content: "等待";
+        position: absolute;
+        top: 12px;
+        right: 14px;
+        padding: 3px 8px;
+        border-radius: 999px;
+        background: rgba(60, 64, 67, 0.06);
+        color: #80868b;
+        font-size: 11px;
+        line-height: 1;
+        font-weight: 600;
+      }
+
+      .aih-ai-step.done .aih-ai-step-card::after {
+        content: "已完成";
+        background: rgba(52, 168, 83, 0.1);
+        color: #188038;
+      }
+
+      .aih-ai-step.active .aih-ai-step-card::after {
+        content: "生成中";
+        background: rgba(232, 240, 254, 0.95);
+        color: #1a73e8;
       }
 
       .aih-ai-step-card strong {
         display: block;
-        margin-bottom: 6px;
+        margin: 0 72px 7px 0;
         font-size: 14px;
-        color: #172033;
+        color: #202124;
       }
 
       .aih-ai-step-card span {
         display: block;
         font-size: 12px;
         line-height: 18px;
-        color: #637083;
+        color: #5f6368;
       }
 
       .aih-ai-live-card {
-        padding: 16px;
-        border-radius: 12px;
-        background: #111827;
-        color: #e6f4ff;
-        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+        position: relative;
+        padding: 18px;
+        border-radius: 14px;
+        background:
+          radial-gradient(circle at 12% 8%, rgba(138, 180, 248, 0.28), transparent 34%),
+          radial-gradient(circle at 90% 10%, rgba(129, 201, 149, 0.2), transparent 30%),
+          #121826;
+        color: #e8eaed;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+        overflow: hidden;
       }
 
       .aih-ai-live-card h4 {
         margin: 0 0 12px;
         font-size: 14px;
-        color: #8ee6d1;
+        color: #c8e6ff;
+        font-weight: 600;
       }
 
       .aih-ai-live-line {
         position: relative;
         padding-left: 16px;
-        margin: 0 0 10px;
+        margin: 0 0 12px;
         font-size: 12px;
-        line-height: 18px;
+        line-height: 19px;
+        color: rgba(232, 234, 237, 0.88);
       }
 
       .aih-ai-live-line::before {
@@ -4842,7 +4907,8 @@
         width: 6px;
         height: 6px;
         border-radius: 50%;
-        background: #52c41a;
+        background: #81c995;
+        box-shadow: 0 0 0 4px rgba(129, 201, 149, 0.12);
       }
 
       .aih-ai-live-cursor {
@@ -4850,7 +4916,7 @@
         width: 8px;
         height: 14px;
         margin-left: 3px;
-        background: #8ee6d1;
+        background: #8ab4f8;
         vertical-align: -2px;
         animation: aihBlink 1s steps(2, start) infinite;
       }
@@ -4861,29 +4927,33 @@
         right: 24px;
         width: 310px;
         max-height: calc(100vh - 128px);
-        background: rgba(255, 255, 255, 0.96);
-        border: 1px solid rgba(24, 144, 255, 0.22);
-        border-radius: 14px;
-        box-shadow: 0 16px 42px rgba(15, 72, 130, 0.18);
+        background:
+          radial-gradient(circle at 12% 0%, rgba(66, 133, 244, 0.1), transparent 38%),
+          rgba(255, 255, 255, 0.94);
+        border: 1px solid rgba(60, 64, 67, 0.1);
+        border-radius: 18px;
+        box-shadow: 0 12px 36px rgba(60, 64, 67, 0.12);
         z-index: 2000;
         overflow: hidden;
+        backdrop-filter: blur(14px);
       }
 
       .aih-ai-discussion-head {
-        padding: 14px 16px;
-        background: linear-gradient(90deg, #f0f8ff, #f5fffb);
-        border-bottom: 1px solid #edf3fb;
+        padding: 16px 17px 14px;
+        background: rgba(255, 255, 255, 0.56);
+        border-bottom: 1px solid rgba(60, 64, 67, 0.08);
       }
 
       .aih-ai-discussion-head strong {
         display: block;
         font-size: 15px;
         margin-bottom: 4px;
+        color: #202124;
       }
 
       .aih-ai-discussion-head span {
         font-size: 12px;
-        color: #66758a;
+        color: #5f6368;
       }
 
       .aih-ai-topic-list {
@@ -4894,35 +4964,36 @@
       }
 
       .aih-ai-topic {
-        padding: 10px 12px;
-        border: 1px solid #e8eef7;
-        border-radius: 10px;
-        background: #fbfdff;
+        padding: 11px 12px;
+        border: 1px solid rgba(60, 64, 67, 0.1);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.76);
+        box-shadow: 0 3px 12px rgba(60, 64, 67, 0.04);
       }
 
       .aih-ai-topic b {
         display: block;
         margin-bottom: 5px;
         font-size: 13px;
-        color: #1f2a3d;
+        color: #202124;
       }
 
       .aih-ai-topic span {
         display: block;
         font-size: 12px;
         line-height: 18px;
-        color: #66758a;
+        color: #5f6368;
       }
 
       .aih-ai-chatbox {
         margin: 0 12px 12px;
-        padding: 10px 12px;
+        padding: 11px 12px;
         min-height: 56px;
-        border: 1px solid #d6e9ff;
-        border-radius: 10px;
-        color: #9aa7b7;
+        border: 1px solid rgba(66, 133, 244, 0.18);
+        border-radius: 12px;
+        color: #80868b;
         font-size: 12px;
-        background: #fff;
+        background: rgba(248, 250, 255, 0.78);
       }
 
       .aih-ai-quick-actions {
@@ -4933,18 +5004,19 @@
       }
 
       .aih-ai-quick-actions button {
-        border: 1px solid #b7dcff;
+        border: 1px solid rgba(66, 133, 244, 0.18);
         border-radius: 999px;
-        padding: 6px 10px;
-        background: #f5fbff;
-        color: #096dd9;
+        padding: 7px 10px;
+        background: rgba(232, 240, 254, 0.72);
+        color: #1a73e8;
         font-size: 12px;
+        font-weight: 600;
         cursor: pointer;
       }
 
       .aih-ai-hotspot {
-        border-color: #85c7ff !important;
-        box-shadow: 0 0 0 3px rgba(24, 144, 255, 0.08) !important;
+        border-color: rgba(66, 133, 244, 0.42) !important;
+        box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.08) !important;
       }
 
       .aih-ai-tip {
@@ -4952,10 +5024,12 @@
         display: none;
         width: 280px;
         padding: 12px 14px;
-        border-radius: 10px;
-        background: #152033;
-        color: #eff7ff;
-        box-shadow: 0 12px 32px rgba(15, 30, 52, 0.22);
+        border-radius: 12px;
+        background:
+          radial-gradient(circle at 0% 0%, rgba(138, 180, 248, 0.22), transparent 36%),
+          #121826;
+        color: #e8eaed;
+        box-shadow: 0 14px 34px rgba(18, 24, 38, 0.24);
         font-size: 12px;
         line-height: 18px;
         z-index: 2200;
@@ -4968,13 +5042,13 @@
         top: 18px;
         border-top: 6px solid transparent;
         border-bottom: 6px solid transparent;
-        border-right: 6px solid #152033;
+        border-right: 6px solid #121826;
       }
 
       .aih-ai-tip strong {
         display: block;
         margin-bottom: 5px;
-        color: #8ee6d1;
+        color: #c8e6ff;
         font-size: 13px;
       }
 
