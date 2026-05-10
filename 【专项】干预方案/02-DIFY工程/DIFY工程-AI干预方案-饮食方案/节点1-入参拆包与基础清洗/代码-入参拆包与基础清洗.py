@@ -39,7 +39,7 @@ def main(
     metric_records_last_1y=None,
     diet_records_last_1y=None,
     exercise_records_last_1y=None,
-    medication_pickup_records_last_1y=None,
+    med_pickup_records_1y=None,
     active_control_goals=None,
     **kwargs
 ) -> dict:
@@ -49,7 +49,7 @@ def main(
     metric_records = _limit_records(_ensure_list(metric_records_last_1y), 120)
     diet_records = _limit_records(_ensure_list(diet_records_last_1y), 120)
     exercise_records = _limit_records(_ensure_list(exercise_records_last_1y), 80)
-    medication_records = _limit_records(_ensure_list(medication_pickup_records_last_1y), 80)
+    medication_records = _limit_records(_ensure_list(med_pickup_records_1y), 80)
     active_goals = _limit_records(_ensure_list(active_control_goals), 30)
     normalized_plan_type = (plan_type or "diet").strip().lower()
 
@@ -74,7 +74,7 @@ def main(
         },
         "safety_energy_context": {
             **common,
-            "medication_pickup_records_last_1y": medication_records,
+            "med_pickup_records_1y": medication_records,
             "exercise_records_last_1y": exercise_records,
             "metric_records_last_1y": metric_records,
             "followup_records_last_1y": followup_records,
@@ -89,7 +89,7 @@ def main(
             "metric_records_count": len(metric_records),
             "diet_records_count": len(diet_records),
             "exercise_records_count": len(exercise_records),
-            "medication_pickup_records_count": len(medication_records),
+            "med_pickup_records_count": len(medication_records),
             "active_control_goals_count": len(active_goals)
         }
     }

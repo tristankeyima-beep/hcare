@@ -49,7 +49,7 @@ flowchart TB
   "metric_records_last_1y": [],
   "diet_records_last_1y": [],
   "exercise_records_last_1y": [],
-  "medication_pickup_records_last_1y": [],
+  "med_pickup_records_1y": [],
   "active_control_goals": []
 }
 ```

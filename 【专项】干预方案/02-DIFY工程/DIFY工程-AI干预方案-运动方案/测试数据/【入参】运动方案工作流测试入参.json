@@ -107,7 +107,7 @@
       "calories_kcal": 120
     }
   ],
-  "medication_pickup_records_last_1y": [
+  "med_pickup_records_1y": [
     {
       "drug_name": "吡格列酮二甲双胍片",
       "usage": "口服",

@@ -15,7 +15,7 @@
 | `metric_records_last_1y` | 指标记录 | 最近 1 年 |
 | `diet_records_last_1y` | 饮食记录 | 最近 1 年 |
 | `exercise_records_last_1y` | 运动记录 | 最近 1 年 |
-| `medication_pickup_records_last_1y` | 取药记录 | 最近 1 年 |
+| `med_pickup_records_1y` | 取药记录 | 最近 1 年 |
 | `active_control_goals` | 当前生效控制目标 | 当前生效 |
 
 ## 完整入参示例
@@ -263,7 +263,7 @@
       "calories_kcal": 120
     }
   ],
-  "medication_pickup_records_last_1y": [
+  "med_pickup_records_1y": [
     {
       "drug_name": "阿托伐他汀钙片",
       "specification": "20mg*14片",
@@ -339,5 +339,5 @@
 | `metric_records_last_1y[].metric_name` | 指标名称 |
 | `diet_records_last_1y[].calories_kcal` | 摄入热量 |
 | `exercise_records_last_1y[].duration_minutes` | 运动时长 |
-| `medication_pickup_records_last_1y[].drug_name` | 药品名称 |
+| `med_pickup_records_1y[].drug_name` | 药品名称 |
 | `active_control_goals[].lower_bound.inclusive` | 目标下限是否包含边界 |
