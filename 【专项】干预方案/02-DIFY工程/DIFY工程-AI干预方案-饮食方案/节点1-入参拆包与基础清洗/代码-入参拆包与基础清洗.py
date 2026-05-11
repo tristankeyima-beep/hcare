@@ -16,17 +16,31 @@ def _parse_json_value(value, default):
 
 def _ensure_list(value):
     parsed = _parse_json_value(value, [])
-    return parsed if isinstance(parsed, list) else []
+    if isinstance(parsed, list):
+        return parsed
+    if isinstance(parsed, dict):
+        return [parsed]
+    if value is None or value == "":
+        return []
+    return [{"raw_text": str(value)}]
 
 
 def _ensure_dict(value):
     parsed = _parse_json_value(value, {})
-    return parsed if isinstance(parsed, dict) else {}
+    if isinstance(parsed, dict):
+        return parsed
+    if value is None or value == "":
+        return {}
+    return {"raw_text": str(value)}
 
 
 def _limit_records(records, max_count=80):
     records = records if isinstance(records, list) else []
     return records[:max_count]
+
+
+def _to_json_text(value):
+    return json.dumps(value, ensure_ascii=False)
 
 
 def main(
@@ -59,37 +73,42 @@ def main(
         "extra_supplement": extra_supplement or ""
     }
 
+    medical_goal_context = {
+        **common,
+        "basic_profile": basic_profile,
+        "disease_profile": disease_profile,
+        "metric_records_last_1y": metric_records,
+        "active_control_goals": active_goals
+    }
+    diet_execution_context = {
+        **common,
+        "diet_records_last_1y": diet_records,
+        "followup_records_last_1y": followup_records
+    }
+    safety_energy_context = {
+        **common,
+        "med_pickup_records_1y": medication_records,
+        "exercise_records_last_1y": exercise_records,
+        "metric_records_last_1y": metric_records,
+        "followup_records_last_1y": followup_records,
+        "disease_profile": disease_profile
+    }
+    input_stats = {
+        "followup_records_count": len(followup_records),
+        "metric_records_count": len(metric_records),
+        "diet_records_count": len(diet_records),
+        "exercise_records_count": len(exercise_records),
+        "med_pickup_records_count": len(medication_records),
+        "active_control_goals_count": len(active_goals)
+    }
+
     return {
-        "medical_goal_context": {
-            **common,
-            "basic_profile": basic_profile,
-            "disease_profile": disease_profile,
-            "metric_records_last_1y": metric_records,
-            "active_control_goals": active_goals
-        },
-        "diet_execution_context": {
-            **common,
-            "diet_records_last_1y": diet_records,
-            "followup_records_last_1y": followup_records
-        },
-        "safety_energy_context": {
-            **common,
-            "med_pickup_records_1y": medication_records,
-            "exercise_records_last_1y": exercise_records,
-            "metric_records_last_1y": metric_records,
-            "followup_records_last_1y": followup_records,
-            "disease_profile": disease_profile
-        },
+        "medical_goal_context": _to_json_text(medical_goal_context),
+        "diet_execution_context": _to_json_text(diet_execution_context),
+        "safety_energy_context": _to_json_text(safety_energy_context),
         "plan_goal_and_requirements": plan_goal_and_requirements or "",
         "extra_supplement": extra_supplement or "",
         "plan_type": normalized_plan_type,
         "route_warning": "" if normalized_plan_type == "diet" else "当前工程为饮食方案工程，建议确认 plan_type 是否应为 diet。",
-        "input_stats": {
-            "followup_records_count": len(followup_records),
-            "metric_records_count": len(metric_records),
-            "diet_records_count": len(diet_records),
-            "exercise_records_count": len(exercise_records),
-            "med_pickup_records_count": len(medication_records),
-            "active_control_goals_count": len(active_goals)
-        }
+        "input_stats": _to_json_text(input_stats)
     }

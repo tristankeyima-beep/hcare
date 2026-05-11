@@ -1,0 +1,125 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "diet_plan_goal",
+    "diet_plan_goal_label",
+    "goal_basis",
+    "patient_context_pack",
+    "material_summary_bundle"
+  ],
+  "properties": {
+    "diet_plan_goal": {
+      "type": "string",
+      "enum": [
+        "weight_loss",
+        "glucose_control",
+        "metabolic_optimization",
+        "postoperative_recovery",
+        "lipid_control",
+        "blood_pressure_control",
+        "digestive_support",
+        "renal_protection",
+        "general_health",
+        "mixed"
+      ]
+    },
+    "diet_plan_goal_label": {
+      "type": "string"
+    },
+    "goal_basis": {
+      "type": "string"
+    },
+    "patient_context_pack": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "disease_and_metric_profile",
+        "diet_behavior_patterns",
+        "execution_barriers",
+        "safety_constraints",
+        "energy_balance_clues",
+        "medication_related_cautions",
+        "positive_habits_to_keep",
+        "priority_management_focus",
+        "missing_information"
+      ],
+      "properties": {
+        "disease_and_metric_profile": {
+          "$ref": "#/$defs/context_items"
+        },
+        "diet_behavior_patterns": {
+          "$ref": "#/$defs/context_items"
+        },
+        "execution_barriers": {
+          "$ref": "#/$defs/context_items"
+        },
+        "safety_constraints": {
+          "$ref": "#/$defs/context_items"
+        },
+        "energy_balance_clues": {
+          "$ref": "#/$defs/context_items"
+        },
+        "medication_related_cautions": {
+          "$ref": "#/$defs/context_items"
+        },
+        "positive_habits_to_keep": {
+          "$ref": "#/$defs/context_items"
+        },
+        "priority_management_focus": {
+          "$ref": "#/$defs/context_items"
+        },
+        "missing_information": {
+          "$ref": "#/$defs/context_items"
+        }
+      }
+    },
+    "material_summary_bundle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "medical_goal_summary",
+        "diet_execution_summary",
+        "safety_energy_summary"
+      ],
+      "properties": {
+        "medical_goal_summary": {
+          "type": "string"
+        },
+        "diet_execution_summary": {
+          "type": "string"
+        },
+        "safety_energy_summary": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "context_items": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "evidence",
+          "impact",
+          "generation_hint"
+        ],
+        "properties": {
+          "evidence": {
+            "type": "string"
+          },
+          "impact": {
+            "type": "string"
+          },
+          "generation_hint": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

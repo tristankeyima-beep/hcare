@@ -247,10 +247,39 @@ def _validate_weekly_meal_plan(group, group_index):
     return errors
 
 
-def main(plan_header=None, group_plan=None, groups=None, meal_plan_group=None, **kwargs) -> dict:
+def _normalize_plan_header(plan_header, plan_name, plan_title, plan_summary, execution_points):
     header = _parse_json(plan_header, {})
     if not isinstance(header, dict):
         header = {}
+    if header:
+        return header
+
+    return {
+        "plan_name": _normalize_text(plan_name, ""),
+        "plan_title": _normalize_text(plan_title, ""),
+        "plan_summary": _normalize_text(plan_summary, ""),
+        "execution_points": _normalize_text(execution_points, "")
+    }
+
+
+def main(
+    plan_header=None,
+    group_plan=None,
+    groups=None,
+    meal_plan_group=None,
+    plan_name=None,
+    plan_title=None,
+    plan_summary=None,
+    execution_points=None,
+    **kwargs
+) -> dict:
+    header = _normalize_plan_header(
+        plan_header,
+        plan_name,
+        plan_title,
+        plan_summary,
+        execution_points
+    )
 
     normalized_group_plan = _normalize_group_plan(group_plan)
     normalized_groups = _sort_groups_by_plan(
@@ -290,9 +319,11 @@ def main(plan_header=None, group_plan=None, groups=None, meal_plan_group=None, *
     }
 
     validation_errors = _validate_plan(final_plan)
+    final_plan_json_text = json.dumps(final_plan, ensure_ascii=False)
 
     return {
-        "final_plan_json": final_plan,
-        "final_plan_json_text": json.dumps(final_plan, ensure_ascii=False),
-        "validation_errors": validation_errors
+        "final_plan_json_text": final_plan_json_text,
+        "validation_errors": json.dumps(validation_errors, ensure_ascii=False),
+        "validation_errors_count": len(validation_errors),
+        "groups_count": len(normalized_groups)
     }

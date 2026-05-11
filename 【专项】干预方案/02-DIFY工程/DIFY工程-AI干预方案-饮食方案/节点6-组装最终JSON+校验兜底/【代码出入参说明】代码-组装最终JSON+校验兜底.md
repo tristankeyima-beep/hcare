@@ -10,18 +10,23 @@
 
 | 字段 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| `plan_header` | Object 或 JSON字符串 | 否 | 节点5输出，包含 `plan_name`、`plan_title`、`plan_summary`、`execution_points`。 |
+| `plan_header` | String(JSON) | 否 | 节点5-2输出的打包字段，包含 `plan_name`、`plan_title`、`plan_summary`、`execution_points`。DIFY 中建议传 `{{#节点5-2.plan_header#}}`。 |
+| `plan_name` | String | 否 | 兼容散字段传入；仅当 `plan_header` 为空或无法解析时使用。 |
+| `plan_title` | String | 否 | 兼容散字段传入；仅当 `plan_header` 为空或无法解析时使用。 |
+| `plan_summary` | String | 否 | 兼容散字段传入；仅当 `plan_header` 为空或无法解析时使用。 |
+| `execution_points` | String | 否 | 兼容散字段传入；仅当 `plan_header` 为空或无法解析时使用。 |
 | `group_plan` | Object/Array 或 JSON字符串 | 否 | 可选。若后续恢复独立分组规划节点，可用于按规划顺序排序 groups。当前 6 节点版本通常不传。 |
-| `groups` | Object/Array 或 JSON字符串 | 否 | 节点3输出，包含普通饮食建议分组。 |
-| `meal_plan_group` | Object 或 JSON字符串 | 否 | 节点4输出，包含 `group_type=weekly_meal_plan` 的 7 天菜谱分组。 |
+| `groups` | Object/Array 或 JSON字符串 | 否 | 节点3-2输出，包含普通饮食建议分组。 |
+| `meal_plan_group` | Object 或 JSON字符串 | 否 | 节点4-2输出，包含 `group_type=weekly_meal_plan` 的 7 天菜谱分组。 |
 
 ## 出参
 
 | 字段 | 类型 | 说明 |
 | --- | --- | --- |
-| `final_plan_json` | Object | H5 可直接渲染的最终饮食方案 JSON。 |
-| `final_plan_json_text` | String | `final_plan_json` 的 JSON 字符串版本。 |
-| `validation_errors` | Array<String> | 结构校验错误。为空表示结构满足当前渲染要求。 |
+| `final_plan_json_text` | String(JSON) | H5 可解析渲染的最终饮食方案 JSON 字符串。Dify Code 节点不直接返回深层 Object，避免超过对象深度限制。 |
+| `validation_errors` | String(JSON Array) | 结构校验错误数组的 JSON 字符串。为空数组字符串表示结构满足当前渲染要求。 |
+| `validation_errors_count` | Number | 结构校验错误数量。 |
+| `groups_count` | Number | 最终输出中的 group 数量。 |
 
 ## 校验规则
 
@@ -38,8 +43,10 @@
 
 ## 兜底策略
 
+- 最终方案只以 `final_plan_json_text` 字符串输出，不以 Object 输出，也不重复输出 `final_plan_json`，避免 Dify Code 节点报 `Depth limit 5 reached, object too deep` 或误配变量类型。
+- 顶层文案优先从 `plan_header` 解析；如果没有传 `plan_header`，则把 `plan_name`、`plan_title`、`plan_summary`、`execution_points` 四个散字段临时组装成顶层文案对象。
 - 顶层字段缺失时使用默认饮食方案文案。
 - 某个 item 缺少 `focus_point` 时补默认提醒。
 - 没有可用 group 时输出一个最小可渲染的“饮食总原则”分组。
-- 如传入 `group_plan`，按其中的 `group_title` 顺序排序最终 groups；当前 6 节点版本通常按节点3输出顺序保留。
+- 如传入 `group_plan`，按其中的 `group_title` 顺序排序最终 groups；当前版本通常按节点3-2输出顺序保留。
 - 保留 item 上的菜谱扩展字段，避免把 `meals`、热量、蛋白质、脂肪等执行字段过滤掉。
