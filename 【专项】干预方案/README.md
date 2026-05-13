@@ -11,27 +11,27 @@
     AI干预方案输出JSON协议.md
   02-DIFY工程/
     饮食方案工作流设计总览.md
-    DIFY工程-AI干预方案-饮食方案/
-    DIFY工程-AI干预方案-运动方案/
+    DIFY工程-AI干预方案-饮食方案-驼峰版/
+    DIFY工程-AI干预方案-运动方案-驼峰版/
   03-H5渲染示例/
-    干预方案H5demo/
+    饮食方案H5demo/
 ```
 
 ## 方案类型
 
-总入参通过 `plan_type` 区分生成哪类方案：
+总入参通过 `planType` 区分生成哪类方案：
 
-| plan_type | 含义 | 对应工程 |
+| planType | 含义 | 对应工程 |
 | --- | --- | --- |
-| `diet` | 生成饮食方案 | `02-DIFY工程/DIFY工程-AI干预方案-饮食方案` |
-| `sport` | 生成运动方案 | `02-DIFY工程/DIFY工程-AI干预方案-运动方案` |
+| `diet` | 生成饮食方案 | `02-DIFY工程/DIFY工程-AI干预方案-饮食方案-驼峰版` |
+| `sport` | 生成运动方案 | `02-DIFY工程/DIFY工程-AI干预方案-运动方案-驼峰版` |
 
 ## 公共协议
 
 - 入参协议：`01-协议说明/AI干预方案入参协议.md`
 - 输出 JSON 协议：`01-协议说明/AI干预方案输出JSON协议.md`
 
-两个 DIFY 工程都应遵循同一套输出结构：`plan_name`、`plan_title`、`plan_summary`、`execution_points`、`groups/items`。不同方案类型只改变素材摘要维度、分组规划和内容生成策略。
+两个 DIFY 工程都应遵循同一套输出结构：`planName`、`planTitle`、`planSummary`、`executionPoints`、`groups/items`。不同方案类型只改变素材摘要维度、分组规划和内容生成策略。
 
 ## 产品表达原则
 
@@ -42,4 +42,3 @@
 - 可观测推理：让健管师看到 AI 正在如何拆解问题、形成判断和组织方案。
 - Human-in-the-loop：健管师参与确认、追问、修订和最终发布。
 - 持续优化：方案生成后仍可基于患者变化和健管师反馈继续迭代。
-

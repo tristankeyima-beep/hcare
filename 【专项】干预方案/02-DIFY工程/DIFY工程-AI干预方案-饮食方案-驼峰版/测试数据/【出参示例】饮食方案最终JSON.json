@@ -1,0 +1,433 @@
+{
+  "planName": "饮食健康处方",
+  "planTitle": "个性化控糖减重饮食建议",
+  "planSummary": "这份饮食方案会围绕控糖和体重管理目标，帮你把主食份量、蛋白质搭配、控油控盐和夜班外食安排得更清楚。接下来7天可以先按菜谱执行，日均约1580千卡，在吃够蛋白质和蔬菜的基础上，逐步形成约400千卡的每日热量差。",
+  "executionPoints": "优先执行最近7天菜谱和重点执行条目；每餐先吃蔬菜和蛋白质，再吃主食；夜班或外卖按同等热量和蛋白质原则替换；如出现低血糖、连续血糖异常或明显不适，应及时联系医生或健管师。",
+  "groups": [
+    {
+      "groupTitle": "主食与血糖管理",
+      "groupType": "adviceList",
+      "groupSummary": "通过固定主食份量和替换精制碳水，降低餐后血糖波动。",
+      "displayStyle": "list",
+      "items": [
+        {
+          "itemType": "advice",
+          "title": "固定主食份量",
+          "content": "每餐主食先控制在固定份量，优先用全谷物、杂豆或薯类替代部分精白米面。",
+          "focusPoint": "重点降低餐后血糖波动；调整初期建议同步记录餐后血糖变化。",
+          "importance": "重点执行"
+        }
+      ]
+    },
+    {
+      "groupTitle": "外食与夜班饮食策略",
+      "groupType": "adviceList",
+      "groupSummary": "把夜班和外卖场景转化为可替换规则，减少执行中断。",
+      "displayStyle": "list",
+      "items": [
+        {
+          "itemType": "advice",
+          "title": "外卖选择规则",
+          "content": "夜班或点外卖时优先选择少油烹饪、带蔬菜和优质蛋白的套餐，减少卤味、油炸和甜饮。",
+          "focusPoint": "患者外卖频率较高，先从选择规则入手比完全禁止更容易长期执行。",
+          "importance": "重点执行"
+        }
+      ]
+    },
+    {
+      "groupTitle": "最近7天饮食执行菜谱",
+      "groupType": "weeklyMealPlan",
+      "groupSummary": "按减重控糖目标安排7天三餐，日均约1580千卡，预计每日制造约380-430千卡热量缺口。",
+      "displayStyle": "weeklyMealPlan",
+      "dietPlanGoalLabel": "减重控糖",
+      "goalBasis": "方案目标中包含控制血糖和减重诉求；患者体重偏高、餐后血糖波动，且夜班外卖较多，需要把原则转成可直接照做的三餐安排。",
+      "items": [
+        {
+          "itemType": "dailyMealPlan",
+          "day": 1,
+          "title": "第1天",
+          "content": "三餐以燕麦、糙米饭、鱼肉、鸡胸肉和足量蔬菜为主，控制精制碳水和油脂。",
+          "dailyTotalKcal": 1560,
+          "dailyTotalProteinG": 88,
+          "dailyTotalFatG": 45,
+          "estimatedEnergyDeficitKcal": 420,
+          "focusPoint": "晚餐主食偏轻，适合餐后血糖波动明显时先执行；如夜班饥饿，可加无糖酸奶100克。",
+          "importance": "重点执行",
+          "meals": [
+            {
+              "mealName": "早餐",
+              "mealTotalKcal": 390,
+              "mealTotalProteinG": 20,
+              "mealTotalFatG": 17,
+              "foods": [
+                { "name": "燕麦", "amountG": 40, "kcal": 150, "proteinG": 5, "fatG": 3 },
+                { "name": "鸡蛋", "amountG": 50, "kcal": 70, "proteinG": 6, "fatG": 5 },
+                { "name": "无糖酸奶", "amountG": 150, "kcal": 90, "proteinG": 6, "fatG": 3 },
+                { "name": "黄瓜", "amountG": 100, "kcal": 20, "proteinG": 1, "fatG": 0 },
+                { "name": "核桃", "amountG": 10, "kcal": 60, "proteinG": 2, "fatG": 6 }
+              ]
+            },
+            {
+              "mealName": "午餐",
+              "mealTotalKcal": 610,
+              "mealTotalProteinG": 42,
+              "mealTotalFatG": 16,
+              "foods": [
+                { "name": "糙米饭", "amountG": 120, "kcal": 140, "proteinG": 3, "fatG": 1 },
+                { "name": "清蒸鲈鱼", "amountG": 120, "kcal": 150, "proteinG": 25, "fatG": 5 },
+                { "name": "西兰花", "amountG": 200, "kcal": 70, "proteinG": 5, "fatG": 1 },
+                { "name": "番茄炒蛋", "amountG": 150, "kcal": 160, "proteinG": 10, "fatG": 10 },
+                { "name": "紫菜汤", "amountG": 200, "kcal": 40, "proteinG": 3, "fatG": 1 },
+                { "name": "烹调用油", "amountG": 5, "kcal": 45, "proteinG": 0, "fatG": 5 }
+              ]
+            },
+            {
+              "mealName": "晚餐",
+              "mealTotalKcal": 560,
+              "mealTotalProteinG": 26,
+              "mealTotalFatG": 12,
+              "foods": [
+                { "name": "荞麦面熟重", "amountG": 150, "kcal": 170, "proteinG": 6, "fatG": 1 },
+                { "name": "鸡胸肉", "amountG": 90, "kcal": 145, "proteinG": 28, "fatG": 3 },
+                { "name": "生菜", "amountG": 200, "kcal": 40, "proteinG": 3, "fatG": 0 },
+                { "name": "北豆腐", "amountG": 80, "kcal": 75, "proteinG": 7, "fatG": 4 },
+                { "name": "菌菇", "amountG": 150, "kcal": 45, "proteinG": 4, "fatG": 0 },
+                { "name": "烹调用油", "amountG": 5, "kcal": 45, "proteinG": 0, "fatG": 5 }
+              ]
+            }
+          ]
+        },
+        {
+          "itemType": "dailyMealPlan",
+          "day": 2,
+          "title": "第2天",
+          "content": "用全麦面包、藜麦饭、虾仁和瘦牛肉搭配蔬菜，减少甜饮和高油外卖。",
+          "dailyTotalKcal": 1600,
+          "dailyTotalProteinG": 90,
+          "dailyTotalFatG": 48,
+          "estimatedEnergyDeficitKcal": 390,
+          "focusPoint": "午餐碳水放在白天，晚餐以蔬菜和蛋白质为主，适合夜间活动量较低的日子。",
+          "importance": "重点执行",
+          "meals": [
+            {
+              "mealName": "早餐",
+              "mealTotalKcal": 410,
+              "mealTotalProteinG": 23,
+              "mealTotalFatG": 15,
+              "foods": [
+                { "name": "全麦面包", "amountG": 60, "kcal": 155, "proteinG": 6, "fatG": 2 },
+                { "name": "水煮蛋", "amountG": 50, "kcal": 70, "proteinG": 6, "fatG": 5 },
+                { "name": "低脂牛奶", "amountG": 250, "kcal": 115, "proteinG": 8, "fatG": 3 },
+                { "name": "番茄", "amountG": 150, "kcal": 30, "proteinG": 1, "fatG": 0 },
+                { "name": "花生酱", "amountG": 8, "kcal": 40, "proteinG": 2, "fatG": 5 }
+              ]
+            },
+            {
+              "mealName": "午餐",
+              "mealTotalKcal": 640,
+              "mealTotalProteinG": 40,
+              "mealTotalFatG": 18,
+              "foods": [
+                { "name": "藜麦饭", "amountG": 130, "kcal": 160, "proteinG": 5, "fatG": 2 },
+                { "name": "虾仁", "amountG": 130, "kcal": 130, "proteinG": 27, "fatG": 2 },
+                { "name": "芦笋", "amountG": 180, "kcal": 45, "proteinG": 4, "fatG": 0 },
+                { "name": "胡萝卜", "amountG": 100, "kcal": 40, "proteinG": 1, "fatG": 0 },
+                { "name": "凉拌豆腐丝", "amountG": 100, "kcal": 150, "proteinG": 13, "fatG": 8 },
+                { "name": "烹调用油", "amountG": 8, "kcal": 72, "proteinG": 0, "fatG": 8 }
+              ]
+            },
+            {
+              "mealName": "晚餐",
+              "mealTotalKcal": 550,
+              "mealTotalProteinG": 27,
+              "mealTotalFatG": 15,
+              "foods": [
+                { "name": "红薯", "amountG": 120, "kcal": 105, "proteinG": 2, "fatG": 0 },
+                { "name": "瘦牛肉", "amountG": 90, "kcal": 170, "proteinG": 24, "fatG": 8 },
+                { "name": "菠菜", "amountG": 200, "kcal": 50, "proteinG": 5, "fatG": 1 },
+                { "name": "冬瓜汤", "amountG": 250, "kcal": 45, "proteinG": 2, "fatG": 1 },
+                { "name": "苹果", "amountG": 100, "kcal": 55, "proteinG": 0, "fatG": 0 },
+                { "name": "烹调用油", "amountG": 6, "kcal": 54, "proteinG": 0, "fatG": 6 }
+              ]
+            }
+          ]
+        },
+        {
+          "itemType": "dailyMealPlan",
+          "day": 3,
+          "title": "第3天",
+          "content": "早餐增加豆浆和鸡蛋，午餐用杂粮饭配鸡腿去皮，晚餐用豆腐和蔬菜控制热量。",
+          "dailyTotalKcal": 1550,
+          "dailyTotalProteinG": 86,
+          "dailyTotalFatG": 44,
+          "estimatedEnergyDeficitKcal": 430,
+          "focusPoint": "这一天热量略低，适合非高强度活动日；如饥饿明显，优先增加绿叶菜或无糖豆浆。",
+          "importance": "重点执行",
+          "meals": [
+            {
+              "mealName": "早餐",
+              "mealTotalKcal": 395,
+              "mealTotalProteinG": 24,
+              "mealTotalFatG": 14,
+              "foods": [
+                { "name": "无糖豆浆", "amountG": 300, "kcal": 105, "proteinG": 9, "fatG": 5 },
+                { "name": "鸡蛋", "amountG": 50, "kcal": 70, "proteinG": 6, "fatG": 5 },
+                { "name": "玉米", "amountG": 120, "kcal": 130, "proteinG": 4, "fatG": 2 },
+                { "name": "小番茄", "amountG": 150, "kcal": 35, "proteinG": 1, "fatG": 0 },
+                { "name": "杏仁", "amountG": 8, "kcal": 45, "proteinG": 2, "fatG": 4 }
+              ]
+            },
+            {
+              "mealName": "午餐",
+              "mealTotalKcal": 625,
+              "mealTotalProteinG": 42,
+              "mealTotalFatG": 17,
+              "foods": [
+                { "name": "杂粮饭", "amountG": 130, "kcal": 165, "proteinG": 4, "fatG": 1 },
+                { "name": "去皮鸡腿肉", "amountG": 120, "kcal": 190, "proteinG": 27, "fatG": 8 },
+                { "name": "油麦菜", "amountG": 220, "kcal": 45, "proteinG": 4, "fatG": 1 },
+                { "name": "海带丝", "amountG": 100, "kcal": 35, "proteinG": 1, "fatG": 0 },
+                { "name": "菌菇汤", "amountG": 250, "kcal": 55, "proteinG": 4, "fatG": 1 },
+                { "name": "烹调用油", "amountG": 8, "kcal": 72, "proteinG": 0, "fatG": 8 }
+              ]
+            },
+            {
+              "mealName": "晚餐",
+              "mealTotalKcal": 530,
+              "mealTotalProteinG": 20,
+              "mealTotalFatG": 13,
+              "foods": [
+                { "name": "山药", "amountG": 120, "kcal": 115, "proteinG": 2, "fatG": 0 },
+                { "name": "南豆腐", "amountG": 160, "kcal": 135, "proteinG": 12, "fatG": 7 },
+                { "name": "娃娃菜", "amountG": 250, "kcal": 55, "proteinG": 4, "fatG": 0 },
+                { "name": "木耳", "amountG": 80, "kcal": 25, "proteinG": 1, "fatG": 0 },
+                { "name": "橙子", "amountG": 120, "kcal": 60, "proteinG": 1, "fatG": 0 },
+                { "name": "烹调用油", "amountG": 6, "kcal": 54, "proteinG": 0, "fatG": 6 }
+              ]
+            }
+          ]
+        },
+        {
+          "itemType": "dailyMealPlan",
+          "day": 4,
+          "title": "第4天",
+          "content": "用酸奶燕麦、三文鱼和鸡蛋豆腐组合，提高饱腹感并避免晚餐过量。",
+          "dailyTotalKcal": 1620,
+          "dailyTotalProteinG": 91,
+          "dailyTotalFatG": 50,
+          "estimatedEnergyDeficitKcal": 380,
+          "focusPoint": "脂肪主要来自鱼肉和少量坚果，避免再额外加油炸食物或奶茶。",
+          "importance": "重点执行",
+          "meals": [
+            {
+              "mealName": "早餐",
+              "mealTotalKcal": 420,
+              "mealTotalProteinG": 22,
+              "mealTotalFatG": 16,
+              "foods": [
+                { "name": "无糖希腊酸奶", "amountG": 180, "kcal": 120, "proteinG": 14, "fatG": 4 },
+                { "name": "燕麦", "amountG": 35, "kcal": 130, "proteinG": 4, "fatG": 3 },
+                { "name": "猕猴桃", "amountG": 100, "kcal": 60, "proteinG": 1, "fatG": 0 },
+                { "name": "水煮蛋", "amountG": 50, "kcal": 70, "proteinG": 6, "fatG": 5 },
+                { "name": "腰果", "amountG": 8, "kcal": 45, "proteinG": 1, "fatG": 4 }
+              ]
+            },
+            {
+              "mealName": "午餐",
+              "mealTotalKcal": 660,
+              "mealTotalProteinG": 42,
+              "mealTotalFatG": 24,
+              "foods": [
+                { "name": "黑米饭", "amountG": 130, "kcal": 165, "proteinG": 4, "fatG": 1 },
+                { "name": "三文鱼", "amountG": 100, "kcal": 205, "proteinG": 22, "fatG": 13 },
+                { "name": "西葫芦", "amountG": 200, "kcal": 45, "proteinG": 3, "fatG": 0 },
+                { "name": "彩椒", "amountG": 120, "kcal": 35, "proteinG": 1, "fatG": 0 },
+                { "name": "豆腐汤", "amountG": 250, "kcal": 95, "proteinG": 8, "fatG": 5 },
+                { "name": "烹调用油", "amountG": 6, "kcal": 54, "proteinG": 0, "fatG": 6 }
+              ]
+            },
+            {
+              "mealName": "晚餐",
+              "mealTotalKcal": 540,
+              "mealTotalProteinG": 27,
+              "mealTotalFatG": 10,
+              "foods": [
+                { "name": "紫薯", "amountG": 120, "kcal": 115, "proteinG": 2, "fatG": 0 },
+                { "name": "鸡蛋豆腐", "amountG": 150, "kcal": 130, "proteinG": 10, "fatG": 7 },
+                { "name": "清炒芥蓝", "amountG": 220, "kcal": 65, "proteinG": 5, "fatG": 1 },
+                { "name": "鸡胸肉丝", "amountG": 70, "kcal": 110, "proteinG": 22, "fatG": 2 },
+                { "name": "梨", "amountG": 120, "kcal": 60, "proteinG": 0, "fatG": 0 },
+                { "name": "烹调用油", "amountG": 5, "kcal": 45, "proteinG": 0, "fatG": 5 }
+              ]
+            }
+          ]
+        },
+        {
+          "itemType": "dailyMealPlan",
+          "day": 5,
+          "title": "第5天",
+          "content": "安排可外带的鸡肉蔬菜碗和清淡晚餐，适合工作日或夜班前执行。",
+          "dailyTotalKcal": 1580,
+          "dailyTotalProteinG": 87,
+          "dailyTotalFatG": 46,
+          "estimatedEnergyDeficitKcal": 410,
+          "focusPoint": "如必须点外卖，按午餐食材结构选择鸡肉蔬菜饭，备注少油、饭半份。",
+          "importance": "重点执行",
+          "meals": [
+            {
+              "mealName": "早餐",
+              "mealTotalKcal": 400,
+              "mealTotalProteinG": 22,
+              "mealTotalFatG": 13,
+              "foods": [
+                { "name": "全麦馒头", "amountG": 60, "kcal": 145, "proteinG": 5, "fatG": 1 },
+                { "name": "鸡蛋", "amountG": 50, "kcal": 70, "proteinG": 6, "fatG": 5 },
+                { "name": "低脂牛奶", "amountG": 250, "kcal": 115, "proteinG": 8, "fatG": 3 },
+                { "name": "生菜", "amountG": 100, "kcal": 20, "proteinG": 1, "fatG": 0 },
+                { "name": "杏仁", "amountG": 8, "kcal": 45, "proteinG": 2, "fatG": 4 }
+              ]
+            },
+            {
+              "mealName": "午餐",
+              "mealTotalKcal": 650,
+              "mealTotalProteinG": 43,
+              "mealTotalFatG": 20,
+              "foods": [
+                { "name": "糙米饭", "amountG": 130, "kcal": 155, "proteinG": 4, "fatG": 1 },
+                { "name": "烤鸡胸肉", "amountG": 120, "kcal": 190, "proteinG": 36, "fatG": 4 },
+                { "name": "西兰花", "amountG": 180, "kcal": 65, "proteinG": 5, "fatG": 1 },
+                { "name": "玉米粒", "amountG": 60, "kcal": 65, "proteinG": 2, "fatG": 1 },
+                { "name": "牛油果", "amountG": 40, "kcal": 65, "proteinG": 1, "fatG": 6 },
+                { "name": "烹调用油", "amountG": 8, "kcal": 72, "proteinG": 0, "fatG": 8 }
+              ]
+            },
+            {
+              "mealName": "晚餐",
+              "mealTotalKcal": 530,
+              "mealTotalProteinG": 22,
+              "mealTotalFatG": 13,
+              "foods": [
+                { "name": "南瓜", "amountG": 180, "kcal": 95, "proteinG": 2, "fatG": 0 },
+                { "name": "鳕鱼", "amountG": 120, "kcal": 110, "proteinG": 24, "fatG": 1 },
+                { "name": "白菜", "amountG": 250, "kcal": 50, "proteinG": 3, "fatG": 0 },
+                { "name": "豆腐干", "amountG": 60, "kcal": 100, "proteinG": 10, "fatG": 5 },
+                { "name": "草莓", "amountG": 150, "kcal": 50, "proteinG": 1, "fatG": 0 },
+                { "name": "烹调用油", "amountG": 6, "kcal": 54, "proteinG": 0, "fatG": 6 }
+              ]
+            }
+          ]
+        },
+        {
+          "itemType": "dailyMealPlan",
+          "day": 6,
+          "title": "第6天",
+          "content": "周末可保留适量面食，但用瘦肉、豆制品和蔬菜拉高蛋白质和饱腹感。",
+          "dailyTotalKcal": 1610,
+          "dailyTotalProteinG": 89,
+          "dailyTotalFatG": 49,
+          "estimatedEnergyDeficitKcal": 390,
+          "focusPoint": "如果当天聚餐，优先保留蛋白质和蔬菜，主食减半，甜饮换成无糖茶或白水。",
+          "importance": "重点执行",
+          "meals": [
+            {
+              "mealName": "早餐",
+              "mealTotalKcal": 420,
+              "mealTotalProteinG": 24,
+              "mealTotalFatG": 15,
+              "foods": [
+                { "name": "杂粮粥", "amountG": 250, "kcal": 150, "proteinG": 5, "fatG": 2 },
+                { "name": "鸡蛋", "amountG": 50, "kcal": 70, "proteinG": 6, "fatG": 5 },
+                { "name": "豆腐干", "amountG": 50, "kcal": 85, "proteinG": 9, "fatG": 4 },
+                { "name": "拌黄瓜", "amountG": 150, "kcal": 35, "proteinG": 2, "fatG": 1 },
+                { "name": "橙子", "amountG": 120, "kcal": 60, "proteinG": 1, "fatG": 0 }
+              ]
+            },
+            {
+              "mealName": "午餐",
+              "mealTotalKcal": 670,
+              "mealTotalProteinG": 43,
+              "mealTotalFatG": 22,
+              "foods": [
+                { "name": "全麦面熟重", "amountG": 180, "kcal": 220, "proteinG": 8, "fatG": 2 },
+                { "name": "瘦猪里脊", "amountG": 100, "kcal": 165, "proteinG": 25, "fatG": 6 },
+                { "name": "青菜", "amountG": 250, "kcal": 60, "proteinG": 5, "fatG": 1 },
+                { "name": "香菇", "amountG": 120, "kcal": 35, "proteinG": 3, "fatG": 0 },
+                { "name": "紫菜蛋花汤", "amountG": 250, "kcal": 85, "proteinG": 7, "fatG": 5 },
+                { "name": "烹调用油", "amountG": 8, "kcal": 72, "proteinG": 0, "fatG": 8 }
+              ]
+            },
+            {
+              "mealName": "晚餐",
+              "mealTotalKcal": 520,
+              "mealTotalProteinG": 22,
+              "mealTotalFatG": 12,
+              "foods": [
+                { "name": "红薯", "amountG": 100, "kcal": 90, "proteinG": 2, "fatG": 0 },
+                { "name": "虾仁", "amountG": 100, "kcal": 100, "proteinG": 21, "fatG": 1 },
+                { "name": "西红柿", "amountG": 180, "kcal": 35, "proteinG": 1, "fatG": 0 },
+                { "name": "生菜", "amountG": 220, "kcal": 45, "proteinG": 3, "fatG": 0 },
+                { "name": "低脂酸奶", "amountG": 120, "kcal": 75, "proteinG": 5, "fatG": 2 },
+                { "name": "烹调用油", "amountG": 6, "kcal": 54, "proteinG": 0, "fatG": 6 }
+              ]
+            }
+          ]
+        },
+        {
+          "itemType": "dailyMealPlan",
+          "day": 7,
+          "title": "第7天",
+          "content": "用豆浆、杂粮饭、瘦肉和鱼类完成一周收尾，保持低糖饮品和规律餐次。",
+          "dailyTotalKcal": 1570,
+          "dailyTotalProteinG": 88,
+          "dailyTotalFatG": 45,
+          "estimatedEnergyDeficitKcal": 410,
+          "focusPoint": "第7天用于复盘一周执行情况，记录最容易坚持的早餐、午餐和晚餐组合，下周优先复用。",
+          "importance": "重点执行",
+          "meals": [
+            {
+              "mealName": "早餐",
+              "mealTotalKcal": 405,
+              "mealTotalProteinG": 23,
+              "mealTotalFatG": 14,
+              "foods": [
+                { "name": "无糖豆浆", "amountG": 300, "kcal": 105, "proteinG": 9, "fatG": 5 },
+                { "name": "全麦吐司", "amountG": 60, "kcal": 155, "proteinG": 6, "fatG": 2 },
+                { "name": "鸡蛋", "amountG": 50, "kcal": 70, "proteinG": 6, "fatG": 5 },
+                { "name": "小番茄", "amountG": 150, "kcal": 35, "proteinG": 1, "fatG": 0 },
+                { "name": "蓝莓", "amountG": 50, "kcal": 30, "proteinG": 0, "fatG": 0 }
+              ]
+            },
+            {
+              "mealName": "午餐",
+              "mealTotalKcal": 635,
+              "mealTotalProteinG": 42,
+              "mealTotalFatG": 18,
+              "foods": [
+                { "name": "杂粮饭", "amountG": 130, "kcal": 165, "proteinG": 4, "fatG": 1 },
+                { "name": "清炖牛腱", "amountG": 100, "kcal": 170, "proteinG": 28, "fatG": 6 },
+                { "name": "花菜", "amountG": 220, "kcal": 60, "proteinG": 5, "fatG": 1 },
+                { "name": "青笋", "amountG": 150, "kcal": 35, "proteinG": 2, "fatG": 0 },
+                { "name": "豆腐汤", "amountG": 250, "kcal": 95, "proteinG": 8, "fatG": 5 },
+                { "name": "烹调用油", "amountG": 8, "kcal": 72, "proteinG": 0, "fatG": 8 }
+              ]
+            },
+            {
+              "mealName": "晚餐",
+              "mealTotalKcal": 530,
+              "mealTotalProteinG": 23,
+              "mealTotalFatG": 13,
+              "foods": [
+                { "name": "玉米", "amountG": 100, "kcal": 110, "proteinG": 3, "fatG": 1 },
+                { "name": "清蒸鳕鱼", "amountG": 120, "kcal": 110, "proteinG": 24, "fatG": 1 },
+                { "name": "上海青", "amountG": 250, "kcal": 55, "proteinG": 4, "fatG": 0 },
+                { "name": "凉拌海带", "amountG": 100, "kcal": 45, "proteinG": 1, "fatG": 1 },
+                { "name": "苹果", "amountG": 100, "kcal": 55, "proteinG": 0, "fatG": 0 },
+                { "name": "烹调用油", "amountG": 6, "kcal": 54, "proteinG": 0, "fatG": 6 }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
