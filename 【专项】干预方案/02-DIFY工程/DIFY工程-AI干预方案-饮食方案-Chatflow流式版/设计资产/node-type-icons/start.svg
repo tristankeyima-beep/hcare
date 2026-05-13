@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Start node icon</title>
+  <desc id="desc">A green intake tray icon for the start node type.</desc>
+  <circle cx="12" cy="12" r="10" fill="#DCFCE7"/>
+  <path d="M7 13.2V16a1.4 1.4 0 0 0 1.4 1.4h7.2A1.4 1.4 0 0 0 17 16v-2.8" stroke="#16A34A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M8.5 13.2h1.75c.45 0 .7.23.93.6l.22.35c.25.4.56.65 1.1.65h1c.54 0 .85-.25 1.1-.65l.22-.35c.23-.37.48-.6.93-.6h1.75" stroke="#16A34A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M12 6.6v5.4" stroke="#16A34A" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="m9.8 9.7 2.2 2.3 2.2-2.3" stroke="#16A34A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

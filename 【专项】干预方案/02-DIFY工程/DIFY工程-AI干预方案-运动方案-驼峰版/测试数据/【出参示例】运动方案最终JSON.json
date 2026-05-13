@@ -1,0 +1,54 @@
+{
+  "planName": "运动健康处方",
+  "planTitle": "个性化控糖减重运动建议",
+  "planSummary": "结合患者2型糖尿病、体重偏高、日常步数偏少和夜班时间不规律的情况，本方案围绕有氧运动、抗阻训练、碎片化执行和运动安全监测提供可执行建议。",
+  "executionPoints": "优先落实重点执行条目；运动调整以循序渐进、可长期坚持为原则；如出现低血糖表现、胸闷胸痛、明显头晕或血压明显异常，应停止运动并联系医生或健管师。",
+  "groups": [
+    {
+      "groupTitle": "有氧运动安排",
+      "groupType": "adviceList",
+      "groupSummary": "",
+      "displayStyle": "list",
+      "dietPlanGoalLabel": "",
+      "goalBasis": "",
+      "items": [
+        {
+          "itemType": "advice",
+          "day": "",
+          "title": "",
+          "content": "每周安排5天慢走或快走，每次20-30分钟，从饭后1小时左右、身体状态平稳时开始。",
+          "focusPoint": "帮助改善餐后血糖和体重管理；如运动后出现明显不适，应降低强度并反馈健管师。",
+          "importance": "重点执行",
+          "dailyTotalKcal": "",
+          "dailyTotalProteinG": "",
+          "dailyTotalFatG": "",
+          "estimatedEnergyDeficitKcal": "",
+          "meals": []
+        }
+      ]
+    },
+    {
+      "groupTitle": "碎片化运动策略",
+      "groupType": "adviceList",
+      "groupSummary": "",
+      "displayStyle": "list",
+      "dietPlanGoalLabel": "",
+      "goalBasis": "",
+      "items": [
+        {
+          "itemType": "advice",
+          "day": "",
+          "title": "",
+          "content": "夜班或忙碌时，把运动拆成3次完成，每次8-10分钟，可选择走廊快走、原地踏步或轻量拉伸。",
+          "focusPoint": "适配整块时间不足的场景，先提高运动频率，再逐步增加总时长。",
+          "importance": "重点执行",
+          "dailyTotalKcal": "",
+          "dailyTotalProteinG": "",
+          "dailyTotalFatG": "",
+          "estimatedEnergyDeficitKcal": "",
+          "meals": []
+        }
+      ]
+    }
+  ]
+}

@@ -6,32 +6,32 @@
 
 | 入参字段 | 中文含义 | 数据范围 |
 | --- | --- | --- |
-| `plan_type` | 方案类型 | 前端页面或调用方传入；`diet` 代表饮食方案，`sport` 代表运动方案 |
-| `plan_goal_and_requirements` | 方案目标和额外要求 | 前端页面录入 |
-| `extra_supplement` | 额外补充信息 | 前端页面录入 |
-| `basic_profile` | 基础档案 | 当前 |
-| `disease_profile` | 专病档案 | 当前 |
-| `followup_records_last_1y` | 随访记录 | 最近 1 年 |
-| `metric_records_last_1y` | 指标记录 | 最近 1 年 |
-| `diet_records_last_1y` | 饮食记录 | 最近 1 年 |
-| `exercise_records_last_1y` | 运动记录 | 最近 1 年 |
-| `med_pickup_records_1y` | 取药记录 | 最近 1 年 |
-| `active_control_goals` | 当前生效控制目标 | 当前生效 |
+| `planType` | 方案类型 | 前端页面或调用方传入；`diet` 代表饮食方案，`sport` 代表运动方案 |
+| `planGoalAndRequirements` | 方案目标和额外要求 | 前端页面录入 |
+| `extraSupplement` | 额外补充信息 | 前端页面录入 |
+| `basicProfile` | 基础档案 | 当前 |
+| `diseaseProfile` | 专病档案 | 当前 |
+| `followupRecordsLast1y` | 随访记录 | 最近 1 年 |
+| `metricRecordsLast1y` | 指标记录 | 最近 1 年 |
+| `dietRecordsLast1y` | 饮食记录 | 最近 1 年 |
+| `exerciseRecordsLast1y` | 运动记录 | 最近 1 年 |
+| `medPickupRecords1y` | 取药记录 | 最近 1 年 |
+| `activeControlGoals` | 当前生效控制目标 | 当前生效 |
 
 ## 完整入参示例
 
 ```json
 {
-  "plan_type": "diet",
-  "plan_goal_and_requirements": "希望生成一个控制血糖、减重、改善饮食和运动习惯的个性化干预方案；语言通俗，重点突出可执行动作。",
-  "extra_supplement": "患者近期夜班较多，作息不规律，外卖频率较高，希望方案尽量适配夜班场景。",
-  "basic_profile": {
+  "planType": "diet",
+  "planGoalAndRequirements": "希望生成一个控制血糖、减重、改善饮食和运动习惯的个性化干预方案；语言通俗，重点突出可执行动作。",
+  "extraSupplement": "患者近期夜班较多，作息不规律，外卖频率较高，希望方案尽量适配夜班场景。",
+  "basicProfile": {
     "demographics": {
       "gender": "男",
       "age": 62
     },
-    "health_info": {
-      "current_diseases": [
+    "healthInfo": {
+      "currentDiseases": [
         {
           "category": "糖尿病",
           "name": "糖尿病"
@@ -41,267 +41,267 @@
           "name": "混合性高脂血症"
         }
       ],
-      "other_condition_input": "",
-      "family_history": [
+      "otherConditionInput": "",
+      "familyHistory": [
         "否认家族遗传传染史"
       ],
-      "past_history": []
+      "pastHistory": []
     },
     "lifestyle": {
-      "food_allergies": [
+      "foodAllergies": [
         "无"
       ],
-      "diet_habit": "荤素均衡",
-      "diet_taste": "适中",
-      "main_meals_per_day": 3,
-      "daily_staple_foods": [
+      "dietHabit": "荤素均衡",
+      "dietTaste": "适中",
+      "mainMealsPerDay": 3,
+      "dailyStapleFoods": [
         "粗粮或杂粮"
       ],
-      "labor_intensity": "轻体力劳动",
-      "daily_steps": 3000,
-      "exercise_methods": {
-        "low_intensity": [
+      "laborIntensity": "轻体力劳动",
+      "dailySteps": 3000,
+      "exerciseMethods": {
+        "lowIntensity": [
           "慢走"
         ],
-        "medium_intensity": [
+        "mediumIntensity": [
           "慢跑"
         ],
-        "high_intensity": []
+        "highIntensity": []
       },
-      "exercise_time": "请选择",
-      "exercise_duration": "请选择",
-      "exercise_frequency": "请选择",
-      "smoking_history": "无",
-      "drinking_history": "无"
+      "exerciseTime": "请选择",
+      "exerciseDuration": "请选择",
+      "exerciseFrequency": "请选择",
+      "smokingHistory": "无",
+      "drinkingHistory": "无"
     }
   },
-  "disease_profile": {
-    "diabetes_profile": {
-      "diabetes_type": "2型糖尿病",
-      "diagnosis_time": "2019-05-15",
+  "diseaseProfile": {
+    "diabetesProfile": {
+      "diabetesType": "2型糖尿病",
+      "diagnosisTime": "2019-05-15",
       "symptoms": [
         "多饮",
         "多食",
         "多尿"
       ],
-      "hypoglycemia_history": "否",
+      "hypoglycemiaHistory": "否",
       "complications": [
         "高血压",
         "周围血管病变"
       ],
-      "other_complications": "",
-      "acute_complications": [],
+      "otherComplications": "",
+      "acuteComplications": [],
       "remark": ""
     },
-    "hypertension_profile": {
-      "hypertension_type": "原发性高血压",
-      "diagnosis_time": "2020-01-01",
+    "hypertensionProfile": {
+      "hypertensionType": "原发性高血压",
+      "diagnosisTime": "2020-01-01",
       "grade": "正常",
       "stage": "请选择",
-      "premature_cvd_family_history": "请选择",
+      "prematureCvdFamilyHistory": "请选择",
       "complications": [
         "高血压",
         "肥胖症"
       ],
-      "other_complications": "",
+      "otherComplications": "",
       "remark": ""
     },
-    "obesity_profile": {
-      "body_signs": {
-        "body_fat_rate_percent": 40.1,
-        "body_fat_mass_kg": 38.6,
-        "muscle_mass_kg": 52.3,
-        "visceral_fat_area_cm2": 131,
-        "visceral_fat_grade": 15,
-        "waist_cm": 107
+    "obesityProfile": {
+      "bodySigns": {
+        "bodyFatRatePercent": 40.1,
+        "bodyFatMassKg": 38.6,
+        "muscleMassKg": 52.3,
+        "visceralFatAreaCm2": 131,
+        "visceralFatGrade": 15,
+        "waistCm": 107
       },
-      "obesity_history": {
-        "start_age": 26,
+      "obesityHistory": {
+        "startAge": 26,
         "years": 10,
-        "max_weight_kg": 100,
-        "age_at_max_weight": 36,
+        "maxWeightKg": 100,
+        "ageAtMaxWeight": 36,
         "causes": [
           "饮食不合理、运动少",
           "学习工作劳累、压力大"
         ]
       },
-      "weight_loss_history": {
-        "has_history": true,
+      "weightLossHistory": {
+        "hasHistory": true,
         "methods": [
           {
             "method": "节食代餐",
-            "max_weight_loss_kg": 0,
+            "maxWeightLossKg": 0,
             "rebounded": true
           },
           {
             "method": "药物",
-            "max_weight_loss_kg": 5,
+            "maxWeightLossKg": 5,
             "rebounded": true
           }
         ],
         "remark": ""
       },
-      "current_diet": {
+      "currentDiet": {
         "breakfast": "不吃或包子/油条、豆浆",
         "lunch": "医院食堂",
         "dinner": "面食+菜类/卤外卖类",
-        "late_night_snack": "偶尔",
-        "diet_problem": "外卖较多、护工夜班熬夜、饮食不规律"
+        "lateNightSnack": "偶尔",
+        "dietProblem": "外卖较多、护工夜班熬夜、饮食不规律"
       },
-      "weight_loss_goal": {
-        "target_weight_below_kg": null,
-        "stage_weight_loss_kg": null,
-        "body_fat_percent": null
+      "weightLossGoal": {
+        "targetWeightBelowKg": null,
+        "stageWeightLossKg": null,
+        "bodyFatPercent": null
       }
     }
   },
-  "followup_records_last_1y": [
+  "followupRecordsLast1y": [
     {
-      "followup_type": "糖尿病日常随访",
-      "completed_at": "2025-12-06 00:00:00",
-      "lifestyle_status": {
-        "staple_food_g_per_day": 300,
-        "cigarettes_per_day": null,
-        "water_ml_per_day": null,
-        "exercise_frequency_per_week": 1,
-        "exercise_minutes_per_time": 30
+      "followupType": "糖尿病日常随访",
+      "completedAt": "2025-12-06 00:00:00",
+      "lifestyleStatus": {
+        "stapleFoodGPerDay": 300,
+        "cigarettesPerDay": null,
+        "waterMlPerDay": null,
+        "exerciseFrequencyPerWeek": 1,
+        "exerciseMinutesPerTime": 30
       },
       "advice": {
-        "current_problems": "患者近期空腹血糖控制不稳，餐后未测，血压平稳，体重偏高",
-        "improvement_measures": "建议定期监测血糖，合理搭配饮食，适度运动，规律用药，控制体重，定期复查糖化和血脂",
-        "expected_goal": ""
+        "currentProblems": "患者近期空腹血糖控制不稳，餐后未测，血压平稳，体重偏高",
+        "improvementMeasures": "建议定期监测血糖，合理搭配饮食，适度运动，规律用药，控制体重，定期复查糖化和血脂",
+        "expectedGoal": ""
       }
     },
     {
-      "followup_type": "高血压随访",
-      "completed_at": "2025-10-28 15:16:00",
-      "lifestyle_status": {
-        "staple_food_g_per_day": 280,
-        "cigarettes_per_day": 0,
-        "water_ml_per_day": null,
-        "exercise_frequency_per_week": 3,
-        "exercise_minutes_per_time": 30
+      "followupType": "高血压随访",
+      "completedAt": "2025-10-28 15:16:00",
+      "lifestyleStatus": {
+        "stapleFoodGPerDay": 280,
+        "cigarettesPerDay": 0,
+        "waterMlPerDay": null,
+        "exerciseFrequencyPerWeek": 3,
+        "exerciseMinutesPerTime": 30
       },
       "advice": {
-        "current_problems": "体重偏高，需继续关注血压与血糖波动",
-        "improvement_measures": "建议限盐、规律运动、按时服药并记录家庭血压",
-        "expected_goal": ""
+        "currentProblems": "体重偏高，需继续关注血压与血糖波动",
+        "improvementMeasures": "建议限盐、规律运动、按时服药并记录家庭血压",
+        "expectedGoal": ""
       }
     }
   ],
-  "metric_records_last_1y": [
+  "metricRecordsLast1y": [
     {
-      "measured_at": "2026-01-14 09:15:00",
-      "metric_name": "身高",
+      "measuredAt": "2026-01-14 09:15:00",
+      "metricName": "身高",
       "unit": "cm",
       "value": 180
     },
     {
-      "measured_at": "2026-01-14 09:15:00",
-      "metric_name": "体重",
+      "measuredAt": "2026-01-14 09:15:00",
+      "metricName": "体重",
       "unit": "kg",
       "value": 83.4
     },
     {
-      "measured_at": "2025-11-28 15:01:00",
-      "metric_name": "空腹血糖",
+      "measuredAt": "2025-11-28 15:01:00",
+      "metricName": "空腹血糖",
       "unit": "mmol/L",
       "value": 4.6
     },
     {
-      "measured_at": "2025-11-20 22:00:00",
-      "metric_name": "晚餐后血糖",
+      "measuredAt": "2025-11-20 22:00:00",
+      "metricName": "晚餐后血糖",
       "unit": "mmol/L",
       "value": 19.5
     },
     {
-      "measured_at": "2025-08-29 16:49:00",
-      "metric_name": "糖化血红蛋白",
+      "measuredAt": "2025-08-29 16:49:00",
+      "metricName": "糖化血红蛋白",
       "unit": "%",
       "value": 5.0
     },
     {
-      "measured_at": "2025-10-28 18:04:00",
-      "metric_name": "总胆固醇",
+      "measuredAt": "2025-10-28 18:04:00",
+      "metricName": "总胆固醇",
       "unit": "mmol/L",
       "value": 6.5
     },
     {
-      "measured_at": "2025-10-28 15:16:00",
-      "metric_name": "起床血压",
+      "measuredAt": "2025-10-28 15:16:00",
+      "metricName": "起床血压",
       "unit": "mmHg",
       "value": "150/100"
     }
   ],
-  "diet_records_last_1y": [
+  "dietRecordsLast1y": [
     {
-      "meal_time": "2026-04-01 08:00:00",
-      "meal_period": "早餐",
-      "food_name": "米饭",
-      "intake_grams": 100,
-      "calories_kcal": 116,
-      "protein_g": 2.6,
-      "carbohydrate_g": 25.9,
-      "fat_g": 0.3
+      "mealTime": "2026-04-01 08:00:00",
+      "mealPeriod": "早餐",
+      "foodName": "米饭",
+      "intakeGrams": 100,
+      "caloriesKcal": 116,
+      "proteinG": 2.6,
+      "carbohydrateG": 25.9,
+      "fatG": 0.3
     },
     {
-      "meal_time": "2026-04-01 12:30:00",
-      "meal_period": "午餐",
-      "food_name": "鸡胸肉",
-      "intake_grams": 120,
-      "calories_kcal": 160,
-      "protein_g": 31.0,
-      "carbohydrate_g": 0,
-      "fat_g": 3.6
+      "mealTime": "2026-04-01 12:30:00",
+      "mealPeriod": "午餐",
+      "foodName": "鸡胸肉",
+      "intakeGrams": 120,
+      "caloriesKcal": 160,
+      "proteinG": 31.0,
+      "carbohydrateG": 0,
+      "fatG": 3.6
     }
   ],
-  "exercise_records_last_1y": [
+  "exerciseRecordsLast1y": [
     {
-      "exercise_time": "2026-04-01 19:00:00",
-      "exercise_item": "慢走",
-      "duration_minutes": 30,
-      "calories_kcal": 120
+      "exerciseTime": "2026-04-01 19:00:00",
+      "exerciseItem": "慢走",
+      "durationMinutes": 30,
+      "caloriesKcal": 120
     }
   ],
-  "med_pickup_records_1y": [
+  "medPickupRecords1y": [
     {
-      "drug_name": "阿托伐他汀钙片",
+      "drugName": "阿托伐他汀钙片",
       "specification": "20mg*14片",
       "usage": "口服",
       "frequency": "1/日(8am)",
-      "single_dose": "20.0mg",
-      "medication_time": "2024-05-19",
+      "singleDose": "20.0mg",
+      "medicationTime": "2024-05-19",
       "source": "医院药品处方同步"
     },
     {
-      "drug_name": "吡格列酮二甲双胍片",
+      "drugName": "吡格列酮二甲双胍片",
       "specification": "30片",
       "usage": "口服",
       "frequency": "2/日(8am-4pm)",
-      "single_dose": "500.0mg",
-      "medication_time": "2024-05-19",
+      "singleDose": "500.0mg",
+      "medicationTime": "2024-05-19",
       "source": "医院药品处方同步"
     }
   ],
-  "active_control_goals": [
+  "activeControlGoals": [
     {
-      "metric_name": "空腹血糖",
-      "lower_bound": {
+      "metricName": "空腹血糖",
+      "lowerBound": {
         "value": 4.4,
         "inclusive": false
       },
-      "upper_bound": {
+      "upperBound": {
         "value": 7,
         "inclusive": false
       }
     },
     {
-      "metric_name": "餐后血糖",
-      "lower_bound": {
+      "metricName": "餐后血糖",
+      "lowerBound": {
         "value": 4.4,
         "inclusive": false
       },
-      "upper_bound": {
+      "upperBound": {
         "value": 10,
         "inclusive": false
       }
@@ -312,11 +312,12 @@
 
 ## 关键说明
 
-- `plan_type` 是总入口路由字段。`diet` 进入饮食方案工程，`sport` 进入运动方案工程；如果后续新增睡眠、用药、监测等专题，也应继续扩展该字段。
+- `planType` 是总入口路由字段。`diet` 进入饮食方案工程，`sport` 进入运动方案工程；如果后续新增睡眠、用药、监测等专题，也应继续扩展该字段。
+- 入参字段建议全部使用驼峰命名；饮食方案驼峰版节点1会兼容对象/数组内部仍为下划线字段的 JSON 字符串，并递归归一为驼峰字段，但上游接口最好直接按本文档传驼峰字段。
 - 所有字段值建议直接传中文，便于模型生成中文干预方案。
 - 时间字段建议统一使用 `YYYY-MM-DD HH:mm:ss`；仅日期字段可使用 `YYYY-MM-DD`。
 - 最近一年数据建议只传已完成、已确认的数据，避免草稿或未完成记录干扰模型判断。
-- `metric_records_last_1y` 使用统一指标记录结构，不按指标单独拆顶层字段。
+- `metricRecordsLast1y` 使用统一指标记录结构，不按指标单独拆顶层字段。
 - 血压可先使用字符串格式，例如 `"150/100"`；如果后续接口支持，也可以拆成收缩压和舒张压两个数值字段。
 - 控制目标中 `inclusive=false` 表示不包含边界，例如截图中的 `> 4.4`、`< 7`。
 - 未采集或无数据字段建议传 `null`、空字符串或空数组，保持字段结构稳定。
@@ -327,17 +328,17 @@
 
 | JSON 字段路径 | 中文含义 |
 | --- | --- |
-| `plan_type` | 方案类型，`diet` 或 `sport` |
-| `plan_goal_and_requirements` | 方案目标和额外要求 |
-| `extra_supplement` | 额外补充信息 |
-| `basic_profile.demographics.gender` | 性别 |
-| `basic_profile.demographics.age` | 年龄 |
-| `basic_profile.health_info.current_diseases[].name` | 现有疾病名称 |
-| `disease_profile.diabetes_profile.diabetes_type` | 糖尿病类型 |
-| `disease_profile.obesity_profile.body_signs.waist_cm` | 腰围 |
-| `followup_records_last_1y[].lifestyle_status.staple_food_g_per_day` | 随访中的主食摄入量 |
-| `metric_records_last_1y[].metric_name` | 指标名称 |
-| `diet_records_last_1y[].calories_kcal` | 摄入热量 |
-| `exercise_records_last_1y[].duration_minutes` | 运动时长 |
-| `med_pickup_records_1y[].drug_name` | 药品名称 |
-| `active_control_goals[].lower_bound.inclusive` | 目标下限是否包含边界 |
+| `planType` | 方案类型，`diet` 或 `sport` |
+| `planGoalAndRequirements` | 方案目标和额外要求 |
+| `extraSupplement` | 额外补充信息 |
+| `basicProfile.demographics.gender` | 性别 |
+| `basicProfile.demographics.age` | 年龄 |
+| `basicProfile.healthInfo.currentDiseases[].name` | 现有疾病名称 |
+| `diseaseProfile.diabetesProfile.diabetesType` | 糖尿病类型 |
+| `diseaseProfile.obesityProfile.bodySigns.waistCm` | 腰围 |
+| `followupRecordsLast1y[].lifestyleStatus.stapleFoodGPerDay` | 随访中的主食摄入量 |
+| `metricRecordsLast1y[].metricName` | 指标名称 |
+| `dietRecordsLast1y[].caloriesKcal` | 摄入热量 |
+| `exerciseRecordsLast1y[].durationMinutes` | 运动时长 |
+| `medPickupRecords1y[].drugName` | 药品名称 |
+| `activeControlGoals[].lowerBound.inclusive` | 目标下限是否包含边界 |
