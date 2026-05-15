@@ -39,6 +39,12 @@ def _normalize_text(value, fallback=""):
     return text if text else fallback
 
 
+def _pick_llm_output(llmOutput=None, llmText=None):
+    if llmOutput not in (None, ""):
+        return llmOutput
+    return llmText
+
+
 def _normalize_group_plan(value):
     parsed = _parse_json(value, [])
     if isinstance(parsed, dict):
@@ -138,8 +144,8 @@ def _sort_and_fill_groups(groups, groupPlan):
     return sorted(groups, key=lambda group: order.get(group["groupTitle"], 999))
 
 
-def main(llmOutput=None, groupPlan=None, groups=None, **kwargs) -> dict:
-    parsed = _parse_json(llmOutput, {})
+def main(llmOutput=None, llmText=None, groupPlan=None, groups=None, **kwargs) -> dict:
+    parsed = _parse_json(_pick_llm_output(llmOutput, llmText), {})
     if not isinstance(parsed, dict):
         parsed = {}
 

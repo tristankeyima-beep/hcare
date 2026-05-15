@@ -19,6 +19,7 @@
 | 字段 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | `llmOutput` | String 或 Object | 否 | 节点3 LLM 的完整输出，期望包含 `groupPlan` 和 `groups`。 |
+| `llmText` | String 或 Object | 否 | 兼容 DIFY 节点实际传入字段；当 `llmOutput` 为空时读取该字段。 |
 | `groupPlan` | Object/Array 或 JSON字符串 | 否 | 如果 DIFY 已将 LLM 结构化字段拆出，可直接传入该字段。 |
 | `groups` | Object/Array 或 JSON字符串 | 否 | 如果 DIFY 已将 LLM 结构化字段拆出，可直接传入该字段。 |
 
@@ -45,7 +46,7 @@
 
 ```json
 {
-  "llmOutput": "{\"groupPlan\":[{\"groupTitle\":\"有氧运动安排\",\"groupFocus\":\"运动方式、频率和强度\"}],\"groups\":[{\"groupTitle\":\"有氧运动安排\",\"items\":[{\"content\":\"每周5天快走，每次20-30分钟。\",\"focusPoint\":\"从低强度开始。\",\"importance\":\"重点执行\"}]}]}"
+  "llmText": "{\"groupPlan\":[{\"groupTitle\":\"有氧运动安排\",\"groupFocus\":\"运动方式、频率和强度\"}],\"groups\":[{\"groupTitle\":\"有氧运动安排\",\"items\":[{\"content\":\"每周5天快走，每次20-30分钟。\",\"focusPoint\":\"从低强度开始。\",\"importance\":\"重点执行\"}]}]}"
 }
 ```
 

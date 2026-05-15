@@ -1,0 +1,172 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Sport Intervention Plan Final JSON",
+  "description": "运动方案 H5 渲染使用的 finalPlanJsonText 解析后结构。",
+  "type": "object",
+  "required": [
+    "planName",
+    "planTitle",
+    "planSummary",
+    "executionPoints",
+    "groups"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "planName": {
+      "type": "string",
+      "minLength": 1,
+      "description": "方案名称，例如：运动健康处方。"
+    },
+    "planTitle": {
+      "type": "string",
+      "minLength": 1,
+      "description": "方案标题，H5 首屏主标题。"
+    },
+    "planSummary": {
+      "type": "string",
+      "minLength": 1,
+      "description": "方案摘要，H5 首屏正文说明。"
+    },
+    "executionPoints": {
+      "type": "string",
+      "minLength": 1,
+      "description": "执行要点，H5 执行要点模块正文。"
+    },
+    "groups": {
+      "type": "array",
+      "minItems": 1,
+      "description": "运动建议分组列表。",
+      "items": {
+        "$ref": "#/$defs/adviceGroup"
+      }
+    }
+  },
+  "$defs": {
+    "importance": {
+      "type": "string",
+      "enum": [
+        "重点执行",
+        "常规建议",
+        "补充建议"
+      ]
+    },
+    "numberOrEmpty": {
+      "oneOf": [
+        {
+          "type": "number"
+        },
+        {
+          "const": ""
+        }
+      ]
+    },
+    "dayOrEmpty": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 7
+        },
+        {
+          "const": ""
+        }
+      ]
+    },
+    "adviceGroup": {
+      "type": "object",
+      "required": [
+        "groupTitle",
+        "groupType",
+        "groupSummary",
+        "displayStyle",
+        "dietPlanGoalLabel",
+        "goalBasis",
+        "items"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "groupTitle": {
+          "type": "string",
+          "minLength": 1
+        },
+        "groupType": {
+          "const": "adviceList"
+        },
+        "groupSummary": {
+          "type": "string"
+        },
+        "displayStyle": {
+          "type": "string"
+        },
+        "dietPlanGoalLabel": {
+          "type": "string"
+        },
+        "goalBasis": {
+          "type": "string"
+        },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/adviceItem"
+          }
+        }
+      }
+    },
+    "adviceItem": {
+      "type": "object",
+      "required": [
+        "itemType",
+        "day",
+        "title",
+        "content",
+        "focusPoint",
+        "importance",
+        "dailyTotalKcal",
+        "dailyTotalProteinG",
+        "dailyTotalFatG",
+        "estimatedEnergyDeficitKcal",
+        "meals"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "itemType": {
+          "const": "advice"
+        },
+        "day": {
+          "$ref": "#/$defs/dayOrEmpty"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "content": {
+          "type": "string",
+          "minLength": 1
+        },
+        "focusPoint": {
+          "type": "string",
+          "minLength": 1
+        },
+        "importance": {
+          "$ref": "#/$defs/importance"
+        },
+        "dailyTotalKcal": {
+          "$ref": "#/$defs/numberOrEmpty"
+        },
+        "dailyTotalProteinG": {
+          "$ref": "#/$defs/numberOrEmpty"
+        },
+        "dailyTotalFatG": {
+          "$ref": "#/$defs/numberOrEmpty"
+        },
+        "estimatedEnergyDeficitKcal": {
+          "$ref": "#/$defs/numberOrEmpty"
+        },
+        "meals": {
+          "type": "array"
+        }
+      }
+    }
+  }
+}

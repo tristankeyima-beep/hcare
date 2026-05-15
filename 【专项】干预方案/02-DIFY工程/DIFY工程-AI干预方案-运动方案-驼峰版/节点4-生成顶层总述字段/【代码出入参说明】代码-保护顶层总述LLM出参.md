@@ -17,6 +17,7 @@
 | 字段 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | `llmOutput` | String 或 Object | 否 | 节点4 LLM 的完整输出，期望包含顶层总述字段。 |
+| `llmText` | String 或 Object | 否 | 兼容 DIFY 节点实际传入字段；当 `llmOutput` 为空时读取该字段。 |
 | `planName` | String | 否 | 如果 DIFY 已将 LLM 结构化字段拆出，可直接传入该字段。 |
 | `planTitle` | String | 否 | 如果 DIFY 已将 LLM 结构化字段拆出，可直接传入该字段。 |
 | `planSummary` | String | 否 | 如果 DIFY 已将 LLM 结构化字段拆出，可直接传入该字段。 |
@@ -39,7 +40,7 @@
 
 ```json
 {
-  "llmOutput": "{\"planName\":\"运动健康处方\",\"planTitle\":\"个性化运动管理建议\",\"planSummary\":\"围绕有氧运动和安全监测提供建议。\",\"executionPoints\":\"循序渐进；出现不适及时停止并联系医生或健管师。\"}"
+  "llmText": "{\"planName\":\"运动健康处方\",\"planTitle\":\"个性化运动管理建议\",\"planSummary\":\"围绕有氧运动和安全监测提供建议。\",\"executionPoints\":\"循序渐进；出现不适及时停止并联系医生或健管师。\"}"
 }
 ```
 
