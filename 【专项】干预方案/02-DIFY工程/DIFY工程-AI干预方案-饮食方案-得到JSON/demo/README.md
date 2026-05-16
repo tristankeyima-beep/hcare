@@ -5,7 +5,7 @@ These demos call Dify APIs with `response_mode: "streaming"` and parse the retur
 ## Workflow Demo
 
 ```bash
-cd "/Users/Tristan/TristansDevelop/TristanProject/AIHcare/【专项】干预方案/02-DIFY工程/DIFY工程-AI干预方案-饮食方案-驼峰版"
+cd "/Users/Tristan/TristansDevelop/TristanProject/AIHcare/【专项】干预方案/02-DIFY工程/DIFY工程-AI干预方案-饮食方案-得到JSON"
 DIFY_API_KEY="app-***" node demo/dify-workflow-streaming-demo.mjs
 ```
 
@@ -30,7 +30,7 @@ DIFY_API_KEY="app-***" node demo/dify-workflow-streaming-demo.mjs ./测试数据
 ## Chatflow Demo
 
 ```bash
-cd "/Users/Tristan/TristansDevelop/TristanProject/AIHcare/【专项】干预方案/02-DIFY工程/DIFY工程-AI干预方案-饮食方案-驼峰版"
+cd "/Users/Tristan/TristansDevelop/TristanProject/AIHcare/【专项】干预方案/02-DIFY工程/DIFY工程-AI干预方案-饮食方案-得到JSON"
 DIFY_API_KEY="app-***" node demo/dify-chatflow-streaming-demo.mjs
 ```
 

@@ -2,7 +2,7 @@
 
 ## 调试目标
 
-验证“AI干预方案-运动方案-驼峰版”在 DIFY 中使用 `planType=sport` 时，能否通过 Chatflow API 正常生成运动方案最终 JSON。
+验证“AI干预方案-运动方案-得到JSON”在 DIFY 中使用 `planType=sport` 时，能否通过 Chatflow API 正常生成运动方案最终 JSON。
 
 ## 调试环境
 
@@ -11,9 +11,9 @@
 - 调用模式: `response_mode=streaming`
 - API Key: 已脱敏，调试时使用用户提供的 `app-***`
 - demo 脚本:
-  `/Users/Tristan/TristansDevelop/TristanProject/AIHcare/【专项】干预方案/02-DIFY工程/DIFY工程-AI干预方案-饮食方案-驼峰版/demo/dify-chatflow-streaming-demo.mjs`
+  `/Users/Tristan/TristansDevelop/TristanProject/AIHcare/【专项】干预方案/02-DIFY工程/DIFY工程-AI干预方案-饮食方案-得到JSON/demo/dify-chatflow-streaming-demo.mjs`
 - 运动方案测试入参:
-  `/Users/Tristan/TristansDevelop/TristanProject/AIHcare/【专项】干预方案/02-DIFY工程/DIFY工程-AI干预方案-运动方案-驼峰版/测试数据/【入参】运动方案工作流测试入参.json`
+  `/Users/Tristan/TristansDevelop/TristanProject/AIHcare/【专项】干预方案/02-DIFY工程/DIFY工程-AI干预方案-运动方案-得到JSON/测试数据/【入参】运动方案工作流测试入参.json`
 
 ## 复跑命令
 
@@ -21,8 +21,8 @@
 DIFY_API_KEY='app-***' \
 DIFY_PLAN_TYPE='sport' \
 DIFY_QUERY='请根据基础档案生成运动方案。' \
-node '/Users/Tristan/TristansDevelop/TristanProject/AIHcare/【专项】干预方案/02-DIFY工程/DIFY工程-AI干预方案-饮食方案-驼峰版/demo/dify-chatflow-streaming-demo.mjs' \
-'/Users/Tristan/TristansDevelop/TristanProject/AIHcare/【专项】干预方案/02-DIFY工程/DIFY工程-AI干预方案-运动方案-驼峰版/测试数据/【入参】运动方案工作流测试入参.json'
+node '/Users/Tristan/TristansDevelop/TristanProject/AIHcare/【专项】干预方案/02-DIFY工程/DIFY工程-AI干预方案-饮食方案-得到JSON/demo/dify-chatflow-streaming-demo.mjs' \
+'/Users/Tristan/TristansDevelop/TristanProject/AIHcare/【专项】干预方案/02-DIFY工程/DIFY工程-AI干预方案-运动方案-得到JSON/测试数据/【入参】运动方案工作流测试入参.json'
 ```
 
 ## 调试过程

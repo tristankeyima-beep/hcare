@@ -2,7 +2,7 @@
 
 ## 工程定位
 
-本工程是在 `DIFY工程-AI干预方案-运动方案-驼峰版` 基础上规划的 Chatflow 流式体验版。目标是在保留原有标准化运动方案 JSON 产出的同时，让前端在等待生成期间持续展示阶段性分析内容，让用户感知到系统正在按“运动画像识别、目标与安全校准、运动建议行动化生成”的流程完成方案。
+本工程是在 `DIFY工程-AI干预方案-运动方案-得到JSON` 基础上规划的 Chatflow 流式体验版。目标是在保留原有标准化运动方案 JSON 产出的同时，让前端在等待生成期间持续展示阶段性分析内容，让用户感知到系统正在按“运动画像识别、目标与安全校准、运动建议行动化生成”的流程完成方案。
 
 本版本控制为 3 个用户可见流式节点。最终业务协议不变：最终仍输出 `finalPlanJsonText`，下游 H5 按 JSON 解析后渲染；新增的流式分析内容只用于过程展示，不参与最终 JSON 拼装。
 
@@ -49,7 +49,7 @@ flowchart TB
 
 ## Start 入参建议
 
-沿用运动方案驼峰版入参：
+沿用运动方案得到JSON入参：
 
 ```json
 {
@@ -168,7 +168,7 @@ FINAL_PLAN_JSON:
 使用现有 Chatflow demo 调用 `/chat-messages`：
 
 ```bash
-cd "/Users/Tristan/TristansDevelop/TristanProject/AIHcare/【专项】干预方案/02-DIFY工程/DIFY工程-AI干预方案-饮食方案-驼峰版"
+cd "/Users/Tristan/TristansDevelop/TristanProject/AIHcare/【专项】干预方案/02-DIFY工程/DIFY工程-AI干预方案-饮食方案-得到JSON"
 DIFY_API_KEY="app-***" \
 DIFY_PLAN_TYPE="sport" \
 DIFY_QUERY="请根据基础档案生成运动方案。" \
