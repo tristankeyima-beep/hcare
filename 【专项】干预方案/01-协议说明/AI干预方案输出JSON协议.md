@@ -70,6 +70,7 @@
   "dailyTotalKcal": "",
   "dailyTotalProteinG": "",
   "dailyTotalFatG": "",
+  "dailyTotalCarbsG": "",
   "estimatedEnergyDeficitKcal": "",
   "meals": []
 }
@@ -86,6 +87,7 @@
 | dailyTotalKcal | number/string | 当日总热量；普通建议为空字符串 |
 | dailyTotalProteinG | number/string | 当日总蛋白质；普通建议为空字符串 |
 | dailyTotalFatG | number/string | 当日总脂肪；普通建议为空字符串 |
+| dailyTotalCarbsG | number/string | 当日总碳水化合物；普通建议为空字符串 |
 | estimatedEnergyDeficitKcal | number/string | 预计热量缺口；不适用时为空字符串 |
 | meals | array | 菜谱餐次列表；普通建议为空数组 |
 
@@ -120,6 +122,7 @@
       "dailyTotalKcal": 1580,
       "dailyTotalProteinG": 86,
       "dailyTotalFatG": 45,
+      "dailyTotalCarbsG": 165,
       "estimatedEnergyDeficitKcal": 400,
       "meals": [
         {
@@ -127,13 +130,15 @@
           "mealTotalKcal": 420,
           "mealTotalProteinG": 23,
           "mealTotalFatG": 12,
+          "mealTotalCarbsG": 52,
           "foods": [
             {
               "name": "燕麦",
               "amountG": 40,
               "kcal": 150,
               "proteinG": 5,
-              "fatG": 3
+              "fatG": 3,
+              "carbsG": 26
             }
           ]
         },
@@ -142,13 +147,15 @@
           "mealTotalKcal": 620,
           "mealTotalProteinG": 38,
           "mealTotalFatG": 18,
+          "mealTotalCarbsG": 66,
           "foods": [
             {
               "name": "糙米饭",
               "amountG": 120,
               "kcal": 140,
               "proteinG": 3,
-              "fatG": 1
+              "fatG": 1,
+              "carbsG": 29
             }
           ]
         },
@@ -157,13 +164,15 @@
           "mealTotalKcal": 540,
           "mealTotalProteinG": 25,
           "mealTotalFatG": 15,
+          "mealTotalCarbsG": 47,
           "foods": [
             {
               "name": "清蒸鱼",
               "amountG": 120,
               "kcal": 150,
               "proteinG": 25,
-              "fatG": 5
+              "fatG": 5,
+              "carbsG": 0
             }
           ]
         }
@@ -211,6 +220,7 @@
           "dailyTotalKcal": "",
           "dailyTotalProteinG": "",
           "dailyTotalFatG": "",
+          "dailyTotalCarbsG": "",
           "estimatedEnergyDeficitKcal": "",
           "meals": []
         }

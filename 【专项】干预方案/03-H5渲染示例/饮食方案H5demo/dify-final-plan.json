@@ -23,7 +23,8 @@
           "dailyTotalProteinG": "",
           "dailyTotalFatG": "",
           "estimatedEnergyDeficitKcal": "",
-          "meals": []
+          "meals": [],
+          "dailyTotalCarbsG": ""
         },
         {
           "itemType": "advice",
@@ -36,7 +37,8 @@
           "dailyTotalProteinG": "",
           "dailyTotalFatG": "",
           "estimatedEnergyDeficitKcal": "",
-          "meals": []
+          "meals": [],
+          "dailyTotalCarbsG": ""
         }
       ]
     },
@@ -59,7 +61,8 @@
           "dailyTotalProteinG": "",
           "dailyTotalFatG": "",
           "estimatedEnergyDeficitKcal": "",
-          "meals": []
+          "meals": [],
+          "dailyTotalCarbsG": ""
         },
         {
           "itemType": "advice",
@@ -72,7 +75,8 @@
           "dailyTotalProteinG": "",
           "dailyTotalFatG": "",
           "estimatedEnergyDeficitKcal": "",
-          "meals": []
+          "meals": [],
+          "dailyTotalCarbsG": ""
         },
         {
           "itemType": "advice",
@@ -85,7 +89,8 @@
           "dailyTotalProteinG": "",
           "dailyTotalFatG": "",
           "estimatedEnergyDeficitKcal": "",
-          "meals": []
+          "meals": [],
+          "dailyTotalCarbsG": ""
         }
       ]
     },
@@ -108,7 +113,8 @@
           "dailyTotalProteinG": "",
           "dailyTotalFatG": "",
           "estimatedEnergyDeficitKcal": "",
-          "meals": []
+          "meals": [],
+          "dailyTotalCarbsG": ""
         },
         {
           "itemType": "advice",
@@ -121,7 +127,8 @@
           "dailyTotalProteinG": "",
           "dailyTotalFatG": "",
           "estimatedEnergyDeficitKcal": "",
-          "meals": []
+          "meals": [],
+          "dailyTotalCarbsG": ""
         },
         {
           "itemType": "advice",
@@ -134,7 +141,8 @@
           "dailyTotalProteinG": "",
           "dailyTotalFatG": "",
           "estimatedEnergyDeficitKcal": "",
-          "meals": []
+          "meals": [],
+          "dailyTotalCarbsG": ""
         }
       ]
     },
@@ -157,7 +165,8 @@
           "dailyTotalProteinG": "",
           "dailyTotalFatG": "",
           "estimatedEnergyDeficitKcal": "",
-          "meals": []
+          "meals": [],
+          "dailyTotalCarbsG": ""
         },
         {
           "itemType": "advice",
@@ -170,7 +179,8 @@
           "dailyTotalProteinG": "",
           "dailyTotalFatG": "",
           "estimatedEnergyDeficitKcal": "",
-          "meals": []
+          "meals": [],
+          "dailyTotalCarbsG": ""
         }
       ]
     },
@@ -206,30 +216,35 @@
                   "amountG": 40,
                   "kcal": 150,
                   "proteinG": 5,
-                  "fatG": 3
+                  "fatG": 3,
+                  "carbsG": 26
                 },
                 {
                   "name": "纯牛奶（250ml）",
                   "amountG": 250,
                   "kcal": 135,
                   "proteinG": 8,
-                  "fatG": 8
+                  "fatG": 8,
+                  "carbsG": 8
                 },
                 {
                   "name": "煮鸡蛋（带壳）",
                   "amountG": 60,
                   "kcal": 90,
                   "proteinG": 7,
-                  "fatG": 6
+                  "fatG": 6,
+                  "carbsG": 2
                 },
                 {
                   "name": "小番茄",
                   "amountG": 50,
                   "kcal": 10,
                   "proteinG": 0,
-                  "fatG": 0
+                  "fatG": 0,
+                  "carbsG": 3
                 }
-              ]
+              ],
+              "mealTotalCarbsG": 39
             },
             {
               "mealName": "午餐",
@@ -243,30 +258,35 @@
                   "amountG": 150,
                   "kcal": 180,
                   "proteinG": 4,
-                  "fatG": 1
+                  "fatG": 1,
+                  "carbsG": 39
                 },
                 {
                   "name": "清蒸鱼（鲈鱼，去骨）",
                   "amountG": 100,
                   "kcal": 110,
                   "proteinG": 20,
-                  "fatG": 3
+                  "fatG": 3,
+                  "carbsG": 1
                 },
                 {
                   "name": "蒜蓉西兰花",
                   "amountG": 200,
                   "kcal": 70,
                   "proteinG": 5,
-                  "fatG": 2
+                  "fatG": 2,
+                  "carbsG": 8
                 },
                 {
                   "name": "凉拌黄瓜（少油）",
                   "amountG": 100,
                   "kcal": 20,
                   "proteinG": 1,
-                  "fatG": 0
+                  "fatG": 0,
+                  "carbsG": 4
                 }
-              ]
+              ],
+              "mealTotalCarbsG": 52
             },
             {
               "mealName": "晚餐",
@@ -280,30 +300,35 @@
                   "amountG": 75,
                   "kcal": 160,
                   "proteinG": 6,
-                  "fatG": 2
+                  "fatG": 2,
+                  "carbsG": 30
                 },
                 {
                   "name": "白切鸡（去皮）",
                   "amountG": 80,
                   "kcal": 130,
                   "proteinG": 16,
-                  "fatG": 4
+                  "fatG": 4,
+                  "carbsG": 8
                 },
                 {
                   "name": "清炒小白菜",
                   "amountG": 250,
                   "kcal": 60,
                   "proteinG": 4,
-                  "fatG": 2
+                  "fatG": 2,
+                  "carbsG": 7
                 },
                 {
                   "name": "凉拌豆腐（内酯豆腐）",
                   "amountG": 100,
                   "kcal": 70,
                   "proteinG": 6,
-                  "fatG": 3
+                  "fatG": 3,
+                  "carbsG": 5
                 }
-              ]
+              ],
+              "mealTotalCarbsG": 50
             },
             {
               "mealName": "夜班加餐",
@@ -317,25 +342,30 @@
                   "amountG": 100,
                   "kcal": 60,
                   "proteinG": 3,
-                  "fatG": 1
+                  "fatG": 1,
+                  "carbsG": 10
                 },
                 {
                   "name": "核桃（去壳）",
                   "amountG": 10,
                   "kcal": 65,
                   "proteinG": 1,
-                  "fatG": 6
+                  "fatG": 6,
+                  "carbsG": 2
                 },
                 {
                   "name": "黄瓜条",
                   "amountG": 100,
                   "kcal": 15,
                   "proteinG": 1,
-                  "fatG": 0
+                  "fatG": 0,
+                  "carbsG": 3
                 }
-              ]
+              ],
+              "mealTotalCarbsG": 15
             }
-          ]
+          ],
+          "dailyTotalCarbsG": 156
         },
         {
           "itemType": "dailyMealPlan",
@@ -361,30 +391,35 @@
                   "amountG": 40,
                   "kcal": 100,
                   "proteinG": 4,
-                  "fatG": 2
+                  "fatG": 2,
+                  "carbsG": 17
                 },
                 {
                   "name": "煮鸡蛋（带壳）",
                   "amountG": 60,
                   "kcal": 90,
                   "proteinG": 7,
-                  "fatG": 6
+                  "fatG": 6,
+                  "carbsG": 2
                 },
                 {
                   "name": "纯牛奶（250ml）",
                   "amountG": 250,
                   "kcal": 135,
                   "proteinG": 8,
-                  "fatG": 8
+                  "fatG": 8,
+                  "carbsG": 8
                 },
                 {
                   "name": "苹果（小）",
                   "amountG": 150,
                   "kcal": 80,
                   "proteinG": 1,
-                  "fatG": 0
+                  "fatG": 0,
+                  "carbsG": 19
                 }
-              ]
+              ],
+              "mealTotalCarbsG": 46
             },
             {
               "mealName": "午餐",
@@ -398,30 +433,35 @@
                   "amountG": 150,
                   "kcal": 170,
                   "proteinG": 4,
-                  "fatG": 1
+                  "fatG": 1,
+                  "carbsG": 36
                 },
                 {
                   "name": "洋葱炒瘦肉（猪里脊）",
                   "amountG": 80,
                   "kcal": 130,
                   "proteinG": 18,
-                  "fatG": 5
+                  "fatG": 5,
+                  "carbsG": 3
                 },
                 {
                   "name": "清炒菠菜",
                   "amountG": 200,
                   "kcal": 60,
                   "proteinG": 5,
-                  "fatG": 2
+                  "fatG": 2,
+                  "carbsG": 6
                 },
                 {
                   "name": "冬瓜汤（少油）",
                   "amountG": 200,
                   "kcal": 30,
                   "proteinG": 1,
-                  "fatG": 0
+                  "fatG": 0,
+                  "carbsG": 7
                 }
-              ]
+              ],
+              "mealTotalCarbsG": 52
             },
             {
               "mealName": "晚餐",
@@ -435,30 +475,35 @@
                   "amountG": 60,
                   "kcal": 180,
                   "proteinG": 7,
-                  "fatG": 2
+                  "fatG": 2,
+                  "carbsG": 34
                 },
                 {
                   "name": "卤牛肉（瘦）",
                   "amountG": 80,
                   "kcal": 120,
                   "proteinG": 16,
-                  "fatG": 4
+                  "fatG": 4,
+                  "carbsG": 5
                 },
                 {
                   "name": "凉拌海带丝",
                   "amountG": 150,
                   "kcal": 40,
                   "proteinG": 2,
-                  "fatG": 1
+                  "fatG": 1,
+                  "carbsG": 6
                 },
                 {
                   "name": "蚝油生菜（少油）",
                   "amountG": 200,
                   "kcal": 60,
                   "proteinG": 3,
-                  "fatG": 2
+                  "fatG": 2,
+                  "carbsG": 8
                 }
-              ]
+              ],
+              "mealTotalCarbsG": 53
             },
             {
               "mealName": "夜班加餐",
@@ -472,25 +517,30 @@
                   "amountG": 100,
                   "kcal": 60,
                   "proteinG": 3,
-                  "fatG": 1
+                  "fatG": 1,
+                  "carbsG": 10
                 },
                 {
                   "name": "全麦苏打饼干",
                   "amountG": 20,
                   "kcal": 90,
                   "proteinG": 2,
-                  "fatG": 2
+                  "fatG": 2,
+                  "carbsG": 16
                 },
                 {
                   "name": "圣女果",
                   "amountG": 80,
                   "kcal": 15,
                   "proteinG": 1,
-                  "fatG": 0
+                  "fatG": 0,
+                  "carbsG": 3
                 }
-              ]
+              ],
+              "mealTotalCarbsG": 29
             }
-          ]
+          ],
+          "dailyTotalCarbsG": 180
         },
         {
           "itemType": "dailyMealPlan",
@@ -516,23 +566,27 @@
                   "amountG": 40,
                   "kcal": 150,
                   "proteinG": 5,
-                  "fatG": 3
+                  "fatG": 3,
+                  "carbsG": 26
                 },
                 {
                   "name": "纯牛奶（250ml）",
                   "amountG": 250,
                   "kcal": 135,
                   "proteinG": 8,
-                  "fatG": 8
+                  "fatG": 8,
+                  "carbsG": 8
                 },
                 {
                   "name": "煮鸡蛋（带壳）",
                   "amountG": 60,
                   "kcal": 90,
                   "proteinG": 7,
-                  "fatG": 6
+                  "fatG": 6,
+                  "carbsG": 2
                 }
-              ]
+              ],
+              "mealTotalCarbsG": 36
             },
             {
               "mealName": "午餐",
@@ -546,30 +600,35 @@
                   "amountG": 150,
                   "kcal": 180,
                   "proteinG": 4,
-                  "fatG": 1
+                  "fatG": 1,
+                  "carbsG": 39
                 },
                 {
                   "name": "清蒸虾仁（虾仁100g）",
                   "amountG": 100,
                   "kcal": 90,
                   "proteinG": 18,
-                  "fatG": 1
+                  "fatG": 1,
+                  "carbsG": 2
                 },
                 {
                   "name": "炒西葫芦",
                   "amountG": 200,
                   "kcal": 50,
                   "proteinG": 3,
-                  "fatG": 2
+                  "fatG": 2,
+                  "carbsG": 5
                 },
                 {
                   "name": "凉拌木耳",
                   "amountG": 100,
                   "kcal": 30,
                   "proteinG": 1,
-                  "fatG": 0
+                  "fatG": 0,
+                  "carbsG": 7
                 }
-              ]
+              ],
+              "mealTotalCarbsG": 53
             },
             {
               "mealName": "晚餐",
@@ -583,30 +642,35 @@
                   "amountG": 200,
                   "kcal": 200,
                   "proteinG": 6,
-                  "fatG": 2
+                  "fatG": 2,
+                  "carbsG": 40
                 },
                 {
                   "name": "鸡胸肉（水煮）",
                   "amountG": 100,
                   "kcal": 130,
                   "proteinG": 24,
-                  "fatG": 3
+                  "fatG": 3,
+                  "carbsG": 2
                 },
                 {
                   "name": "蒜蓉油麦菜",
                   "amountG": 250,
                   "kcal": 60,
                   "proteinG": 4,
-                  "fatG": 2
+                  "fatG": 2,
+                  "carbsG": 7
                 },
                 {
                   "name": "番茄蛋花汤（少油）",
                   "amountG": 200,
                   "kcal": 40,
                   "proteinG": 3,
-                  "fatG": 1
+                  "fatG": 1,
+                  "carbsG": 5
                 }
-              ]
+              ],
+              "mealTotalCarbsG": 54
             },
             {
               "mealName": "夜班加餐",
@@ -620,25 +684,30 @@
                   "amountG": 100,
                   "kcal": 60,
                   "proteinG": 3,
-                  "fatG": 1
+                  "fatG": 1,
+                  "carbsG": 10
                 },
                 {
                   "name": "全麦面包（1片）",
                   "amountG": 40,
                   "kcal": 100,
                   "proteinG": 4,
-                  "fatG": 2
+                  "fatG": 2,
+                  "carbsG": 17
                 },
                 {
                   "name": "黄瓜条",
                   "amountG": 100,
                   "kcal": 15,
                   "proteinG": 1,
-                  "fatG": 0
+                  "fatG": 0,
+                  "carbsG": 3
                 }
-              ]
+              ],
+              "mealTotalCarbsG": 30
             }
-          ]
+          ],
+          "dailyTotalCarbsG": 173
         },
         {
           "itemType": "dailyMealPlan",
@@ -664,30 +733,35 @@
                   "amountG": 60,
                   "kcal": 150,
                   "proteinG": 6,
-                  "fatG": 2
+                  "fatG": 2,
+                  "carbsG": 27
                 },
                 {
                   "name": "水煮鸡蛋",
                   "amountG": 50,
                   "kcal": 70,
                   "proteinG": 7,
-                  "fatG": 5
+                  "fatG": 5,
+                  "carbsG": 0
                 },
                 {
                   "name": "无糖酸奶",
                   "amountG": 130,
                   "kcal": 80,
                   "proteinG": 7,
-                  "fatG": 3
+                  "fatG": 3,
+                  "carbsG": 6
                 },
                 {
                   "name": "小番茄",
                   "amountG": 100,
                   "kcal": 25,
                   "proteinG": 1,
-                  "fatG": 0
+                  "fatG": 0,
+                  "carbsG": 5
                 }
-              ]
+              ],
+              "mealTotalCarbsG": 38
             },
             {
               "mealName": "午餐",
@@ -701,30 +775,35 @@
                   "amountG": 150,
                   "kcal": 180,
                   "proteinG": 4,
-                  "fatG": 1
+                  "fatG": 1,
+                  "carbsG": 39
                 },
                 {
                   "name": "清蒸鱼块",
                   "amountG": 100,
                   "kcal": 120,
                   "proteinG": 20,
-                  "fatG": 4
+                  "fatG": 4,
+                  "carbsG": 1
                 },
                 {
                   "name": "蒜蓉西兰花",
                   "amountG": 150,
                   "kcal": 60,
                   "proteinG": 4,
-                  "fatG": 1
+                  "fatG": 1,
+                  "carbsG": 9
                 },
                 {
                   "name": "凉拌黄瓜",
                   "amountG": 100,
                   "kcal": 20,
                   "proteinG": 1,
-                  "fatG": 0
+                  "fatG": 0,
+                  "carbsG": 4
                 }
-              ]
+              ],
+              "mealTotalCarbsG": 53
             },
             {
               "mealName": "晚餐",
@@ -738,30 +817,35 @@
                   "amountG": 100,
                   "kcal": 130,
                   "proteinG": 25,
-                  "fatG": 2
+                  "fatG": 2,
+                  "carbsG": 3
                 },
                 {
                   "name": "全麦卷饼",
                   "amountG": 60,
                   "kcal": 150,
                   "proteinG": 5,
-                  "fatG": 3
+                  "fatG": 3,
+                  "carbsG": 26
                 },
                 {
                   "name": "生菜沙拉（油醋汁）",
                   "amountG": 150,
                   "kcal": 50,
                   "proteinG": 2,
-                  "fatG": 3
+                  "fatG": 3,
+                  "carbsG": 4
                 },
                 {
                   "name": "无糖豆浆",
                   "amountG": 200,
                   "kcal": 80,
                   "proteinG": 6,
-                  "fatG": 3
+                  "fatG": 3,
+                  "carbsG": 7
                 }
-              ]
+              ],
+              "mealTotalCarbsG": 40
             },
             {
               "mealName": "夜班加餐",
@@ -775,25 +859,30 @@
                   "amountG": 130,
                   "kcal": 80,
                   "proteinG": 7,
-                  "fatG": 3
+                  "fatG": 3,
+                  "carbsG": 6
                 },
                 {
                   "name": "全麦饼干",
                   "amountG": 30,
                   "kcal": 120,
                   "proteinG": 3,
-                  "fatG": 2
+                  "fatG": 2,
+                  "carbsG": 23
                 },
                 {
                   "name": "核桃",
                   "amountG": 10,
                   "kcal": 65,
                   "proteinG": 2,
-                  "fatG": 6
+                  "fatG": 6,
+                  "carbsG": 1
                 }
-              ]
+              ],
+              "mealTotalCarbsG": 30
             }
-          ]
+          ],
+          "dailyTotalCarbsG": 161
         },
         {
           "itemType": "dailyMealPlan",
@@ -819,30 +908,35 @@
                   "amountG": 40,
                   "kcal": 150,
                   "proteinG": 5,
-                  "fatG": 3
+                  "fatG": 3,
+                  "carbsG": 26
                 },
                 {
                   "name": "脱脂牛奶",
                   "amountG": 200,
                   "kcal": 70,
                   "proteinG": 7,
-                  "fatG": 0
+                  "fatG": 0,
+                  "carbsG": 11
                 },
                 {
                   "name": "水煮鸡蛋",
                   "amountG": 50,
                   "kcal": 70,
                   "proteinG": 7,
-                  "fatG": 5
+                  "fatG": 5,
+                  "carbsG": 0
                 },
                 {
                   "name": "凉拌菠菜",
                   "amountG": 100,
                   "kcal": 30,
                   "proteinG": 3,
-                  "fatG": 1
+                  "fatG": 1,
+                  "carbsG": 2
                 }
-              ]
+              ],
+              "mealTotalCarbsG": 39
             },
             {
               "mealName": "午餐",
@@ -856,30 +950,35 @@
                   "amountG": 150,
                   "kcal": 180,
                   "proteinG": 4,
-                  "fatG": 1
+                  "fatG": 1,
+                  "carbsG": 39
                 },
                 {
                   "name": "清蒸鸡腿（去皮）",
                   "amountG": 100,
                   "kcal": 140,
                   "proteinG": 22,
-                  "fatG": 5
+                  "fatG": 5,
+                  "carbsG": 2
                 },
                 {
                   "name": "炒青菜（少油）",
                   "amountG": 200,
                   "kcal": 80,
                   "proteinG": 4,
-                  "fatG": 3
+                  "fatG": 3,
+                  "carbsG": 9
                 },
                 {
                   "name": "凉拌海带丝",
                   "amountG": 100,
                   "kcal": 30,
                   "proteinG": 1,
-                  "fatG": 0
+                  "fatG": 0,
+                  "carbsG": 7
                 }
-              ]
+              ],
+              "mealTotalCarbsG": 57
             },
             {
               "mealName": "晚餐",
@@ -893,30 +992,35 @@
                   "amountG": 100,
                   "kcal": 160,
                   "proteinG": 6,
-                  "fatG": 1
+                  "fatG": 1,
+                  "carbsG": 32
                 },
                 {
                   "name": "卤牛肉（瘦）",
                   "amountG": 80,
                   "kcal": 120,
                   "proteinG": 20,
-                  "fatG": 4
+                  "fatG": 4,
+                  "carbsG": 1
                 },
                 {
                   "name": "凉拌黄瓜",
                   "amountG": 150,
                   "kcal": 30,
                   "proteinG": 1,
-                  "fatG": 0
+                  "fatG": 0,
+                  "carbsG": 7
                 },
                 {
                   "name": "无糖酸奶",
                   "amountG": 130,
                   "kcal": 80,
                   "proteinG": 7,
-                  "fatG": 3
+                  "fatG": 3,
+                  "carbsG": 6
                 }
-              ]
+              ],
+              "mealTotalCarbsG": 46
             },
             {
               "mealName": "加餐",
@@ -930,25 +1034,30 @@
                   "amountG": 150,
                   "kcal": 80,
                   "proteinG": 0,
-                  "fatG": 0
+                  "fatG": 0,
+                  "carbsG": 20
                 },
                 {
                   "name": "杏仁",
                   "amountG": 15,
                   "kcal": 85,
                   "proteinG": 3,
-                  "fatG": 6
+                  "fatG": 6,
+                  "carbsG": 5
                 },
                 {
                   "name": "无糖豆浆",
                   "amountG": 200,
                   "kcal": 80,
                   "proteinG": 6,
-                  "fatG": 3
+                  "fatG": 3,
+                  "carbsG": 7
                 }
-              ]
+              ],
+              "mealTotalCarbsG": 32
             }
-          ]
+          ],
+          "dailyTotalCarbsG": 174
         },
         {
           "itemType": "dailyMealPlan",
@@ -974,30 +1083,35 @@
                   "amountG": 60,
                   "kcal": 150,
                   "proteinG": 6,
-                  "fatG": 2
+                  "fatG": 2,
+                  "carbsG": 27
                 },
                 {
                   "name": "水煮鸡蛋",
                   "amountG": 50,
                   "kcal": 70,
                   "proteinG": 7,
-                  "fatG": 5
+                  "fatG": 5,
+                  "carbsG": 0
                 },
                 {
                   "name": "无糖酸奶",
                   "amountG": 130,
                   "kcal": 80,
                   "proteinG": 7,
-                  "fatG": 3
+                  "fatG": 3,
+                  "carbsG": 6
                 },
                 {
                   "name": "小黄瓜",
                   "amountG": 100,
                   "kcal": 15,
                   "proteinG": 1,
-                  "fatG": 0
+                  "fatG": 0,
+                  "carbsG": 3
                 }
-              ]
+              ],
+              "mealTotalCarbsG": 36
             },
             {
               "mealName": "午餐",
@@ -1011,30 +1125,35 @@
                   "amountG": 150,
                   "kcal": 180,
                   "proteinG": 4,
-                  "fatG": 1
+                  "fatG": 1,
+                  "carbsG": 39
                 },
                 {
                   "name": "白灼虾",
                   "amountG": 100,
                   "kcal": 100,
                   "proteinG": 20,
-                  "fatG": 1
+                  "fatG": 1,
+                  "carbsG": 3
                 },
                 {
                   "name": "清炒油麦菜",
                   "amountG": 200,
                   "kcal": 60,
                   "proteinG": 4,
-                  "fatG": 2
+                  "fatG": 2,
+                  "carbsG": 7
                 },
                 {
                   "name": "凉拌豆腐",
                   "amountG": 100,
                   "kcal": 80,
                   "proteinG": 8,
-                  "fatG": 4
+                  "fatG": 4,
+                  "carbsG": 3
                 }
-              ]
+              ],
+              "mealTotalCarbsG": 52
             },
             {
               "mealName": "晚餐",
@@ -1048,30 +1167,35 @@
                   "amountG": 100,
                   "kcal": 130,
                   "proteinG": 25,
-                  "fatG": 2
+                  "fatG": 2,
+                  "carbsG": 3
                 },
                 {
                   "name": "全麦卷饼",
                   "amountG": 60,
                   "kcal": 150,
                   "proteinG": 5,
-                  "fatG": 3
+                  "fatG": 3,
+                  "carbsG": 26
                 },
                 {
                   "name": "蔬菜沙拉（油醋汁）",
                   "amountG": 150,
                   "kcal": 60,
                   "proteinG": 2,
-                  "fatG": 3
+                  "fatG": 3,
+                  "carbsG": 6
                 },
                 {
                   "name": "无糖豆浆",
                   "amountG": 200,
                   "kcal": 80,
                   "proteinG": 6,
-                  "fatG": 3
+                  "fatG": 3,
+                  "carbsG": 7
                 }
-              ]
+              ],
+              "mealTotalCarbsG": 42
             },
             {
               "mealName": "加餐",
@@ -1085,25 +1209,30 @@
                   "amountG": 150,
                   "kcal": 70,
                   "proteinG": 0,
-                  "fatG": 0
+                  "fatG": 0,
+                  "carbsG": 18
                 },
                 {
                   "name": "无糖酸奶",
                   "amountG": 130,
                   "kcal": 80,
                   "proteinG": 7,
-                  "fatG": 3
+                  "fatG": 3,
+                  "carbsG": 6
                 },
                 {
                   "name": "全麦饼干",
                   "amountG": 20,
                   "kcal": 80,
                   "proteinG": 2,
-                  "fatG": 1
+                  "fatG": 1,
+                  "carbsG": 16
                 }
-              ]
+              ],
+              "mealTotalCarbsG": 40
             }
-          ]
+          ],
+          "dailyTotalCarbsG": 170
         },
         {
           "itemType": "dailyMealPlan",
@@ -1129,30 +1258,35 @@
                   "amountG": 40,
                   "kcal": 150,
                   "proteinG": 5,
-                  "fatG": 3
+                  "fatG": 3,
+                  "carbsG": 26
                 },
                 {
                   "name": "脱脂牛奶",
                   "amountG": 200,
                   "kcal": 70,
                   "proteinG": 7,
-                  "fatG": 0
+                  "fatG": 0,
+                  "carbsG": 11
                 },
                 {
                   "name": "水煮鸡蛋",
                   "amountG": 50,
                   "kcal": 70,
                   "proteinG": 7,
-                  "fatG": 5
+                  "fatG": 5,
+                  "carbsG": 0
                 },
                 {
                   "name": "圣女果",
                   "amountG": 100,
                   "kcal": 25,
                   "proteinG": 1,
-                  "fatG": 0
+                  "fatG": 0,
+                  "carbsG": 5
                 }
-              ]
+              ],
+              "mealTotalCarbsG": 42
             },
             {
               "mealName": "午餐",
@@ -1166,30 +1300,35 @@
                   "amountG": 150,
                   "kcal": 180,
                   "proteinG": 4,
-                  "fatG": 1
+                  "fatG": 1,
+                  "carbsG": 39
                 },
                 {
                   "name": "清蒸鱼块",
                   "amountG": 100,
                   "kcal": 120,
                   "proteinG": 20,
-                  "fatG": 4
+                  "fatG": 4,
+                  "carbsG": 1
                 },
                 {
                   "name": "炒小白菜（少油）",
                   "amountG": 200,
                   "kcal": 60,
                   "proteinG": 4,
-                  "fatG": 2
+                  "fatG": 2,
+                  "carbsG": 7
                 },
                 {
                   "name": "凉拌木耳",
                   "amountG": 100,
                   "kcal": 30,
                   "proteinG": 1,
-                  "fatG": 0
+                  "fatG": 0,
+                  "carbsG": 7
                 }
-              ]
+              ],
+              "mealTotalCarbsG": 54
             },
             {
               "mealName": "晚餐",
@@ -1203,30 +1342,35 @@
                   "amountG": 100,
                   "kcal": 130,
                   "proteinG": 25,
-                  "fatG": 2
+                  "fatG": 2,
+                  "carbsG": 3
                 },
                 {
                   "name": "全麦面包",
                   "amountG": 60,
                   "kcal": 150,
                   "proteinG": 6,
-                  "fatG": 2
+                  "fatG": 2,
+                  "carbsG": 27
                 },
                 {
                   "name": "蔬菜沙拉（油醋汁）",
                   "amountG": 150,
                   "kcal": 60,
                   "proteinG": 2,
-                  "fatG": 3
+                  "fatG": 3,
+                  "carbsG": 6
                 },
                 {
                   "name": "无糖酸奶",
                   "amountG": 130,
                   "kcal": 80,
                   "proteinG": 7,
-                  "fatG": 3
+                  "fatG": 3,
+                  "carbsG": 6
                 }
-              ]
+              ],
+              "mealTotalCarbsG": 42
             },
             {
               "mealName": "夜班加餐",
@@ -1240,25 +1384,30 @@
                   "amountG": 130,
                   "kcal": 80,
                   "proteinG": 7,
-                  "fatG": 3
+                  "fatG": 3,
+                  "carbsG": 6
                 },
                 {
                   "name": "全麦饼干",
                   "amountG": 30,
                   "kcal": 120,
                   "proteinG": 3,
-                  "fatG": 2
+                  "fatG": 2,
+                  "carbsG": 23
                 },
                 {
                   "name": "核桃",
                   "amountG": 10,
                   "kcal": 65,
                   "proteinG": 2,
-                  "fatG": 6
+                  "fatG": 6,
+                  "carbsG": 1
                 }
-              ]
+              ],
+              "mealTotalCarbsG": 30
             }
-          ]
+          ],
+          "dailyTotalCarbsG": 168
         }
       ]
     }

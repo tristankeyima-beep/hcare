@@ -3,7 +3,7 @@ import json
 
 ALLOWED_IMPORTANCE = {"重点执行", "常规建议", "补充建议"}
 REQUIRED_MEALS = {"早餐", "午餐", "晚餐"}
-FOOD_NUMBER_FIELDS = ("amountG", "kcal", "proteinG", "fatG")
+FOOD_NUMBER_FIELDS = ("amountG", "kcal", "proteinG", "fatG", "carbsG")
 GROUP_FIELDS = (
     "groupTitle",
     "groupType",
@@ -23,6 +23,7 @@ ITEM_FIELDS = (
     "dailyTotalKcal",
     "dailyTotalProteinG",
     "dailyTotalFatG",
+    "dailyTotalCarbsG",
     "estimatedEnergyDeficitKcal",
     "meals",
 )
@@ -32,9 +33,10 @@ MEAL_FIELDS = (
     "mealTotalKcal",
     "mealTotalProteinG",
     "mealTotalFatG",
+    "mealTotalCarbsG",
     "foods",
 )
-FOOD_FIELDS = ("name", "amountG", "kcal", "proteinG", "fatG")
+FOOD_FIELDS = ("name", "amountG", "kcal", "proteinG", "fatG", "carbsG")
 
 
 def _parse_json(value, default):
@@ -64,6 +66,39 @@ def _normalize_text(value, fallback):
         return fallback
     text = str(value).strip()
     return text if text else fallback
+
+
+def _normalize_number(value, fallback=0):
+    if value is None or value == "":
+        return fallback
+    if isinstance(value, bool):
+        return fallback
+    if isinstance(value, (int, float)):
+        return value
+    try:
+        number = float(str(value).strip())
+    except (TypeError, ValueError):
+        return fallback
+    return int(number) if number.is_integer() else number
+
+
+def _sum_number(items, key):
+    return sum(_normalize_number(item.get(key)) for item in items if isinstance(item, dict))
+
+
+def _recalculate_weekly_meal_plan_carbs(group):
+    if not isinstance(group, dict) or group.get("groupType") != "weeklyMealPlan":
+        return group
+    for item in group.get("items", []) or []:
+        if not isinstance(item, dict):
+            continue
+        meals = item.get("meals", []) or []
+        for meal in meals:
+            if not isinstance(meal, dict):
+                continue
+            meal["mealTotalCarbsG"] = _sum_number(meal.get("foods", []) or [], "carbsG")
+        item["dailyTotalCarbsG"] = _sum_number(meals, "mealTotalCarbsG")
+    return group
 
 
 def _normalize_group_plan(groupPlan):
@@ -192,6 +227,7 @@ def _normalize_meal_plan_group(mealPlanGroup):
     if not items:
         return None
     group["items"] = items
+    group = _recalculate_weekly_meal_plan_carbs(group)
     return group
 
 
@@ -348,7 +384,7 @@ def _validate_weekly_meal_plan(group, groupIndex):
         errors.append(f"groups[{groupIndex}] weeklyMealPlan 必须包含 7 天菜谱")
 
     for itemIndex, item in enumerate(items):
-        for field in ("day", "dailyTotalKcal", "dailyTotalProteinG", "dailyTotalFatG"):
+        for field in ("day", "dailyTotalKcal", "dailyTotalProteinG", "dailyTotalFatG", "dailyTotalCarbsG"):
             if field not in item:
                 errors.append(f"groups[{groupIndex}].items[{itemIndex}].{field} 不能为空")
         meals = item.get("meals")
@@ -365,6 +401,9 @@ def _validate_weekly_meal_plan(group, groupIndex):
             if not isinstance(meal, dict):
                 errors.append(f"groups[{groupIndex}].items[{itemIndex}].meals[{mealIndex}] 必须是对象")
                 continue
+            for field in ("mealTotalKcal", "mealTotalProteinG", "mealTotalFatG", "mealTotalCarbsG"):
+                if field not in meal:
+                    errors.append(f"groups[{groupIndex}].items[{itemIndex}].meals[{mealIndex}].{field} 不能为空")
             foods = meal.get("foods")
             if not isinstance(foods, list) or not foods:
                 errors.append(f"groups[{groupIndex}].items[{itemIndex}].meals[{mealIndex}].foods 必须是非空数组")

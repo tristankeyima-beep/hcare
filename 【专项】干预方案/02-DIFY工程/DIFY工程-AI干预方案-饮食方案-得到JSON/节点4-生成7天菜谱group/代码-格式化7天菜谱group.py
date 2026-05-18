@@ -8,14 +8,17 @@ NUMBER_FIELDS = (
     "dailyTotalKcal",
     "dailyTotalProteinG",
     "dailyTotalFatG",
+    "dailyTotalCarbsG",
     "estimatedEnergyDeficitKcal",
     "mealTotalKcal",
     "mealTotalProteinG",
     "mealTotalFatG",
+    "mealTotalCarbsG",
     "amountG",
     "kcal",
     "proteinG",
     "fatG",
+    "carbsG",
 )
 
 
@@ -87,6 +90,10 @@ def _normalize_importance(value, fallback="重点执行"):
     return importance if importance in ALLOWED_IMPORTANCE else fallback
 
 
+def _sum_number(items, key):
+    return sum(_normalize_number(item.get(key)) for item in items if isinstance(item, dict))
+
+
 def _normalize_meal_name(value):
     raw_name = _normalize_text(value, "")
     if not raw_name:
@@ -113,7 +120,7 @@ def _normalize_food(food, warnings, dayIndex, mealName):
     output = {
         key: value
         for key, value in food.items()
-        if key not in ("name", "amountG", "kcal", "proteinG", "fatG")
+        if key not in ("name", "amountG", "kcal", "proteinG", "fatG", "carbsG")
     }
     output.update({
         "name": name,
@@ -121,6 +128,7 @@ def _normalize_food(food, warnings, dayIndex, mealName):
         "kcal": _normalize_number(food.get("kcal")),
         "proteinG": _normalize_number(food.get("proteinG")),
         "fatG": _normalize_number(food.get("fatG")),
+        "carbsG": _normalize_number(food.get("carbsG")),
     })
     return output
 
@@ -138,13 +146,14 @@ def _normalize_meal(meal, warnings, dayIndex):
     output = {
         key: value
         for key, value in meal.items()
-        if key not in ("mealName", "mealTotalKcal", "mealTotalProteinG", "mealTotalFatG", "foods")
+        if key not in ("mealName", "mealTotalKcal", "mealTotalProteinG", "mealTotalFatG", "mealTotalCarbsG", "foods")
     }
     output.update({
         "mealName": mealName,
         "mealTotalKcal": _normalize_number(meal.get("mealTotalKcal")),
         "mealTotalProteinG": _normalize_number(meal.get("mealTotalProteinG")),
         "mealTotalFatG": _normalize_number(meal.get("mealTotalFatG")),
+        "mealTotalCarbsG": _normalize_number(meal.get("mealTotalCarbsG")),
     })
     mealScene = _normalize_text(meal.get("mealScene"), extracted_scene)
     if mealScene:
@@ -158,6 +167,7 @@ def _normalize_meal(meal, warnings, dayIndex):
     if not foods:
         warnings.append(f"第{dayIndex}天{mealName}缺少有效 foods。")
     output["foods"] = foods
+    output["mealTotalCarbsG"] = _sum_number(foods, "carbsG")
     return output
 
 
@@ -186,6 +196,7 @@ def _normalize_daily_item(item, warnings, index):
             "dailyTotalKcal",
             "dailyTotalProteinG",
             "dailyTotalFatG",
+            "dailyTotalCarbsG",
             "estimatedEnergyDeficitKcal",
             "meals",
         )
@@ -200,6 +211,7 @@ def _normalize_daily_item(item, warnings, index):
         "dailyTotalKcal": _normalize_number(item.get("dailyTotalKcal")),
         "dailyTotalProteinG": _normalize_number(item.get("dailyTotalProteinG")),
         "dailyTotalFatG": _normalize_number(item.get("dailyTotalFatG")),
+        "dailyTotalCarbsG": _normalize_number(item.get("dailyTotalCarbsG")),
     })
     if "estimatedEnergyDeficitKcal" in item:
         output["estimatedEnergyDeficitKcal"] = _normalize_number(item.get("estimatedEnergyDeficitKcal"))
@@ -214,6 +226,7 @@ def _normalize_daily_item(item, warnings, index):
     if missingMeals:
         warnings.append(f"第{dayIndex}天缺少餐次：{','.join(missingMeals)}。")
     output["meals"] = meals
+    output["dailyTotalCarbsG"] = _sum_number(meals, "mealTotalCarbsG")
     return output
 
 
