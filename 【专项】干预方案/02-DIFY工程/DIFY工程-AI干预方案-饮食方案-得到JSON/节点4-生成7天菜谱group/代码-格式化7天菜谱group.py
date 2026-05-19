@@ -20,6 +20,12 @@ NUMBER_FIELDS = (
     "fatG",
     "carbsG",
 )
+NUTRITION_TOTAL_FIELDS = (
+    ("kcal", "mealTotalKcal", "dailyTotalKcal"),
+    ("proteinG", "mealTotalProteinG", "dailyTotalProteinG"),
+    ("fatG", "mealTotalFatG", "dailyTotalFatG"),
+    ("carbsG", "mealTotalCarbsG", "dailyTotalCarbsG"),
+)
 
 
 def _json_text(value):
@@ -92,6 +98,20 @@ def _normalize_importance(value, fallback="重点执行"):
 
 def _sum_number(items, key):
     return sum(_normalize_number(item.get(key)) for item in items if isinstance(item, dict))
+
+
+def _recalculate_meal_totals(meal):
+    foods = meal.get("foods", []) or []
+    for food_key, meal_key, _daily_key in NUTRITION_TOTAL_FIELDS:
+        meal[meal_key] = _sum_number(foods, food_key)
+    return meal
+
+
+def _recalculate_daily_totals(item):
+    meals = item.get("meals", []) or []
+    for _food_key, meal_key, daily_key in NUTRITION_TOTAL_FIELDS:
+        item[daily_key] = _sum_number(meals, meal_key)
+    return item
 
 
 def _normalize_meal_name(value):
@@ -167,7 +187,7 @@ def _normalize_meal(meal, warnings, dayIndex):
     if not foods:
         warnings.append(f"第{dayIndex}天{mealName}缺少有效 foods。")
     output["foods"] = foods
-    output["mealTotalCarbsG"] = _sum_number(foods, "carbsG")
+    _recalculate_meal_totals(output)
     return output
 
 
@@ -226,7 +246,7 @@ def _normalize_daily_item(item, warnings, index):
     if missingMeals:
         warnings.append(f"第{dayIndex}天缺少餐次：{','.join(missingMeals)}。")
     output["meals"] = meals
-    output["dailyTotalCarbsG"] = _sum_number(meals, "mealTotalCarbsG")
+    _recalculate_daily_totals(output)
     return output
 
 

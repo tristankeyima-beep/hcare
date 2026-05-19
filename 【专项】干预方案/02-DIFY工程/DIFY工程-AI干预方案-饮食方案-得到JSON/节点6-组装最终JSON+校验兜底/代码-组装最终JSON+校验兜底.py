@@ -37,6 +37,12 @@ MEAL_FIELDS = (
     "foods",
 )
 FOOD_FIELDS = ("name", "amountG", "kcal", "proteinG", "fatG", "carbsG")
+NUTRITION_TOTAL_FIELDS = (
+    ("kcal", "mealTotalKcal", "dailyTotalKcal"),
+    ("proteinG", "mealTotalProteinG", "dailyTotalProteinG"),
+    ("fatG", "mealTotalFatG", "dailyTotalFatG"),
+    ("carbsG", "mealTotalCarbsG", "dailyTotalCarbsG"),
+)
 
 
 def _parse_json(value, default):
@@ -86,7 +92,7 @@ def _sum_number(items, key):
     return sum(_normalize_number(item.get(key)) for item in items if isinstance(item, dict))
 
 
-def _recalculate_weekly_meal_plan_carbs(group):
+def _recalculate_weekly_meal_plan_totals(group):
     if not isinstance(group, dict) or group.get("groupType") != "weeklyMealPlan":
         return group
     for item in group.get("items", []) or []:
@@ -96,8 +102,11 @@ def _recalculate_weekly_meal_plan_carbs(group):
         for meal in meals:
             if not isinstance(meal, dict):
                 continue
-            meal["mealTotalCarbsG"] = _sum_number(meal.get("foods", []) or [], "carbsG")
-        item["dailyTotalCarbsG"] = _sum_number(meals, "mealTotalCarbsG")
+            foods = meal.get("foods", []) or []
+            for food_key, meal_key, _daily_key in NUTRITION_TOTAL_FIELDS:
+                meal[meal_key] = _sum_number(foods, food_key)
+        for _food_key, meal_key, daily_key in NUTRITION_TOTAL_FIELDS:
+            item[daily_key] = _sum_number(meals, meal_key)
     return group
 
 
@@ -227,7 +236,7 @@ def _normalize_meal_plan_group(mealPlanGroup):
     if not items:
         return None
     group["items"] = items
-    group = _recalculate_weekly_meal_plan_carbs(group)
+    group = _recalculate_weekly_meal_plan_totals(group)
     return group
 
 

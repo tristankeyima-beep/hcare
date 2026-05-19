@@ -43,8 +43,16 @@
 - 每日保留并归一 `dailyTotalKcal`、`dailyTotalProteinG`、`dailyTotalFatG`、`dailyTotalCarbsG`。
 - 每餐保留并归一 `mealTotalKcal`、`mealTotalProteinG`、`mealTotalFatG`、`mealTotalCarbsG`。
 - 每个食物保留并归一 `amountG`、`kcal`、`proteinG`、`fatG`、`carbsG`。
-- `mealTotalCarbsG` 以该餐 `foods[].carbsG` 求和结果为准，会覆盖 LLM 原始输出。
-- `dailyTotalCarbsG` 以当天 `meals[].mealTotalCarbsG` 求和结果为准，会覆盖 LLM 原始输出。
+- 每餐营养汇总以该餐 `foods[]` 明细求和结果为准，会覆盖 LLM 原始输出：
+  `mealTotalKcal=sum(foods[].kcal)`、
+  `mealTotalProteinG=sum(foods[].proteinG)`、
+  `mealTotalFatG=sum(foods[].fatG)`、
+  `mealTotalCarbsG=sum(foods[].carbsG)`。
+- 每日营养汇总以当天 `meals[]` 汇总求和结果为准，会覆盖 LLM 原始输出：
+  `dailyTotalKcal=sum(meals[].mealTotalKcal)`、
+  `dailyTotalProteinG=sum(meals[].mealTotalProteinG)`、
+  `dailyTotalFatG=sum(meals[].mealTotalFatG)`、
+  `dailyTotalCarbsG=sum(meals[].mealTotalCarbsG)`。
 - 数值字段会尽量转为数字；无法转换时兜底为 `0`。
 - 每餐食物必须有 `name` 才会保留。
 
