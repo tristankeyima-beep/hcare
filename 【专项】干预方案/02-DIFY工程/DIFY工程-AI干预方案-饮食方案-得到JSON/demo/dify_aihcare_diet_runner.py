@@ -1028,6 +1028,8 @@ def render_input_quality(case_record):
 
 def get_weekly_group(final_plan):
     groups = final_plan.get("groups") if isinstance(final_plan, dict) else []
+    if not isinstance(groups, list):
+        groups = []
     return next((group for group in groups if isinstance(group, dict) and group.get("groupType") == "weeklyMealPlan"), None)
 
 

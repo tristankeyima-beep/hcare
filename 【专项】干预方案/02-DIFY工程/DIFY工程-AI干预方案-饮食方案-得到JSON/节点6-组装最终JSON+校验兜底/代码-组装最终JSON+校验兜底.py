@@ -89,7 +89,8 @@ def _normalize_number(value, fallback=0):
 
 
 def _sum_number(items, key):
-    return sum(_normalize_number(item.get(key)) for item in items if isinstance(item, dict))
+    total = round(sum(_normalize_number(item.get(key)) for item in items if isinstance(item, dict)), 1)
+    return int(total) if isinstance(total, float) and total.is_integer() else total
 
 
 def _recalculate_weekly_meal_plan_totals(group):

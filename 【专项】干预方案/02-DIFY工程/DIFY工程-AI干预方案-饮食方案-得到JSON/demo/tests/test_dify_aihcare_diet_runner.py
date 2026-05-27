@@ -250,6 +250,46 @@ class DifyAihcareDietRunnerTests(unittest.TestCase):
             self.assertIn("timed out", html)
             self.assertNotIn("Bearer secret", html)
 
+    def test_result_record_renders_html_when_final_plan_is_missing(self):
+        runner = load_runner()
+        with tempfile.TemporaryDirectory() as temp_dir:
+            case_dir = Path(temp_dir) / "未知患者_饮食方案_20260527-090344"
+            case_dir.mkdir()
+            (case_dir / "入参.json").write_text(
+                json.dumps(
+                    {
+                        "metadata": {"patientName": "未知患者", "caseName": "饮食方案"},
+                        "dify_payload": {"inputs": {}},
+                    },
+                    ensure_ascii=False,
+                ),
+                encoding="utf-8",
+            )
+            record = {
+                "startedAt": "2026-05-27T09:03:44+08:00",
+                "endedAt": "2026-05-27T09:03:44+08:00",
+                "request": {"headers": {"Authorization": "Bearer ***"}},
+                "response": {"status": 301, "body": "Moved Permanently"},
+                "events": [],
+                "nodeRuns": [],
+                "answer": "",
+                "finalPlan": None,
+                "validationSummary": None,
+                "error": None,
+            }
+
+            _output_dir, raw_path, html_path = runner.write_result_record(
+                case_dir,
+                record,
+                runner.parse_local_time("2026-05-27T09:03:44+08:00"),
+                env_name="test",
+            )
+
+            self.assertTrue(raw_path.exists())
+            html = html_path.read_text(encoding="utf-8")
+            self.assertIn("没有方案分组", html)
+            self.assertIn("未生成 weeklyMealPlan", html)
+
     def test_resolve_api_key_prefers_environment_specific_variable(self):
         runner = load_runner()
         with mock.patch.dict(
