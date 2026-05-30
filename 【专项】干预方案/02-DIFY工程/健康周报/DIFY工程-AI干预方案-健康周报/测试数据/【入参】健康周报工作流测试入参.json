@@ -1,0 +1,116 @@
+{
+  "planType": "health_weekly_report",
+  "planGoalAndRequirements": "生成最近7天健康周报，重点总结指标变化、饮食运动执行、风险提醒和下周关注点；语言通俗，适合患者阅读。",
+  "extraSupplement": "患者夜班较多，记录不一定完整，周报中需要明确哪些记录不足。",
+  "externalPatientInfo": {
+    "patientName": "测试患者"
+  },
+  "basicProfile": {
+    "demographics": {
+      "gender": "男",
+      "age": 52
+    },
+    "healthInfo": {
+      "heightCm": 170,
+      "weightKg": 83.4,
+      "currentDiseases": [
+        {
+          "name": "2型糖尿病"
+        },
+        {
+          "name": "高脂血症"
+        },
+        {
+          "name": "高血压"
+        }
+      ]
+    }
+  },
+  "diseaseProfile": {
+    "diabetesProfile": {
+      "diabetesType": "2型糖尿病",
+      "complications": ["周围血管病变"]
+    }
+  },
+  "followupRecordsLast1y": [
+    {
+      "followupDate": "2026-05-28",
+      "followupType": "糖尿病随访",
+      "mainProblem": "夜班后空腹血糖偏高，晚餐外卖较多。",
+      "improvementMeasures": "建议继续记录空腹和餐后血糖，减少高油外卖。"
+    }
+  ],
+  "metricRecordsLast1y": [
+    {
+      "recordDate": "2026-05-24",
+      "metricName": "空腹血糖",
+      "value": 8.1,
+      "unit": "mmol/L"
+    },
+    {
+      "recordDate": "2026-05-26",
+      "metricName": "餐后2小时血糖",
+      "value": 13.6,
+      "unit": "mmol/L"
+    },
+    {
+      "recordDate": "2026-05-29",
+      "metricName": "血压",
+      "value": "148/92",
+      "unit": "mmHg"
+    },
+    {
+      "recordDate": "2026-03-12",
+      "metricName": "总胆固醇",
+      "value": 6.5,
+      "unit": "mmol/L"
+    }
+  ],
+  "dietRecordsLast1y": [
+    {
+      "recordDate": "2026-05-25",
+      "mealType": "晚餐",
+      "description": "外卖盖饭，米饭偏多，未喝含糖饮料。"
+    },
+    {
+      "recordDate": "2026-05-27",
+      "mealType": "早餐",
+      "description": "鸡蛋、无糖豆浆、全麦面包。"
+    }
+  ],
+  "exerciseRecordsLast1y": [
+    {
+      "recordDate": "2026-05-24",
+      "exerciseType": "快走",
+      "durationMinutes": 25,
+      "feeling": "无明显不适"
+    },
+    {
+      "recordDate": "2026-05-28",
+      "exerciseType": "散步",
+      "durationMinutes": 15,
+      "feeling": "夜班后较疲劳"
+    }
+  ],
+  "medPickupRecords1y": [
+    {
+      "pickupDate": "2026-05-23",
+      "drugName": "吡格列酮二甲双胍片",
+      "pickupStatus": "已取药"
+    }
+  ],
+  "activeControlGoals": [
+    {
+      "metricName": "空腹血糖",
+      "targetRange": "4.4-7.0 mmol/L"
+    },
+    {
+      "metricName": "餐后2小时血糖",
+      "targetRange": "4.4-10.0 mmol/L"
+    },
+    {
+      "metricName": "血压",
+      "targetRange": "<140/90 mmHg"
+    }
+  ]
+}

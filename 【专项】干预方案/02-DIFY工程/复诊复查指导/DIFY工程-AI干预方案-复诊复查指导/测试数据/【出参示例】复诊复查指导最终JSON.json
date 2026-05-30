@@ -1,0 +1,54 @@
+{
+  "planName": "复诊复查指导",
+  "planTitle": "个性化复诊复查安排",
+  "planSummary": "结合当前糖尿病、血脂和体重管理情况，本方案围绕近期复查项目、复诊时间、异常提前就医和资料准备提供可执行安排。",
+  "executionPoints": "优先完成重点复查项目；复查结果及时回传给医生或健管师；如出现连续血糖明显异常、胸闷胸痛、明显头晕或用药中断，应提前联系医生或健管师。",
+  "groups": [
+    {
+      "groupTitle": "复查项目安排",
+      "groupType": "adviceList",
+      "groupSummary": "按当前慢病风险优先完成关键指标复查。",
+      "displayStyle": "list",
+      "dietPlanGoalLabel": "",
+      "goalBasis": "患者近期餐后血糖偏高，总胆固醇偏高，随访建议定期复查糖化和血脂。",
+      "items": [
+        {
+          "itemType": "advice",
+          "day": "",
+          "title": "预约近期复查",
+          "content": "未来2-4周内预约复查糖化血红蛋白、空腹血糖、餐后血糖和血脂。",
+          "focusPoint": "用于判断近期控糖和血脂管理效果，复查结果需回传给医生或健管师。",
+          "importance": "重点执行",
+          "dailyTotalKcal": "",
+          "dailyTotalProteinG": "",
+          "dailyTotalFatG": "",
+          "estimatedEnergyDeficitKcal": "",
+          "meals": []
+        }
+      ]
+    },
+    {
+      "groupTitle": "异常就医触发",
+      "groupType": "adviceList",
+      "groupSummary": "明确哪些情况不等常规复诊，应提前联系医生。",
+      "displayStyle": "list",
+      "dietPlanGoalLabel": "",
+      "goalBasis": "患者存在糖尿病并发症风险，近期餐后血糖明显高于目标。",
+      "items": [
+        {
+          "itemType": "advice",
+          "day": "",
+          "title": "连续异常及时反馈",
+          "content": "如果连续多次血糖明显高于目标，或出现低血糖表现、胸闷胸痛、明显头晕，应提前就医。",
+          "focusPoint": "不要等到固定复诊日期；异常情况需要医生结合用药和指标变化判断。",
+          "importance": "重点执行",
+          "dailyTotalKcal": "",
+          "dailyTotalProteinG": "",
+          "dailyTotalFatG": "",
+          "estimatedEnergyDeficitKcal": "",
+          "meals": []
+        }
+      ]
+    }
+  ]
+}
