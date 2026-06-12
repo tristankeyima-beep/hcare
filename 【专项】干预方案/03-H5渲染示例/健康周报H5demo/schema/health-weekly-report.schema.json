@@ -11,19 +11,24 @@
   ],
   "properties": {
     "planName": {
+      "description": "Dify 生成的周报名称，健康周报分支固定为“健康周报”。",
       "type": "string"
     },
     "planTitle": {
+      "description": "Dify 节点4生成的封面卡标题。",
       "type": "string"
     },
     "planSummary": {
+      "description": "Dify 节点4生成的封面卡正文概述。",
       "type": "string"
     },
     "executionPoints": {
+      "description": "Dify 节点4生成的末屏执行要点。",
       "type": "string"
     },
     "groups": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "type": "object",
         "required": [
@@ -31,6 +36,8 @@
           "groupType",
           "groupSummary",
           "displayStyle",
+          "dietPlanGoalLabel",
+          "goalBasis",
           "items"
         ],
         "properties": {
@@ -54,14 +61,21 @@
           },
           "items": {
             "type": "array",
+            "minItems": 1,
             "items": {
               "type": "object",
               "required": [
                 "itemType",
+                "day",
                 "title",
                 "content",
                 "focusPoint",
-                "importance"
+                "importance",
+                "dailyTotalKcal",
+                "dailyTotalProteinG",
+                "dailyTotalFatG",
+                "estimatedEnergyDeficitKcal",
+                "meals"
               ],
               "properties": {
                 "itemType": {
@@ -80,7 +94,12 @@
                   "type": "string"
                 },
                 "importance": {
-                  "type": "string"
+                  "type": "string",
+                  "enum": [
+                    "重点执行",
+                    "常规建议",
+                    "补充建议"
+                  ]
                 },
                 "dailyTotalKcal": {
                   "type": "string"

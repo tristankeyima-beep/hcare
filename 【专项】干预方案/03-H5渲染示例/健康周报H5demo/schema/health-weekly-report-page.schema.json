@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HealthWeeklyReportPagePayload",
+  "type": "object",
+  "required": [
+    "patientName",
+    "reportGeneratedAt",
+    "finalPlan"
+  ],
+  "properties": {
+    "patientName": {
+      "description": "患者姓名，由小程序或业务后端额外传入，不由 Dify 生成。",
+      "type": "string",
+      "minLength": 1
+    },
+    "reportGeneratedAt": {
+      "description": "周报生成时间，由小程序或业务后端额外传入，不由 Dify 生成。建议格式：YYYY-MM-DD HH:mm:ss。",
+      "type": "string",
+      "minLength": 1,
+      "examples": [
+        "2026-06-12 16:30:00"
+      ]
+    },
+    "finalPlan": {
+      "$ref": "./health-weekly-report.schema.json"
+    }
+  },
+  "additionalProperties": true
+}

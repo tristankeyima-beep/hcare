@@ -84,7 +84,7 @@
 
     .topbar {
       min-width: 0;
-      padding: calc(env(safe-area-inset-top, 0px) + 12px) var(--page-x) 10px;
+      padding: calc(env(safe-area-inset-top, 0px) + 12px) var(--page-x) 12px;
       background: rgba(238, 243, 244, 0.88);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(223, 232, 230, 0.78);
@@ -103,52 +103,78 @@
       font-weight: 700;
     }
 
-    .brand {
+    .report-owner {
       display: inline-flex;
       align-items: center;
       gap: 7px;
       color: var(--accent-deep);
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
-    .brand-dot {
+    .patient-dot {
       width: 8px;
       height: 8px;
+      flex: 0 0 auto;
       border-radius: 50%;
       background: var(--accent);
       box-shadow: 0 0 0 5px rgba(40, 124, 104, 0.12);
     }
 
-    .progress-text {
+    .generated-time {
+      margin-top: 4px;
       color: var(--quiet);
-    }
-
-    .title-row {
-      margin-top: 8px;
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .title-row h1 {
-      max-width: 290px;
-      color: var(--ink);
-      font-size: 19px;
-      line-height: 1.24;
-      font-weight: 850;
-      letter-spacing: 0;
-    }
-
-    .source-pill {
-      flex: 0 0 auto;
-      min-height: 28px;
-      padding: 5px 10px;
-      border-radius: 999px;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      color: var(--muted);
       font-size: 12px;
       font-weight: 700;
+    }
+
+    .progress-text {
+      color: var(--quiet);
+      flex: 0 0 auto;
+    }
+
+    .swipe-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--quiet);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .swipe-mark {
+      width: 32px;
+      height: 18px;
+      flex: 0 0 auto;
+      border-radius: 999px;
+      border: 1px solid rgba(20, 90, 74, 0.18);
+      background: rgba(251, 253, 252, 0.72);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-deep);
+      font-size: 14px;
+      line-height: 1;
+      animation: swipeNudge 1800ms var(--ease) infinite;
+      will-change: transform;
+    }
+
+    @keyframes swipeNudge {
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+      22% {
+        transform: translateX(-4px);
+      }
+      44% {
+        transform: translateX(4px);
+      }
+      62% {
+        transform: translateX(0);
+      }
     }
 
     .stage {
@@ -467,6 +493,10 @@
         scroll-behavior: auto !important;
         transition-duration: 0.001ms !important;
       }
+
+      .swipe-mark {
+        animation: none !important;
+      }
     }
   </style>
 </head>
@@ -474,13 +504,10 @@
   <div class="app">
     <header class="topbar">
       <div class="topline">
-        <span class="brand"><span class="brand-dot" aria-hidden="true"></span><span id="planName">健康周报</span></span>
+        <span class="report-owner"><span class="patient-dot" aria-hidden="true"></span><span id="reportOwner">患者专属健康周报</span></span>
         <span class="progress-text" id="progressText">1 / 1</span>
       </div>
-      <div class="title-row">
-        <h1 id="pageTitle">这周的健康情况，我们一起看一看</h1>
-        <span class="source-pill">左右滑动</span>
-      </div>
+      <div class="generated-time" id="generatedTime">生成时间待传入</div>
     </header>
 
     <main class="stage" id="main">
@@ -623,6 +650,11 @@
       ]
     };
 
+    const DEFAULT_PAGE_META = {
+      patientName: "患者姓名",
+      reportGeneratedAt: "2026-06-12 16:30:00"
+    };
+
     const toneClasses = ["tone-blue", "tone-amber", "tone-green", "tone-slate", "tone-red"];
     const state = {
       activeIndex: 0,
@@ -640,6 +672,40 @@
       if (className) element.className = className;
       if (text != null) element.textContent = text;
       return element;
+    }
+
+    function createSwipeHint(text = "左右滑动，看完这周的每个健康主题") {
+      const hint = createElement("p", "hint swipe-hint");
+      hint.setAttribute("aria-label", "可左右滑动查看");
+      hint.append(createElement("span", "swipe-mark", "‹›"));
+      hint.append(createElement("span", "", text));
+      return hint;
+    }
+
+    function formatGeneratedAt(value) {
+      const text = safeText(value);
+      if (!text) return "生成时间待传入";
+      return `${text.replace(/-/g, ".").slice(0, 16)} 生成`;
+    }
+
+    function pageMetaFromUrl() {
+      const params = new URLSearchParams(location.search);
+      const meta = {
+        patientName: params.get("patientName") || params.get("name") || "",
+        reportGeneratedAt: params.get("reportGeneratedAt") || params.get("generatedAt") || ""
+      };
+      return Object.fromEntries(Object.entries(meta).filter(([, value]) => safeText(value)));
+    }
+
+    function renderPageMeta(meta) {
+      const merged = {
+        ...DEFAULT_PAGE_META,
+        ...meta,
+        ...pageMetaFromUrl()
+      };
+      const patientName = safeText(merged.patientName, DEFAULT_PAGE_META.patientName);
+      document.getElementById("reportOwner").textContent = `${patientName}专属健康周报`;
+      document.getElementById("generatedTime").textContent = formatGeneratedAt(merged.reportGeneratedAt);
     }
 
     function primaryItem(group) {
@@ -685,7 +751,7 @@
         metaGrid.append(meta);
       });
       footer.append(metaGrid);
-      footer.append(createElement("p", "hint", "左右滑动，看完这周的每个健康主题"));
+      footer.append(createSwipeHint());
       card.append(footer);
       return card;
     }
@@ -793,8 +859,6 @@
       const groups = Array.isArray(plan.groups) ? plan.groups : [];
       const slides = document.getElementById("slides");
       slides.textContent = "";
-      document.getElementById("planName").textContent = safeText(plan.planName, "健康周报");
-      document.getElementById("pageTitle").textContent = safeText(plan.planTitle, "这周的健康情况，我们一起看一看");
 
       slides.append(createCover(plan, groups));
       groups.forEach((group, index) => slides.append(createGroupCard(group, index)));
@@ -821,20 +885,37 @@
       }
     }
 
-    document.getElementById("prevButton").addEventListener("click", () => {
+    async function loadPageMeta() {
+      try {
+        const response = await fetch("./page-meta.json", { cache: "no-store" });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return await response.json();
+      } catch (error) {
+        return DEFAULT_PAGE_META;
+      }
+    }
+
+    function previousSlide() {
       const nextIndex = state.activeIndex === 0 ? state.total - 1 : state.activeIndex - 1;
       scrollToSlide(nextIndex);
-    });
+    }
 
     function nextSlide() {
       const nextIndex = state.activeIndex === state.total - 1 ? 0 : state.activeIndex + 1;
       scrollToSlide(nextIndex);
     }
 
-    document.getElementById("nextButton").addEventListener("click", nextSlide);
-    document.getElementById("nextIconButton").addEventListener("click", nextSlide);
+    document.querySelector(".actions").addEventListener("click", (event) => {
+      const button = event.target.closest("button");
+      if (!button) return;
+      if (button.id === "prevButton") previousSlide();
+      if (button.id === "nextButton" || button.id === "nextIconButton") nextSlide();
+    });
 
-    loadPlan().then(renderPlan);
+    Promise.all([loadPlan(), loadPageMeta()]).then(([plan, meta]) => {
+      renderPageMeta(meta);
+      renderPlan(plan);
+    });
   </script>
 </body>
 </html>
