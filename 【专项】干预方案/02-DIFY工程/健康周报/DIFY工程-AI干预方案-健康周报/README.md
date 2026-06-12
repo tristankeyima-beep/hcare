@@ -4,7 +4,7 @@
 
 本工程用于在 DIFY 中搭建“AI 干预方案-健康周报”分支。工作流接收患者基础档案、专病档案、近 1 年随访/指标/饮食/运动/取药记录、当前控制目标和健管师本次要求，优先抽取最近 7 天健康资料，输出可供 H5 渲染、健管师审阅修改的标准化健康周报 JSON，并在等待期间输出用户可见的流式阶段分析。
 
-本工程对应总入参 `planType=health_weekly_report`。
+本工程对应总入参 `planType=report`。
 
 健康周报是总结性报告，不生成饮食处方、运动处方、7 天菜谱、训练计划或复诊复查安排。
 
@@ -23,20 +23,19 @@ flowchart TB
 
   AS1 --> C["节点2：生成并保护健康周报素材摘要"]
   C --> D["节点3：规划分组并生成健康周报 items"]
-  C --> E["节点4：生成顶层总述字段"]
+  D --> E["节点4：生成顶层总述字段"]
 
-  D --> F["节点5：组装最终 JSON + 校验兜底"]
   E --> F
   F --> G["End/Answer：输出 finalPlanJsonText"]
 ```
 
-说明：流式节点只输出自然语言过程展示，不参与最终 JSON 拼装；结构化节点负责生成、格式化和组装最终 `finalPlanJsonText`。
+说明：流式节点只输出自然语言过程展示，不参与最终 JSON 拼装；结构化节点负责生成、格式化和组装最终 `finalPlanJsonText`。节点4建议在节点3之后执行，让封面总述和末屏执行要点能够呼应已经生成的卡片内容。
 
 ## Start 入参建议
 
 ```json
 {
-  "planType": "health_weekly_report",
+  "planType": "report",
   "planGoalAndRequirements": "",
   "extraSupplement": "",
   "basicProfile": {},
@@ -74,13 +73,31 @@ flowchart TB
 
 ## 编排要点
 
-- 节点1会带出 `planType`，如果不是 `health_weekly_report` 会在 `routeWarning` 中提示调用方检查路由。
+- 节点1会带出 `planType`，如果不是 `report` 会在 `routeWarning` 中提示调用方检查路由。
 - 节点1按输入记录中最新可识别日期向前推 7 天，输出 `metricTrendContext`、`dietExerciseContext`、`riskAndFollowupContext`。
-- 节点2用 1 个 LLM 同时生成 `metricTrendSummary`、`dietExerciseSummary`、`riskAndFollowupSummary`，再用代码保护出参格式，输出稳定的 `materialSummaryBundle`。
-- 节点3用 1 个 LLM 同时输出 `groupPlan` 和 `groups/items`，建议分组为本周健康概览、指标变化总结、饮食执行总结、运动执行总结、风险提醒与下周关注。
-- 节点4与节点3并行生成顶层文案字段，不依赖 `groups/items`。
+- 节点2用 1 个 LLM 同时生成 `metricTrendSummary`、`dietExerciseSummary`、`riskAndFollowupSummary`，再用代码保护出参格式，输出稳定的 `materialSummaryBundle`。摘要要保留证据，但同时提炼患者已经做得好的地方、需要留意的变化、下周最容易做到的一件事。
+- 节点3用 1 个 LLM 同时输出 `groupPlan` 和 `groups/items`，建议分组为本周健康概览、指标变化总结、饮食执行总结、运动执行总结、风险提醒与下周关注。字段结构不变，但字段取值要按小程序 H5 左右滑动卡片生成：标题短、正文轻、依据只放事实、提醒面向患者。
+- 节点4在节点3之后生成顶层文案字段，输入应包含素材摘要和节点3已生成的 `groups/items`，用于让 `planSummary`、`executionPoints` 与卡片内容一致。
 - 节点5负责组装节点3和节点4的出参，并做排序、字段兜底和结构校验。
 - 面向用户的流式输出不暴露结构化 JSON、schema、代码节点日志和提示词工程细节。
+
+## 患者端 H5 文案口径
+
+最终 JSON 仍保持原字段和原层级，不新增字段、不改字段名。只调整各字段具体取值：
+
+- `groupTitle`：保留稳定分组名，便于前端识别和排序。
+- `groupSummary`：写成患者能快速理解的一句小结，建议 20-35 字。
+- `items[].title`：作为 H5 卡片大标题，必须短、口语、明确，避免内部总结式标题。
+- `items[].content`：作为卡片正文，建议 45-80 字；按“这周看到什么、对你意味着什么、下周先关注什么”组织。
+- `goalBasis`：只写输入资料里已有的事实证据，例如具体指标、记录类型、行为记录；不写推断、不写建议。
+- `focusPoint`：写成患者能理解的提醒或解释，不输出“周报不生成菜谱/处方”等工程边界。
+- `importance`：仍只能取 `重点执行`、`常规建议`、`补充建议`。
+
+禁用表达：
+
+- 不输出系统、schema、JSON、字段、节点、工程、prompt 等内部术语。
+- 不把患者端文案写成质控报告、病历摘要、待办清单或风险通报。
+- 不编造趋势图、评分、达标状态、百分比或输入中没有的医学事实。
 
 ## 文件结构
 

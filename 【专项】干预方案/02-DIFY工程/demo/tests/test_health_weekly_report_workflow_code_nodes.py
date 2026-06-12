@@ -38,7 +38,7 @@ class HealthWeeklyReportWorkflowCodeNodeTests(unittest.TestCase):
         input_stats = json.loads(result["inputStats"])
         recent_metrics = metric_context["metricRecordsRecent7d"]
 
-        self.assertEqual(result["planType"], "health_weekly_report")
+        self.assertEqual(result["planType"], "report")
         self.assertEqual(input_stats["reportWindow"]["referenceDate"], "2026-05-29")
         self.assertEqual(input_stats["recent7dMetricRecordsCount"], 2)
         self.assertEqual([item["recordDate"] for item in recent_metrics], ["2026-05-24", "2026-05-29"])

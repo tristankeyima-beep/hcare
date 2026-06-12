@@ -1,0 +1,13 @@
+<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="健康周报">
+  <circle cx="25" cy="25" r="24" fill="#4F7DFF"/>
+  <circle cx="14" cy="36" r="8" fill="#8CB0FF" opacity=".36"/>
+  <rect x="13" y="14" width="24" height="24" rx="3.5" fill="white"/>
+  <path d="M13 20h24" stroke="#D9E5FF" stroke-width="2"/>
+  <path d="M18 12v5M32 12v5" stroke="white" stroke-width="2.4" stroke-linecap="round"/>
+  <rect x="18" y="27" width="3.7" height="6.5" rx="1" fill="#4F7DFF"/>
+  <rect x="24" y="23.5" width="3.7" height="10" rx="1" fill="#4F7DFF"/>
+  <rect x="30" y="25.5" width="3.7" height="8" rx="1" fill="#4F7DFF"/>
+  <path d="M17.5 23h4.5" stroke="#4F7DFF" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="35.5" cy="35.5" r="7.2" fill="#22C55E" stroke="#4F7DFF" stroke-width="1.8"/>
+  <path d="M32.3 35.3l2.1 2.1 4.3-4.8" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

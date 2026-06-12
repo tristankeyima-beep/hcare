@@ -1,0 +1,123 @@
+{
+  "planName": "健康周报",
+  "planTitle": "这周的健康情况，我们一起看一看",
+  "planSummary": "这周记录到血糖偏高，血压和BMI正常，但饮食和运动记录缺失，无法评估整体情况。下周建议优先补齐空腹及餐后血糖、血压记录，同时简单记录三餐和运动，帮助分析血糖波动原因。之前有过视力减退，需留意视力变化。",
+  "executionPoints": "下周重点：1. 连续记录空腹和餐后血糖、血压；2. 简单记录饮食和运动；3. 留意视力变化，有异常及时联系健管师。",
+  "groups": [
+    {
+      "groupTitle": "本周健康概览",
+      "groupType": "adviceList",
+      "groupSummary": "这周已有一些关键记录，可以先看清大方向。",
+      "displayStyle": "list",
+      "dietPlanGoalLabel": "",
+      "goalBasis": "素材显示近7天有血糖、血压记录，但饮食和运动记录缺失。",
+      "items": [
+        {
+          "itemType": "advice",
+          "day": "",
+          "title": "已有基础记录，下周补齐更完整",
+          "content": "这周已经记录到血糖和血压数据，可以初步看出管理方向。下周把饮食、运动和随访记录也补上，评估会更全面。",
+          "focusPoint": "不用一次记全，先从最重要的记录开始坚持。",
+          "importance": "重点执行",
+          "dailyTotalKcal": "",
+          "dailyTotalProteinG": "",
+          "dailyTotalFatG": "",
+          "estimatedEnergyDeficitKcal": "",
+          "meals": []
+        }
+      ]
+    },
+    {
+      "groupTitle": "指标变化总结",
+      "groupType": "adviceList",
+      "groupSummary": "这周有血糖和血压记录，但不够连续，先关注已有数据。",
+      "displayStyle": "list",
+      "dietPlanGoalLabel": "",
+      "goalBasis": "素材显示2025年9月29日空腹血糖6.9mmol/L、早餐后血糖9.0mmol/L，血压123/77mmHg，BMI 21.64。",
+      "items": [
+        {
+          "itemType": "advice",
+          "day": "",
+          "title": "血糖偏高，血压尚可",
+          "content": "这周记录到空腹血糖6.9mmol/L，餐后血糖9.0mmol/L，都高于理想范围；血压和BMI在正常范围。下周建议多测几次空腹和餐后血糖，看看整体趋势。",
+          "focusPoint": "血糖偏高，需要继续观察；血压目前稳定，继续保持。",
+          "importance": "重点执行",
+          "dailyTotalKcal": "",
+          "dailyTotalProteinG": "",
+          "dailyTotalFatG": "",
+          "estimatedEnergyDeficitKcal": "",
+          "meals": []
+        }
+      ]
+    },
+    {
+      "groupTitle": "饮食执行总结",
+      "groupType": "adviceList",
+      "groupSummary": "这周没有饮食记录，无法评估实际执行情况。",
+      "displayStyle": "list",
+      "dietPlanGoalLabel": "",
+      "goalBasis": "素材显示个人资料中饮食荤素均衡、偏好粗粮杂粮，但近7天无饮食记录。",
+      "items": [
+        {
+          "itemType": "advice",
+          "day": "",
+          "title": "这周饮食记录空白",
+          "content": "这周没有记录饮食内容，无法评估是否吃得均衡。下周可以简单记一下三餐主要食物，帮助我们了解饮食对血糖的影响。",
+          "focusPoint": "记录饮食能帮我们分析血糖波动的原因，先从简单记录开始。",
+          "importance": "常规建议",
+          "dailyTotalKcal": "",
+          "dailyTotalProteinG": "",
+          "dailyTotalFatG": "",
+          "estimatedEnergyDeficitKcal": "",
+          "meals": []
+        }
+      ]
+    },
+    {
+      "groupTitle": "运动执行总结",
+      "groupType": "adviceList",
+      "groupSummary": "这周没有运动记录，无法评估运动情况。",
+      "displayStyle": "list",
+      "dietPlanGoalLabel": "",
+      "goalBasis": "素材显示个人资料中运动以慢走为主、每日步数约1万步，但近7天无运动记录。",
+      "items": [
+        {
+          "itemType": "advice",
+          "day": "",
+          "title": "运动记录缺失",
+          "content": "这周没有记录运动，无法判断是否保持了日常活动量。下周可以简单记录运动类型和时间，帮助评估运动对血糖的益处。",
+          "focusPoint": "运动有助于控制血糖，记录能让我们看到效果。",
+          "importance": "常规建议",
+          "dailyTotalKcal": "",
+          "dailyTotalProteinG": "",
+          "dailyTotalFatG": "",
+          "estimatedEnergyDeficitKcal": "",
+          "meals": []
+        }
+      ]
+    },
+    {
+      "groupTitle": "风险提醒与下周关注",
+      "groupType": "adviceList",
+      "groupSummary": "这周没有报告不适，但病史提示需关注眼部健康。",
+      "displayStyle": "list",
+      "dietPlanGoalLabel": "",
+      "goalBasis": "素材显示近7天无低血糖、胸闷等报告，病史有糖尿病相关视力减退。",
+      "items": [
+        {
+          "itemType": "advice",
+          "day": "",
+          "title": "关注血糖和视力变化",
+          "content": "这周没有出现低血糖或胸闷等不适，但之前有过视力减退，需要特别留意。下周注意血糖波动，如果出现视力模糊或下降，及时联系健管师。",
+          "focusPoint": "视力变化是糖尿病需要关注的信号，有异常不要等。",
+          "importance": "重点执行",
+          "dailyTotalKcal": "",
+          "dailyTotalProteinG": "",
+          "dailyTotalFatG": "",
+          "estimatedEnergyDeficitKcal": "",
+          "meals": []
+        }
+      ]
+    }
+  ]
+}

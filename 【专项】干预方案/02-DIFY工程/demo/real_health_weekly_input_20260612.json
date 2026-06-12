@@ -1,0 +1,20 @@
+{
+  "planType": "report",
+  "planGoalAndRequirements": "",
+  "basicProfile": "{\"gender\":\"女\",\"age\":\"57\",\"presentIllness\":{\"typeList\":[\"糖尿病\",\"高血压\",\"混合性高脂血症\"],\"content\":null},\"familyDiseases\":[\"否认家族遗传病史\"],\"pastHistory\":{\"pastIllnesseList\":[],\"pastOperationList\":[],\"pastTraumaList\":[],\"pastTransfusionList\":[]},\"diet\":{\"allergicFood\":{\"typeList\":[],\"content\":null},\"eatingHabit\":[\"荤素均衡\"],\"tasteLevel\":\"适中\",\"mealsNum\":3,\"stapleFood\":{\"typeList\":[\"粗粮或杂粮\"],\"content\":null}},\"sport\":{\"laborIntensity\":\"中等体力劳动\",\"stepNum\":10000,\"sportTime\":null,\"sportDuration\":null,\"sportFrequency\":null,\"hightSport\":{\"typeList\":[],\"content\":null},\"midSport\":{\"typeList\":[],\"content\":null},\"lowSport\":{\"typeList\":[\"慢走\"],\"content\":null}},\"smoking\":{\"smokingStatus\":\"无\",\"smokeDuration\":null,\"dailySmokeAmount\":null,\"timeToQuitSmoking\":null},\"drinking\":{\"drinkStatus\":\"无\",\"drinkingFrequency\":null,\"drinkingFrequencyRemark\":null,\"drinkingClassificationList\":[{\"type\":\"红酒\",\"dailyDrinkAmount\":null},{\"type\":\"啤酒\",\"dailyDrinkAmount\":null},{\"type\":\"黄酒\",\"dailyDrinkAmount\":null},{\"type\":\"白酒（<40度）\",\"dailyDrinkAmount\":null}],\"timeToQuitDrinking\":null}}",
+  "extraSupplement": "",
+  "diseaseProfile": "{\"htn\":{\"hypertensionClass\":null,\"hypertensionType\":null,\"hypertensionStage\":null,\"diagnosisDate\":null,\"morbidity\":\"无\",\"complication\":{\"values\":null,\"content\":null},\"remark\":null},\"dm\":{\"diabetesType\":\"2型糖尿病\",\"diagnosisDate\":\"2011-03-09\",\"diabetesSymptoms\":{\"values\":[\"不明原因的双眼视力减退、视物模糊\"],\"content\":null},\"hypoglycemia\":\"无\",\"complication\":{\"values\":null,\"content\":null},\"remark\":null,\"acuteComplications\":null},\"obesity\":null}",
+  "followupRecordsLast1y": "",
+  "metricRecordsLast1y": "[{\"indicatorName\":\"心率\",\"unit\":\"次/min\",\"indicatorHistory\":[{\"indicatorValue\":\"68\",\"measureTime\":\"2025-09-29 09:18:54\"},{\"indicatorValue\":\"68\",\"measureTime\":\"2025-09-29 09:18:05\"}]},{\"indicatorName\":\"身高\",\"unit\":\"cm\",\"indicatorHistory\":[{\"indicatorValue\":\"155.0\",\"measureTime\":\"2025-09-29 09:18:54\"},{\"indicatorValue\":\"155.0\",\"measureTime\":\"2025-09-29 09:18:05\"}]},{\"indicatorName\":\"体重\",\"unit\":\"kg\",\"indicatorHistory\":[{\"indicatorValue\":\"52.0\",\"measureTime\":\"2025-09-29 09:18:54\"},{\"indicatorValue\":\"52.0\",\"measureTime\":\"2025-09-29 09:18:05\"}]},{\"indicatorName\":\"体质指数（BMI）\",\"unit\":null,\"indicatorHistory\":[{\"indicatorValue\":\"21.64\",\"measureTime\":\"2025-09-29 09:18:54\"},{\"indicatorValue\":\"21.64\",\"measureTime\":\"2025-09-29 09:18:05\"}]},{\"indicatorName\":\"低血糖反应\",\"unit\":null,\"indicatorHistory\":[{\"indicatorValue\":\"1\",\"measureTime\":\"2025-09-29 09:18:05\"}]},{\"indicatorName\":\"起床舒张压\",\"unit\":\"mmHg\",\"indicatorHistory\":[{\"indicatorValue\":\"77\",\"measureTime\":\"2025-09-29 09:14:52\"}]},{\"indicatorName\":\"起床收缩压\",\"unit\":\"mmHg\",\"indicatorHistory\":[{\"indicatorValue\":\"123\",\"measureTime\":\"2025-09-29 09:14:52\"}]},{\"indicatorName\":\"早餐后血糖\",\"unit\":\"mmol/L\",\"indicatorHistory\":[{\"indicatorValue\":\"9\",\"measureTime\":\"2025-09-29 09:14:38\"},{\"indicatorValue\":\"8.8\",\"measureTime\":\"2025-08-06 00:00:00\"},{\"indicatorValue\":\"6.7\",\"measureTime\":\"2025-06-12 00:00:00\"}]},{\"indicatorName\":\"空腹血糖\",\"unit\":\"mmol/L\",\"indicatorHistory\":[{\"indicatorValue\":\"6.9\",\"measureTime\":\"2025-09-29 09:14:28\"},{\"indicatorValue\":\"6.2\",\"measureTime\":\"2025-08-06 00:00:00\"},{\"indicatorValue\":\"5.5\",\"measureTime\":\"2025-06-12 00:00:00\"}]}]",
+  "dietRecordsLast1y": "",
+  "exerciseRecordsLast1y": "",
+  "medPickupRecords1y": "",
+  "activeControlGoals": "",
+  "sys.files": [],
+  "sys.user_id": "sys",
+  "sys.app_id": "c67f3bef-0ee4-465f-9af8-2aa058b869ee",
+  "sys.workflow_id": "cad85464-ff7d-4251-8840-2afba9596a8f",
+  "sys.workflow_run_id": "9016f714-d5a9-4fc2-bdb9-9f092f693007",
+  "sys.query": "生成干预方案",
+  "sys.dialogue_count": 1
+}

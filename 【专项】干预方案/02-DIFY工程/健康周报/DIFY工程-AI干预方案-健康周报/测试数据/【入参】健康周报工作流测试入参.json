@@ -1,5 +1,5 @@
 {
-  "planType": "health_weekly_report",
+  "planType": "report",
   "planGoalAndRequirements": "生成最近7天健康周报，重点总结指标变化、饮食运动执行、风险提醒和下周关注点；语言通俗，适合患者阅读。",
   "extraSupplement": "患者夜班较多，记录不一定完整，周报中需要明确哪些记录不足。",
   "externalPatientInfo": {

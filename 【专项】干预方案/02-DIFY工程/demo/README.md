@@ -7,7 +7,7 @@
 - `dify_aihcare_diet_runner.py`：饮食方案 `planType=diet` 调用、归档和 HTML 渲染。
 - `dify_aihcare_sport_runner.py`：运动方案 `planType=sport` 调用、归档和 HTML 渲染。
 - `dify_aihcare_followup_review_runner.py`：复诊复查指导 `planType=followup_review` 调用、归档和 HTML 渲染。
-- `dify_aihcare_health_weekly_report_runner.py`：健康周报 `planType=health_weekly_report` 调用、归档和 HTML 渲染。
+- `dify_aihcare_health_weekly_report_runner.py`：健康周报 `planType=report` 调用、归档和 HTML 渲染。
 - `tests/`：本地单测，覆盖 runner 和部分工作流 Code 节点。
 - `userinput/`：按病例归档的入参、Dify 原始事件、最终 JSON 和 HTML 结果页。
 
@@ -193,7 +193,7 @@ DIFY_API_KEY_TEST="app-***" python3 dify_aihcare_health_weekly_report_runner.py 
 处理规则：
 
 - 对象和数组会转为 JSON 字符串，以适配 Dify paragraph 变量。
-- 饮食 runner 自动补齐 `planType=diet`，运动 runner 自动补齐 `planType=sport`，复诊复查指导 runner 自动补齐 `planType=followup_review`，健康周报 runner 自动补齐 `planType=health_weekly_report`。
+- 饮食 runner 自动补齐 `planType=diet`，运动 runner 自动补齐 `planType=sport`，复诊复查指导 runner 自动补齐 `planType=followup_review`，健康周报 runner 自动补齐 `planType=report`。
 - 移除 `response_mode`、`user`、`conversation_id`、`query` 等请求控制字段。
 - 患者名称提取顺序：`externalPatientInfo.patientName`、顶层 `patientName/patient_name/姓名`、`basicProfile.demographics.name`、`未知患者`。
 

@@ -79,7 +79,7 @@ class DifyAihcareHealthWeeklyReportRunnerTests(unittest.TestCase):
             self.assertEqual(result.case_dir.name, "张三_健康周报_20260519-101112")
             saved = json.loads((result.case_dir / "入参.json").read_text(encoding="utf-8"))
             inputs = saved["dify_payload"]["inputs"]
-            self.assertEqual(inputs["planType"], "health_weekly_report")
+            self.assertEqual(inputs["planType"], "report")
             self.assertEqual(saved["metadata"]["caseName"], "健康周报")
             self.assertIsInstance(inputs["externalPatientInfo"], str)
             self.assertIsInstance(inputs["basicProfile"], str)

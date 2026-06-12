@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>健康周报H5demo</title>
+  <style>
+    :root {
+      --bg: #eef3f4;
+      --surface: #fbfdfc;
+      --surface-soft: #f5f8f7;
+      --ink: #162326;
+      --muted: #647477;
+      --quiet: #8a999c;
+      --line: #dfe8e6;
+      --accent: #287c68;
+      --accent-deep: #145a4a;
+      --accent-soft: #e4f3ee;
+      --blue: #326c9d;
+      --blue-soft: #e8f2fb;
+      --amber: #94631f;
+      --amber-soft: #fff2da;
+      --green: #327b4b;
+      --green-soft: #e8f7ed;
+      --slate: #465b67;
+      --slate-soft: #edf2f5;
+      --red: #a9444f;
+      --red-soft: #fff0f2;
+      --violet: #6740a6;
+      --violet-soft: #f3edff;
+      --shadow: 0 18px 42px rgba(29, 45, 49, 0.14);
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --ease: cubic-bezier(0.2, 0.9, 0.2, 1);
+      --page-x: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-height: 100%;
+      background: #dde8e7;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, #e2efec 0, rgba(238, 243, 244, 0) 330px),
+        var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+        "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      font-size: 15px;
+      line-height: 1.58;
+      overflow: hidden;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    .app {
+      width: min(100%, 430px);
+      height: 100vh;
+      min-height: 620px;
+      margin: 0 auto;
+      background: var(--bg);
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .topbar {
+      min-width: 0;
+      padding: calc(env(safe-area-inset-top, 0px) + 12px) var(--page-x) 10px;
+      background: rgba(238, 243, 244, 0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(223, 232, 230, 0.78);
+      position: relative;
+      z-index: 2;
+    }
+
+    .topline {
+      min-height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--accent-deep);
+    }
+
+    .brand-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 5px rgba(40, 124, 104, 0.12);
+    }
+
+    .progress-text {
+      color: var(--quiet);
+    }
+
+    .title-row {
+      margin-top: 8px;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .title-row h1 {
+      max-width: 290px;
+      color: var(--ink);
+      font-size: 19px;
+      line-height: 1.24;
+      font-weight: 850;
+      letter-spacing: 0;
+    }
+
+    .source-pill {
+      flex: 0 0 auto;
+      min-height: 28px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .stage {
+      min-width: 0;
+      min-height: 0;
+      position: relative;
+      padding: 14px 0 10px;
+      overflow: hidden;
+    }
+
+    .slides {
+      min-width: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      overflow: hidden;
+      overflow-y: hidden;
+      padding: 0 var(--page-x) 8px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      touch-action: pan-y;
+      user-select: none;
+    }
+
+    .slides::-webkit-scrollbar {
+      display: none;
+    }
+
+    .card {
+      display: none;
+      width: calc(100vw - 64px);
+      max-width: 366px;
+      min-width: 280px;
+      height: 100%;
+      margin: 0 auto;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(22, 35, 38, 0.08);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      padding: 22px 18px 18px;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .card.is-active {
+      display: flex;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 144px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.32), rgba(255, 255, 255, 0));
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .card-cover {
+      background: linear-gradient(160deg, #e0f1eb 0%, #fbfdfc 68%);
+    }
+
+    .tone-blue {
+      background: linear-gradient(160deg, var(--blue-soft) 0%, #fbfdfc 74%);
+    }
+
+    .tone-amber {
+      background: linear-gradient(160deg, var(--amber-soft) 0%, #fbfdfc 74%);
+    }
+
+    .tone-green {
+      background: linear-gradient(160deg, var(--green-soft) 0%, #fbfdfc 74%);
+    }
+
+    .tone-slate {
+      background: linear-gradient(160deg, var(--slate-soft) 0%, #fbfdfc 74%);
+    }
+
+    .tone-red {
+      background: linear-gradient(160deg, var(--red-soft) 0%, #fbfdfc 74%);
+    }
+
+    .tone-violet {
+      background: linear-gradient(160deg, var(--violet-soft) 0%, #fbfdfc 74%);
+    }
+
+    .kicker {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .badge {
+      min-height: 26px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--accent-deep);
+      border: 1px solid rgba(20, 90, 74, 0.12);
+      white-space: nowrap;
+    }
+
+    .card-title {
+      margin-top: 18px;
+      color: var(--ink);
+      font-size: 28px;
+      line-height: 1.14;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .group-name {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .copy {
+      margin-top: 16px;
+      color: #334347;
+      font-size: 15px;
+      line-height: 1.68;
+    }
+
+    .detail-block {
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: var(--radius-md);
+      background: rgba(251, 253, 252, 0.74);
+      border: 1px solid rgba(22, 35, 38, 0.08);
+    }
+
+    .detail-label {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 850;
+    }
+
+    .detail-text {
+      color: #46585c;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .basis {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .summary-footer {
+      margin-top: auto;
+      padding-top: 18px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .meta {
+      min-height: 74px;
+      padding: 10px 8px;
+      border-radius: var(--radius-md);
+      background: rgba(251, 253, 252, 0.72);
+      border: 1px solid rgba(22, 35, 38, 0.08);
+    }
+
+    .meta strong {
+      display: block;
+      color: var(--ink);
+      font-size: 22px;
+      line-height: 1;
+      font-weight: 900;
+    }
+
+    .meta span {
+      display: block;
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.28;
+      font-weight: 700;
+    }
+
+    .hint {
+      color: var(--quiet);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .controls {
+      min-width: 0;
+      padding: 10px var(--page-x) calc(env(safe-area-inset-bottom, 0px) + 12px);
+      background: rgba(238, 243, 244, 0.92);
+      border-top: 1px solid rgba(223, 232, 230, 0.86);
+      backdrop-filter: blur(14px);
+      display: grid;
+      gap: 10px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .dots {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      min-height: 12px;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border: 0;
+      padding: 0;
+      border-radius: 999px;
+      background: #b9c7c7;
+      transition: width 180ms var(--ease), background-color 180ms var(--ease);
+    }
+
+    .dot[aria-current="true"] {
+      width: 24px;
+      background: var(--accent-deep);
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 48px 1fr 48px;
+      gap: 10px;
+    }
+
+    .nav-button,
+    .primary-button {
+      min-height: 46px;
+      border: 0;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: transform 160ms var(--ease), background-color 160ms var(--ease);
+    }
+
+    .nav-button {
+      background: var(--surface);
+      color: var(--accent-deep);
+      border: 1px solid var(--line);
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .primary-button {
+      background: var(--accent-deep);
+      color: #f7fbfa;
+      font-size: 14px;
+      font-weight: 850;
+    }
+
+    .nav-button:active,
+    .primary-button:active {
+      transform: scale(0.98);
+    }
+
+    .nav-button:focus-visible,
+    .primary-button:focus-visible,
+    .dot:focus-visible {
+      outline: 3px solid rgba(40, 124, 104, 0.28);
+      outline-offset: 3px;
+    }
+
+    .error {
+      display: none;
+      margin: 14px var(--page-x);
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      background: var(--red-soft);
+      color: var(--red);
+      border: 1px solid rgba(169, 68, 79, 0.18);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 360px) {
+      .card {
+        width: calc(100vw - 48px);
+        min-width: 272px;
+        padding: 20px 16px 16px;
+      }
+
+      .card-title {
+        font-size: 25px;
+      }
+
+      .copy {
+        font-size: 14px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="topline">
+        <span class="brand"><span class="brand-dot" aria-hidden="true"></span><span id="planName">健康周报</span></span>
+        <span class="progress-text" id="progressText">1 / 1</span>
+      </div>
+      <div class="title-row">
+        <h1 id="pageTitle">这周的健康情况，我们一起看一看</h1>
+        <span class="source-pill">左右滑动</span>
+      </div>
+    </header>
+
+    <main class="stage" id="main">
+      <div class="error" id="errorMessage" role="alert"></div>
+      <div class="slides" id="slides" aria-label="健康周报卡片"></div>
+    </main>
+
+    <footer class="controls" aria-label="周报翻页控制">
+      <div class="dots" id="dots" aria-label="当前卡片位置"></div>
+      <div class="actions">
+        <button class="nav-button" type="button" id="prevButton" aria-label="上一张">‹</button>
+        <button class="primary-button" type="button" id="nextButton">下一张</button>
+        <button class="nav-button" type="button" id="nextIconButton" aria-label="下一张">›</button>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const FALLBACK_PLAN = {
+      "planName": "健康周报",
+      "planTitle": "这周的健康情况，我们一起看一看",
+      "planSummary": "这周已经有一些血糖、血压、饮食和运动记录，能帮助我们看见近期管理方向：血糖血压仍需要持续关注，早餐和散步等好习惯可以继续保留；因为记录还不够连续，下周先把关键记录补齐，让判断更可靠。",
+      "executionPoints": "下周先稳住两件事：继续记录空腹/餐后血糖和血压，同时把饮食、运动和不适感受简单记下来；如果指标连续偏高、出现低血糖表现或明显不舒服，请及时联系医生或健管师。",
+      "groups": [
+        {
+          "groupTitle": "本周健康概览",
+          "groupType": "adviceList",
+          "groupSummary": "这周已经留下了几类关键记录，可以帮助我们看见管理方向。",
+          "displayStyle": "list",
+          "dietPlanGoalLabel": "",
+          "goalBasis": "近7天有血糖、血压、饮食、运动和随访记录。",
+          "items": [
+            {
+              "itemType": "advice",
+              "day": "",
+              "title": "这周已经有了关键记录",
+              "content": "这周记录到了血糖、血压、饮食、运动和取药信息，已经能看出血糖血压仍需要继续关注；同时，您也有无糖早餐、快走和散步这些值得保留的好习惯。",
+              "focusPoint": "已有记录能帮助发现方向，连续记录更适合判断趋势。",
+              "importance": "重点执行",
+              "dailyTotalKcal": "",
+              "dailyTotalProteinG": "",
+              "dailyTotalFatG": "",
+              "estimatedEnergyDeficitKcal": "",
+              "meals": []
+            }
+          ]
+        },
+        {
+          "groupTitle": "指标变化总结",
+          "groupType": "adviceList",
+          "groupSummary": "血糖和血压是这周最需要继续观察的指标。",
+          "displayStyle": "list",
+          "dietPlanGoalLabel": "",
+          "goalBasis": "空腹血糖8.1 mmol/L、餐后2小时血糖13.6 mmol/L、血压148/92 mmHg。",
+          "items": [
+            {
+              "itemType": "advice",
+              "day": "",
+              "title": "血糖血压需要温和地盯紧",
+              "content": "这周已有记录高于目标范围，说明血糖和血压还需要继续观察。下周先把空腹、餐后2小时血糖和血压记得更连续，医生或健管师就能更准确地判断变化。",
+              "focusPoint": "不用因为单次结果紧张，但连续偏高时要及时反馈。",
+              "importance": "重点执行",
+              "dailyTotalKcal": "",
+              "dailyTotalProteinG": "",
+              "dailyTotalFatG": "",
+              "estimatedEnergyDeficitKcal": "",
+              "meals": []
+            }
+          ]
+        },
+        {
+          "groupTitle": "饮食执行总结",
+          "groupType": "adviceList",
+          "groupSummary": "本周早餐选择里有值得保留的好习惯，晚餐外卖可以继续微调。",
+          "displayStyle": "list",
+          "dietPlanGoalLabel": "",
+          "goalBasis": "近7天饮食记录包含外卖盖饭和无糖豆浆、鸡蛋、全麦面包。",
+          "items": [
+            {
+              "itemType": "advice",
+              "day": "",
+              "title": "早餐做得不错，晚餐再轻一点",
+              "content": "鸡蛋、无糖豆浆和全麦面包是比较友好的早餐组合，可以继续保留；晚餐外卖时先留意主食份量和油脂，下周记录一下吃完后的血糖感受。",
+              "focusPoint": "周报只总结执行情况，不生成新的菜谱。",
+              "importance": "常规建议",
+              "dailyTotalKcal": "",
+              "dailyTotalProteinG": "",
+              "dailyTotalFatG": "",
+              "estimatedEnergyDeficitKcal": "",
+              "meals": []
+            }
+          ]
+        },
+        {
+          "groupTitle": "运动执行总结",
+          "groupType": "adviceList",
+          "groupSummary": "本周已经有快走和散步记录，先把安全和连续性放在前面。",
+          "displayStyle": "list",
+          "dietPlanGoalLabel": "",
+          "goalBasis": "近7天运动记录包含25分钟快走和15分钟散步。",
+          "items": [
+            {
+              "itemType": "advice",
+              "day": "",
+              "title": "运动从能坚持的小步开始",
+              "content": "这周已有快走和散步记录，而且没有明显不适，这是很好的起点。夜班后疲劳时不用勉强加量，下周先记录运动时间和身体感受。",
+              "focusPoint": "先保证安全和连续，再逐步看是否需要增加活动量。",
+              "importance": "常规建议",
+              "dailyTotalKcal": "",
+              "dailyTotalProteinG": "",
+              "dailyTotalFatG": "",
+              "estimatedEnergyDeficitKcal": "",
+              "meals": []
+            }
+          ]
+        },
+        {
+          "groupTitle": "风险提醒与下周关注",
+          "groupType": "adviceList",
+          "groupSummary": "下周重点是把记录做得更连续，同时留意需要及时反馈的异常信号。",
+          "displayStyle": "list",
+          "dietPlanGoalLabel": "",
+          "goalBasis": "随访记录提示夜班后空腹血糖偏高，且本周已有血糖血压偏高记录。",
+          "items": [
+            {
+              "itemType": "advice",
+              "day": "",
+              "title": "有不舒服别硬扛",
+              "content": "如果下周连续出现血糖或血压明显偏高、低血糖表现、胸闷胸痛、明显头晕或用药中断，请及时联系医生或健管师，不用等到下一次周报。",
+              "focusPoint": "周报帮助看趋势，但明显不适和连续异常要优先处理。",
+              "importance": "重点执行",
+              "dailyTotalKcal": "",
+              "dailyTotalProteinG": "",
+              "dailyTotalFatG": "",
+              "estimatedEnergyDeficitKcal": "",
+              "meals": []
+            }
+          ]
+        }
+      ]
+    };
+
+    const toneClasses = ["tone-blue", "tone-amber", "tone-green", "tone-slate", "tone-red"];
+    const state = {
+      activeIndex: 0,
+      total: 0
+    };
+
+    function safeText(value, fallback = "") {
+      if (value == null) return fallback;
+      const text = String(value).trim();
+      return text === "" ? fallback : text;
+    }
+
+    function createElement(tag, className, text) {
+      const element = document.createElement(tag);
+      if (className) element.className = className;
+      if (text != null) element.textContent = text;
+      return element;
+    }
+
+    function primaryItem(group) {
+      const items = Array.isArray(group.items) ? group.items : [];
+      return items[0] || {};
+    }
+
+    function countItems(groups) {
+      return groups.reduce((total, group) => {
+        return total + (Array.isArray(group.items) ? group.items.length : 0);
+      }, 0);
+    }
+
+    function appendDetail(card, label, value, className = "detail-block") {
+      const text = safeText(value);
+      if (!text) return;
+      const block = createElement("div", className);
+      block.append(createElement("span", "detail-label", label));
+      block.append(createElement("p", "detail-text", text));
+      card.append(block);
+    }
+
+    function createCover(plan, groups) {
+      const card = createElement("article", "card card-cover");
+      const kicker = createElement("div", "kicker");
+      kicker.append(createElement("span", "", "01 / 周报总览"));
+      kicker.append(createElement("span", "badge", safeText(plan.planName, "健康周报")));
+      card.append(kicker);
+      card.append(createElement("h2", "card-title", safeText(plan.planTitle, "这周的健康情况，我们一起看一看")));
+      card.append(createElement("p", "copy", safeText(plan.planSummary)));
+
+      const footer = createElement("div", "summary-footer");
+      const metaGrid = createElement("div", "meta-grid");
+      const stats = [
+        [groups.length, "健康主题"],
+        [countItems(groups), "周报条目"],
+        [groups.filter((group) => primaryItem(group).importance === "重点执行").length, "本周重点"]
+      ];
+      stats.forEach(([value, label]) => {
+        const meta = createElement("div", "meta");
+        meta.append(createElement("strong", "", value));
+        meta.append(createElement("span", "", label));
+        metaGrid.append(meta);
+      });
+      footer.append(metaGrid);
+      footer.append(createElement("p", "hint", "左右滑动，看完这周的每个健康主题"));
+      card.append(footer);
+      return card;
+    }
+
+    function createGroupCard(group, index) {
+      const item = primaryItem(group);
+      const card = createElement("article", `card ${toneClasses[index % toneClasses.length]}`);
+      const kicker = createElement("div", "kicker");
+      kicker.append(createElement("span", "", `${String(index + 2).padStart(2, "0")} / ${safeText(group.groupTitle, "健康主题")}`));
+      kicker.append(createElement("span", "badge", safeText(item.importance, "周报内容")));
+      card.append(kicker);
+      card.append(createElement("h2", "card-title", safeText(item.title, safeText(group.groupTitle))));
+      if (safeText(group.groupSummary)) {
+        card.append(createElement("p", "group-name", safeText(group.groupSummary)));
+      }
+      card.append(createElement("p", "copy", safeText(item.content)));
+      appendDetail(card, "这周记录显示", group.goalBasis);
+      appendDetail(card, "你可以这样理解", item.focusPoint);
+      return card;
+    }
+
+    function createExecutionCard(plan, index) {
+      const card = createElement("article", "card tone-violet");
+      const kicker = createElement("div", "kicker");
+      kicker.append(createElement("span", "", `${String(index).padStart(2, "0")} / 下周关注`));
+      kicker.append(createElement("span", "badge", "执行要点"));
+      card.append(kicker);
+      card.append(createElement("h2", "card-title", "下周先稳住这几件事"));
+      card.append(createElement("p", "copy", safeText(plan.executionPoints)));
+      const footer = createElement("div", "summary-footer");
+      footer.append(createElement("p", "hint", "如果出现明显不舒服，优先联系医生或健管师。"));
+      card.append(footer);
+      return card;
+    }
+
+    function updateProgress(index) {
+      state.activeIndex = Math.max(0, Math.min(index, state.total - 1));
+      document.getElementById("progressText").textContent = `${state.activeIndex + 1} / ${state.total}`;
+      document.querySelectorAll(".dot").forEach((dot, dotIndex) => {
+        dot.setAttribute("aria-current", String(dotIndex === state.activeIndex));
+      });
+      document.querySelectorAll(".card").forEach((card, cardIndex) => {
+        card.classList.toggle("is-active", cardIndex === state.activeIndex);
+      });
+      const nextButton = document.getElementById("nextButton");
+      nextButton.textContent = state.activeIndex === state.total - 1 ? "回到开头" : "下一张";
+    }
+
+    function scrollToSlide(index) {
+      updateProgress(index);
+    }
+
+    function renderDots(total) {
+      const dots = document.getElementById("dots");
+      dots.textContent = "";
+      for (let index = 0; index < total; index += 1) {
+        const dot = createElement("button", "dot");
+        dot.type = "button";
+        dot.setAttribute("aria-label", `第${index + 1}张`);
+        dot.addEventListener("click", () => scrollToSlide(index));
+        dots.append(dot);
+      }
+    }
+
+    function bindSwipeProgress() {
+      const slides = document.getElementById("slides");
+      let startX = 0;
+      let deltaX = 0;
+      let dragging = false;
+
+      slides.addEventListener("pointerdown", (event) => {
+        dragging = true;
+        startX = event.clientX;
+        deltaX = 0;
+        slides.setPointerCapture(event.pointerId);
+      });
+
+      slides.addEventListener("pointermove", (event) => {
+        if (!dragging) return;
+        deltaX = event.clientX - startX;
+      });
+
+      function endDrag(event) {
+        if (!dragging) return;
+        dragging = false;
+        const threshold = 48;
+        let nextIndex = state.activeIndex;
+        if (deltaX < -threshold) nextIndex += 1;
+        if (deltaX > threshold) nextIndex -= 1;
+        scrollToSlide(nextIndex);
+        if (event && event.pointerId != null) {
+          try {
+            slides.releasePointerCapture(event.pointerId);
+          } catch (error) {
+            // Pointer capture may already be released by the browser.
+          }
+        }
+      }
+
+      slides.addEventListener("pointerup", endDrag);
+      slides.addEventListener("pointercancel", endDrag);
+    }
+
+    function renderPlan(plan) {
+      const groups = Array.isArray(plan.groups) ? plan.groups : [];
+      const slides = document.getElementById("slides");
+      slides.textContent = "";
+      document.getElementById("planName").textContent = safeText(plan.planName, "健康周报");
+      document.getElementById("pageTitle").textContent = safeText(plan.planTitle, "这周的健康情况，我们一起看一看");
+
+      slides.append(createCover(plan, groups));
+      groups.forEach((group, index) => slides.append(createGroupCard(group, index)));
+      slides.append(createExecutionCard(plan, groups.length + 2));
+
+      state.total = slides.children.length;
+      renderDots(state.total);
+      updateProgress(0);
+      bindSwipeProgress();
+    }
+
+    async function loadPlan() {
+      try {
+        const response = await fetch("./dify-final-plan.json", { cache: "no-store" });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return await response.json();
+      } catch (error) {
+        if (location.protocol !== "file:") {
+          const message = document.getElementById("errorMessage");
+          message.style.display = "block";
+          message.textContent = "未能读取 dify-final-plan.json，当前使用页面内置示例数据。";
+        }
+        return FALLBACK_PLAN;
+      }
+    }
+
+    document.getElementById("prevButton").addEventListener("click", () => {
+      const nextIndex = state.activeIndex === 0 ? state.total - 1 : state.activeIndex - 1;
+      scrollToSlide(nextIndex);
+    });
+
+    function nextSlide() {
+      const nextIndex = state.activeIndex === state.total - 1 ? 0 : state.activeIndex + 1;
+      scrollToSlide(nextIndex);
+    }
+
+    document.getElementById("nextButton").addEventListener("click", nextSlide);
+    document.getElementById("nextIconButton").addEventListener("click", nextSlide);
+
+    loadPlan().then(renderPlan);
+  </script>
+</body>
+</html>

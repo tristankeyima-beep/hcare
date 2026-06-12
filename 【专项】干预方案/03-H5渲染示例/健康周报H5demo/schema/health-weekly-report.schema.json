@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HealthWeeklyReportFinalPlan",
+  "type": "object",
+  "required": [
+    "planName",
+    "planTitle",
+    "planSummary",
+    "executionPoints",
+    "groups"
+  ],
+  "properties": {
+    "planName": {
+      "type": "string"
+    },
+    "planTitle": {
+      "type": "string"
+    },
+    "planSummary": {
+      "type": "string"
+    },
+    "executionPoints": {
+      "type": "string"
+    },
+    "groups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "groupTitle",
+          "groupType",
+          "groupSummary",
+          "displayStyle",
+          "items"
+        ],
+        "properties": {
+          "groupTitle": {
+            "type": "string"
+          },
+          "groupType": {
+            "type": "string"
+          },
+          "groupSummary": {
+            "type": "string"
+          },
+          "displayStyle": {
+            "type": "string"
+          },
+          "dietPlanGoalLabel": {
+            "type": "string"
+          },
+          "goalBasis": {
+            "type": "string"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "itemType",
+                "title",
+                "content",
+                "focusPoint",
+                "importance"
+              ],
+              "properties": {
+                "itemType": {
+                  "type": "string"
+                },
+                "day": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "content": {
+                  "type": "string"
+                },
+                "focusPoint": {
+                  "type": "string"
+                },
+                "importance": {
+                  "type": "string"
+                },
+                "dailyTotalKcal": {
+                  "type": "string"
+                },
+                "dailyTotalProteinG": {
+                  "type": "string"
+                },
+                "dailyTotalFatG": {
+                  "type": "string"
+                },
+                "estimatedEnergyDeficitKcal": {
+                  "type": "string"
+                },
+                "meals": {
+                  "type": "array"
+                }
+              },
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

@@ -14,7 +14,7 @@
   - `diet`：饮食方案
   - `sport`：运动方案
   - `followup_review`：复诊复查指导
-  - `health_weekly_report`：健康周报
+  - `report`：健康周报
 
 ## 原文件地址
 

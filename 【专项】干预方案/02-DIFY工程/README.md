@@ -7,7 +7,7 @@
 - `planType=diet`：进入饮食干预方案分支。
 - `planType=sport`：进入运动干预方案分支。
 - `planType=followup_review`：进入复诊复查指导分支。
-- `planType=health_weekly_report`：进入健康周报分支。
+- `planType=report`：进入健康周报分支。
 
 目录中的“饮食方案 / 运动方案 / 复诊复查指导 / 健康周报”不是独立 Dify 应用，而是同一个 V4 Chatflow 的四个业务分支。每个方案目录内同时保留结构化 JSON 生成节点和用户可见的流式展示节点。
 
@@ -68,11 +68,11 @@
 | 目录 | 对应分支 | 资料用途 |
 | --- | --- | --- |
 | `DIFY原工程/` | V4 统一 Chatflow | 已验证 Dify yml、原文件地址和版本更新记录 |
-| `demo/` | `planType=diet` / `planType=sport` / `planType=followup_review` / `planType=health_weekly_report` | 整个干预方案 Chatflow 的本地联调 runner、归档结果和本地单测 |
+| `demo/` | `planType=diet` / `planType=sport` / `planType=followup_review` / `planType=report` | 整个干预方案 Chatflow 的本地联调 runner、归档结果和本地单测 |
 | `饮食方案/DIFY工程-AI干预方案-饮食方案/` | `planType=diet` | 饮食分支结构化 JSON 生成、流式过程展示、测试数据和节点说明 |
 | `运动方案/DIFY工程-AI干预方案-运动方案/` | `planType=sport` | 运动分支结构化 JSON 生成、流式过程展示、测试数据、调试记录和节点说明 |
 | `复诊复查指导/DIFY工程-AI干预方案-复诊复查指导/` | `planType=followup_review` | 复诊复查指导分支结构化 JSON 生成、流式过程展示、测试数据和节点说明 |
-| `健康周报/DIFY工程-AI干预方案-健康周报/` | `planType=health_weekly_report` | 健康周报分支结构化 JSON 生成、流式过程展示、测试数据和节点说明 |
+| `健康周报/DIFY工程-AI干预方案-健康周报/` | `planType=report` | 健康周报分支结构化 JSON 生成、流式过程展示、测试数据和节点说明 |
 
 本地 demo runner 是同一个 V4 Chatflow 的四个测试入口：
 
@@ -81,7 +81,7 @@
 | `dify_aihcare_diet_runner.py` | 饮食方案联调 | `planType=diet` | 流式阶段输出和最终 `finalPlanJsonText` |
 | `dify_aihcare_sport_runner.py` | 运动方案联调 | `planType=sport` | 流式阶段输出和最终 `finalPlanJsonText` |
 | `dify_aihcare_followup_review_runner.py` | 复诊复查指导联调 | `planType=followup_review` | 流式阶段输出和最终 `finalPlanJsonText` |
-| `dify_aihcare_health_weekly_report_runner.py` | 健康周报联调 | `planType=health_weekly_report` | 流式阶段输出和最终 `finalPlanJsonText` |
+| `dify_aihcare_health_weekly_report_runner.py` | 健康周报联调 | `planType=report` | 流式阶段输出和最终 `finalPlanJsonText` |
 
 ## 统一入参
 
@@ -105,7 +105,7 @@ Chatflow Start 节点建议接收以下入参：
 
 字段说明：
 
-- `planType` 是总入口路由字段，当前用于区分 `diet` / `sport` / `followup_review` / `health_weekly_report`。
+- `planType` 是总入口路由字段，当前用于区分 `diet` / `sport` / `followup_review` / `report`。
 - `planGoalAndRequirements` 是本次方案目标与要求。
 - `extraSupplement` 是额外补充信息。
 - `basicProfile`、`diseaseProfile` 是基础档案和疾病档案。
@@ -160,7 +160,7 @@ H5 展示约定：
 
 ```mermaid
 flowchart TB
-  A["用户输入 Start"] --> R["条件分支：planType contains diet/sport/followup_review/health_weekly_report"]
+  A["用户输入 Start"] --> R["条件分支：planType contains diet/sport/followup_review/report"]
   R -->|diet| B["患者档案数据整理"]
 
   B --> S1["健康画像与慢病风险识别"]
@@ -401,7 +401,7 @@ Code 节点职责：
 
 ```mermaid
 flowchart TB
-  A["用户输入 Start"] --> R["条件分支：planType contains diet/sport/followup_review/health_weekly_report"]
+  A["用户输入 Start"] --> R["条件分支：planType contains diet/sport/followup_review/report"]
   R -->|sport| B["患者档案数据整理"]
 
   B --> S1["运动画像与风险识别"]
@@ -447,7 +447,7 @@ flowchart TB
 
 健康周报分支用于汇总患者最近 7 天健康情况，包括指标变化、饮食执行、运动执行、随访/用药相关信息，并给出总结性报告。
 
-该分支对应 `planType=health_weekly_report`，资料目录为 `健康周报/DIFY工程-AI干预方案-健康周报/`。健康周报是总结性报告，不生成饮食处方、运动处方、7 天菜谱、训练计划或复诊复查安排。
+该分支对应 `planType=report`，资料目录为 `健康周报/DIFY工程-AI干预方案-健康周报/`。健康周报是总结性报告，不生成饮食处方、运动处方、7 天菜谱、训练计划或复诊复查安排。
 
 结构化链路：
 

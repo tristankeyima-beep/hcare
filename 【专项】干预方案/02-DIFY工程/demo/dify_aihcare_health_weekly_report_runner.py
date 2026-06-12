@@ -9,7 +9,7 @@ def _load_health_weekly_report_runner():
         ("dify_aihcare_sport_runner.py", "dify_aihcare_health_weekly_report_runner.py"),
         ("dify-aihcare-sport-chatflow-test", "dify-aihcare-health-weekly-report-chatflow-test"),
         ("请根据基础档案生成运动方案。", "请根据基础档案生成健康周报。"),
-        ('"sport"', '"health_weekly_report"'),
+        ('"sport"', '"report"'),
         ("sport", "health_weekly_report"),
         ("Sport", "HealthWeeklyReport"),
         ("SPORT", "HEALTH_WEEKLY_REPORT"),

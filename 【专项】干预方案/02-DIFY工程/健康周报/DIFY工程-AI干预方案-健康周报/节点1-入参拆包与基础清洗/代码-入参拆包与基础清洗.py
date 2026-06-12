@@ -125,7 +125,7 @@ def _to_json_text(value):
 
 
 def main(
-    planType: str = "health_weekly_report",
+    planType: str = "report",
     planGoalAndRequirements: str = "",
     extraSupplement: str = "",
     basicProfile=None,
@@ -146,7 +146,7 @@ def main(
     exerciseRecords = _limit_records(_ensure_list(exerciseRecordsLast1y), 120)
     medicationRecords = _limit_records(_ensure_list(medPickupRecords1y), 100)
     activeGoals = _limit_records(_ensure_list(activeControlGoals), 30)
-    normalizedPlanType = (planType or "health_weekly_report").strip().lower()
+    normalizedPlanType = (planType or "report").strip().lower()
 
     reference_dt = _latest_datetime(metricRecords, dietRecords, exerciseRecords, followupRecords, medicationRecords)
     reportWindow = {
@@ -216,6 +216,6 @@ def main(
         "planGoalAndRequirements": planGoalAndRequirements or "",
         "extraSupplement": extraSupplement or "",
         "planType": normalizedPlanType,
-        "routeWarning": "" if normalizedPlanType == "health_weekly_report" else "当前工程为健康周报工程，建议确认 planType 是否应为 health_weekly_report。",
+        "routeWarning": "" if normalizedPlanType == "report" else "当前工程为健康周报工程，建议确认 planType 是否应为 report。",
         "inputStats": _to_json_text(inputStats),
     }
