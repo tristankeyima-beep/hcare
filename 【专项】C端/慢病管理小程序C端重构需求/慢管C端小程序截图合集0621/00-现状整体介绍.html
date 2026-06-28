@@ -1,0 +1,826 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AIHcare C端系统现状互动说明</title>
+  <style>
+    :root {
+      --primary: #3b8f86;
+      --primary-soft: #edf7f5;
+      --bg: #f7f9f8;
+      --card: #ffffff;
+      --line: #dfe9e6;
+      --text: #24313a;
+      --muted: #6f7b83;
+      --blue: #5f8fb8;
+      --blue-soft: #eef6fc;
+      --green: #7bbf9a;
+      --green-soft: #eff9f3;
+      --purple: #8d7cc2;
+      --purple-soft: #f3f0fa;
+      --orange: #f1b36b;
+      --orange-soft: #fff4e7;
+      --red: #e88484;
+      --red-soft: #fff1f1;
+      --shadow: 0 12px 32px rgba(36, 49, 58, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .app {
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      padding: 22px 32px;
+      background: rgba(247, 249, 248, 0.94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+    }
+
+    .topbar {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 26px;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .header-actions a {
+      min-height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--card);
+      color: var(--text);
+      font-size: 13px;
+    }
+
+    .header-actions .primary {
+      border-color: var(--primary);
+      background: var(--primary);
+      color: #fff;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 430px;
+      gap: 22px;
+      padding: 22px 32px 32px;
+      align-items: start;
+    }
+
+    .content {
+      min-width: 0;
+      display: grid;
+      gap: 22px;
+    }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 4px 18px rgba(36, 49, 58, 0.04);
+      overflow: hidden;
+    }
+
+    .panel-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 20px 0;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+
+    .hint {
+      color: var(--muted);
+      font-size: 13px;
+      text-align: right;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 14px 20px 20px;
+    }
+
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      color: var(--muted);
+      background: var(--bg);
+      border: 1px solid var(--line);
+    }
+
+    .map {
+      padding: 18px 20px 8px;
+      display: grid;
+      gap: 22px;
+    }
+
+    .map-title {
+      margin: 0 0 10px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .entry-row,
+    .flow-row {
+      display: grid;
+      gap: 12px;
+    }
+
+    .entry-row {
+      grid-template-columns: repeat(4, minmax(150px, 1fr));
+    }
+
+    .flow-row {
+      grid-template-columns: repeat(5, minmax(140px, 1fr));
+      align-items: stretch;
+    }
+
+    .node,
+    .flow-node {
+      position: relative;
+      width: 100%;
+      min-height: 96px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--text);
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .node {
+      padding: 14px;
+    }
+
+    .flow-node {
+      padding: 14px 14px 16px;
+      border-color: var(--primary);
+      background: var(--primary-soft);
+    }
+
+    .node:hover,
+    .flow-node:hover,
+    .page-link:hover,
+    .shot:hover,
+    .active-click {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(79, 169, 159, 0.15);
+    }
+
+    .node strong,
+    .flow-node strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 15px;
+    }
+
+    .node span,
+    .flow-node span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .node .mini,
+    .flow-node .mini {
+      display: inline-flex;
+      align-items: center;
+      min-height: 22px;
+      margin-top: 10px;
+      padding: 2px 8px;
+      border-radius: 7px;
+      background: #fff;
+      color: var(--primary);
+      font-size: 12px;
+    }
+
+    .flow-node.blue { border-color: var(--blue); background: var(--blue-soft); }
+    .flow-node.green { border-color: var(--green); background: var(--green-soft); }
+    .flow-node.purple { border-color: var(--purple); background: var(--purple-soft); }
+    .flow-node.orange { border-color: var(--orange); background: var(--orange-soft); }
+    .flow-node.red { border-color: var(--red); background: var(--red-soft); }
+
+    .arrow-labels {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(140px, 1fr));
+      gap: 12px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .arrow-labels span::after {
+      content: "→";
+      margin-left: 10px;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .arrow-labels span:last-child::after {
+      content: "";
+    }
+
+    .module-map {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .module-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .module-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--line);
+      font-weight: 650;
+    }
+
+    .module-head.blue { background: var(--blue-soft); }
+    .module-head.green { background: var(--green-soft); }
+    .module-head.purple { background: var(--purple-soft); }
+    .module-head.orange { background: var(--orange-soft); }
+    .module-head.red { background: var(--red-soft); }
+    .module-head.primary { background: var(--primary-soft); }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 22px;
+      padding: 2px 8px;
+      border-radius: 7px;
+      font-size: 12px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .badge.ready { color: var(--green); background: #fff; }
+    .badge.next { color: var(--orange); background: #fff; }
+    .badge.goal { color: var(--primary); background: #fff; }
+
+    .module-body {
+      padding: 12px 14px 14px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .page-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .page-link {
+      max-width: 100%;
+      min-height: 30px;
+      padding: 5px 9px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--text);
+      cursor: pointer;
+      font-size: 12px;
+      text-align: left;
+    }
+
+    .page-link.active {
+      border-color: var(--primary);
+      background: var(--primary-soft);
+      color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(79, 169, 159, 0.15);
+    }
+
+    .shots {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 12px;
+      padding: 18px 20px 20px;
+    }
+
+    .shot {
+      display: grid;
+      grid-template-columns: 56px minmax(0, 1fr);
+      gap: 10px;
+      min-height: 76px;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .shot.active {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(79, 169, 159, 0.15);
+    }
+
+    .shot img {
+      width: 56px;
+      height: 72px;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      background: var(--bg);
+    }
+
+    .shot-title {
+      display: block;
+      overflow-wrap: anywhere;
+      font-size: 13px;
+      font-weight: 650;
+      line-height: 1.35;
+    }
+
+    .shot-meta {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    aside {
+      position: sticky;
+      top: 96px;
+      height: calc(100vh - 118px);
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      overflow: hidden;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .preview-head {
+      padding: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .preview-head strong {
+      display: block;
+      font-size: 16px;
+      line-height: 1.35;
+    }
+
+    .preview-head span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .preview-body {
+      min-height: 0;
+      overflow: auto;
+      padding: 16px;
+      background: #f3f6f5;
+    }
+
+    .preview-body img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .preview-actions {
+      display: flex;
+      gap: 10px;
+      padding: 12px 16px;
+      border-top: 1px solid var(--line);
+      background: var(--card);
+    }
+
+    .preview-actions a {
+      flex: 1;
+      min-height: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      font-size: 13px;
+    }
+
+    .preview-actions a.primary {
+      border-color: var(--primary);
+      background: var(--primary);
+      color: #fff;
+    }
+
+    @media (max-width: 1280px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+
+      aside {
+        position: static;
+        height: auto;
+      }
+
+      .preview-body {
+        max-height: 72vh;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .entry-row,
+      .flow-row,
+      .arrow-labels,
+      .module-map {
+        grid-template-columns: 1fr;
+      }
+
+      .arrow-labels {
+        display: none;
+      }
+    }
+
+    @media (max-width: 760px) {
+      header {
+        padding: 18px;
+      }
+
+      .topbar {
+        display: grid;
+      }
+
+      main {
+        padding: 16px;
+      }
+
+      .shots {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="topbar">
+        <div>
+          <h1>AIHcare C端系统现状互动说明</h1>
+          <p class="subtitle">点击关系图里的模块、页面编号或截图名称，右侧会直接预览对应页面。</p>
+        </div>
+        <div class="header-actions">
+          <a href="../C端整体体验重构需求.md">重构需求 MD</a>
+          <a class="primary" href="00-C端系统现状模块关系总览.png" target="_blank">静态总览图</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="content">
+        <section class="panel">
+          <div class="panel-head">
+            <h2>互动式模块关系图</h2>
+            <span class="hint">模块和页面名称都可点击，右侧预览对应截图。</span>
+          </div>
+          <div class="map">
+            <div>
+              <p class="map-title">当前一级入口 / 用户进入系统后的路径</p>
+              <div class="entry-row" id="entryRow"></div>
+            </div>
+
+            <div>
+              <p class="map-title">核心业务关系：采集 → 反馈 → 计划 → 执行 → 回流</p>
+              <div class="flow-row" id="flowRow"></div>
+              <div class="arrow-labels">
+                <span>数据沉淀</span>
+                <span>形成判断</span>
+                <span>拆成行动</span>
+                <span>团队跟进</span>
+                <span>回流调整</span>
+              </div>
+            </div>
+
+            <div>
+              <p class="map-title">模块管理的页面和截图入口</p>
+              <div class="module-map" id="moduleMap"></div>
+            </div>
+          </div>
+          <div class="legend">
+            <span>蓝色：数据底座</span>
+            <span>绿色：反馈理解</span>
+            <span>紫色：计划 / 方案</span>
+            <span>橙色：健康任务 / AI</span>
+            <span>红色：服务团队支撑</span>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h2>全部截图索引</h2>
+            <span class="hint">这里保留完整截图列表，便于按编号快速查找。</span>
+          </div>
+          <div class="shots" id="shots"></div>
+        </section>
+      </section>
+
+      <aside aria-label="截图预览">
+        <div class="preview-head">
+          <strong id="previewTitle">01 首页</strong>
+          <span id="previewMeta">旧版首页、服务资讯、底部导航</span>
+        </div>
+        <div class="preview-body">
+          <img id="previewImage" src="01-首页-旧版首页-服务资讯与底部导航.png" alt="截图预览">
+        </div>
+        <div class="preview-actions">
+          <a id="openImage" class="primary" href="01-首页-旧版首页-服务资讯与底部导航.png" target="_blank">打开原图</a>
+          <a id="downloadImage" href="01-首页-旧版首页-服务资讯与底部导航.png" download>下载图片</a>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script>
+    const shots = [
+      { id: "00", file: "00-C端系统现状模块关系总览.png", title: "00 模块关系总览", meta: "静态模块关系总览图" },
+      { id: "01", file: "01-首页-旧版首页-服务资讯与底部导航.png", title: "01 首页", meta: "旧版首页、服务资讯、底部导航" },
+      { id: "02", file: "02-档案-首页-健康画像设备随访与指标概览.png", title: "02 档案首页", meta: "健康画像、设备、随访、指标概览" },
+      { id: "03", file: "03-档案-健康指标-指标总览.png", title: "03 健康指标", meta: "指标总览" },
+      { id: "04", file: "04-档案-指标历史数据-血糖趋势.png", title: "04 指标历史", meta: "血糖趋势" },
+      { id: "05", file: "05-档案-指标录入-血糖.png", title: "05 指标录入", meta: "血糖录入" },
+      { id: "06", file: "06-档案-智能设备-设备列表.png", title: "06 智能设备", meta: "设备列表" },
+      { id: "07", file: "07-档案-智能设备-设备连接中.png", title: "07 设备连接", meta: "连接中状态" },
+      { id: "08", file: "08-档案-人体成分分析报告列表.png", title: "08 人体成分", meta: "报告列表" },
+      { id: "09", file: "09-档案-人体成分分析报告详情.png", title: "09 人体成分", meta: "报告详情" },
+      { id: "10", file: "10-档案-饮食运动-三大营养素分析.png", title: "10 饮食运动", meta: "三大营养素分析" },
+      { id: "11", file: "11-档案-饮食记录-当日餐食列表.png", title: "11 饮食记录", meta: "当日餐食列表" },
+      { id: "12", file: "12-档案-饮食记录-食材重量编辑弹窗.png", title: "12 饮食记录", meta: "食材重量编辑弹窗" },
+      { id: "13", file: "13-档案-首页-个性化健康指导方案入口.png", title: "13 档案首页", meta: "个性化健康指导方案入口" },
+      { id: "14", file: "14-干预方案-控制目标.png", title: "14 干预方案", meta: "控制目标" },
+      { id: "15", file: "15-干预方案-监测方案详情.png", title: "15 干预方案", meta: "监测方案详情" },
+      { id: "16", file: "16-干预方案-饮食方案概览.png", title: "16 干预方案", meta: "饮食方案概览" },
+      { id: "17", file: "17-干预方案-饮食方案执行要点.png", title: "17 干预方案", meta: "饮食方案执行要点" },
+      { id: "18", file: "18-干预方案-饮食方案食谱详情.png", title: "18 干预方案", meta: "饮食方案食谱详情" },
+      { id: "19", file: "19-干预方案-运动方案概览.png", title: "19 干预方案", meta: "运动方案概览" },
+      { id: "20", file: "20-干预方案-运动方案执行建议.png", title: "20 干预方案", meta: "运动方案执行建议" },
+      { id: "21", file: "21-档案-健康画像详情.png", title: "21 健康画像", meta: "健康画像详情" },
+      { id: "22", file: "22-档案-监测提醒.png", title: "22 监测提醒", meta: "提醒列表" },
+      { id: "23", file: "23-档案-随访记录列表.png", title: "23 随访记录", meta: "随访记录列表" },
+      { id: "24", file: "24-我的-首页-服务入口与上传报告.png", title: "24 我的首页", meta: "服务入口与上传报告" },
+      { id: "25", file: "25-我的-报告单上传记录.png", title: "25 报告上传", meta: "上传记录" },
+      { id: "26", file: "26-我的-报告单上传-选择图片.png", title: "26 报告上传", meta: "选择图片" },
+      { id: "27", file: "27-我的签约-签约服务列表.png", title: "27 我的签约", meta: "签约服务列表" }
+    ];
+
+    const byId = Object.fromEntries(shots.map(shot => [shot.id, shot]));
+
+    const entries = [
+      { title: "首页", ids: ["01"], desc: "当前偏服务、资讯、导航入口", note: "后续建议升级为健康管理总览" },
+      { title: "档案", ids: ["02", "13"], desc: "健康画像、指标、设备、随访、方案入口", note: "当前数据与方案能力主要聚合在这里" },
+      { title: "我的", ids: ["24", "27"], desc: "签约服务、设备、报告上传、账户信息", note: "服务关系和个人服务信息入口" },
+      { title: "未来入口", ids: ["00"], desc: "健康任务 / AI：今日行动、近况分析、方案解读", note: "不一定独立成 Tab，可嵌入主路径" }
+    ];
+
+    const flow = [
+      { title: "采集 / 数据底座", ids: ["03", "04", "05", "10", "11", "12", "23", "25", "26"], desc: "指标、饮食运动、设备、报告、随访", color: "blue" },
+      { title: "反馈 / 状态理解", ids: ["21", "09", "04"], desc: "健康画像、趋势、人体成分、未来近况分析", color: "green" },
+      { title: "计划 / 干预方案", ids: ["14", "15", "16", "17", "18", "19", "20"], desc: "控制目标、监测、饮食、运动、随访计划", color: "purple" },
+      { title: "执行 / 今日行动", ids: ["05", "11", "22", "26"], desc: "未来健康任务、记录、打卡、确认、上传", color: "orange" },
+      { title: "调整 / 团队跟进", ids: ["01", "23", "24", "27"], desc: "服务团队、签约服务、AI 解读和下一轮调整", color: "red" }
+    ];
+
+    const modules = [
+      {
+        title: "数据底座模块",
+        status: "已有",
+        statusClass: "ready",
+        color: "blue",
+        desc: "采集和沉淀患者真实健康数据，是分析、方案和服务跟进的基础。",
+        ids: ["03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "23", "25", "26"]
+      },
+      {
+        title: "反馈理解模块",
+        status: "部分已有",
+        statusClass: "ready",
+        color: "green",
+        desc: "把数据和记录转成患者能理解的状态反馈和管理依据。",
+        ids: ["21", "09", "04"]
+      },
+      {
+        title: "计划 / 方案模块",
+        status: "已有",
+        statusClass: "ready",
+        color: "purple",
+        desc: "服务团队或系统给患者的阶段性管理计划，目前主要以方案详情形式存在。",
+        ids: ["13", "14", "15", "16", "17", "18", "19", "20"]
+      },
+      {
+        title: "执行 / 行动模块",
+        status: "即将研发",
+        statusClass: "next",
+        color: "orange",
+        desc: "把计划拆成每天可完成的动作；当前分散在记录、提醒、方案中，未来由健康任务统一承接。",
+        ids: ["05", "11", "22", "26"]
+      },
+      {
+        title: "服务关系模块",
+        status: "已有",
+        statusClass: "ready",
+        color: "red",
+        desc: "让患者感知背后有人持续管理，是信任感和兜底能力来源。",
+        ids: ["01", "23", "24", "27"]
+      },
+      {
+        title: "AI 能力接入点",
+        status: "即将研发",
+        statusClass: "next",
+        color: "orange",
+        desc: "AI 不是孤立聊天入口，而是整理、解释、指导和连接既有能力。",
+        ids: ["00", "04", "13", "15", "21", "22"]
+      },
+      {
+        title: "入口与导航现状",
+        status: "已有",
+        statusClass: "ready",
+        color: "primary",
+        desc: "当前入口按首页、档案、我的分散承载能力，设计师可重新组织，不必机械沿用。",
+        ids: ["01", "02", "13", "24", "27"]
+      },
+      {
+        title: "重构后的核心路径",
+        status: "目标",
+        statusClass: "goal",
+        color: "primary",
+        desc: "进入小程序 → 看懂当前阶段和状态 → 明确今日行动 → 执行记录 → 数据回流 → 团队跟进。",
+        ids: ["00"]
+      }
+    ];
+
+    const previewTitle = document.getElementById("previewTitle");
+    const previewMeta = document.getElementById("previewMeta");
+    const previewImage = document.getElementById("previewImage");
+    const openImage = document.getElementById("openImage");
+    const downloadImage = document.getElementById("downloadImage");
+
+    function selectShot(id, sourceElement) {
+      const shot = byId[id] || byId["00"];
+      previewTitle.textContent = shot.title;
+      previewMeta.textContent = shot.meta;
+      previewImage.src = shot.file;
+      previewImage.alt = shot.title;
+      openImage.href = shot.file;
+      downloadImage.href = shot.file;
+      downloadImage.download = shot.file;
+      document.querySelectorAll(".shot.active, .page-link.active, .active-click").forEach(item => {
+        item.classList.remove("active", "active-click");
+      });
+      document.querySelectorAll(`[data-shot="${id}"]`).forEach(item => item.classList.add(item.classList.contains("page-link") ? "active" : "active-click"));
+      document.querySelectorAll(`[data-shot-card="${id}"]`).forEach(item => item.classList.add("active"));
+      if (sourceElement) sourceElement.classList.add(sourceElement.classList.contains("page-link") ? "active" : "active-click");
+    }
+
+    function makeButton(className, shotId, html) {
+      const button = document.createElement("button");
+      button.className = className;
+      button.type = "button";
+      button.dataset.shot = shotId;
+      button.innerHTML = html;
+      button.addEventListener("click", () => selectShot(shotId, button));
+      return button;
+    }
+
+    function pageLink(id) {
+      const shot = byId[id];
+      return makeButton("page-link", id, `${shot.id} ${shot.meta}`);
+    }
+
+    const entryRow = document.getElementById("entryRow");
+    entries.forEach(entry => {
+      const id = entry.ids[0];
+      const node = makeButton("node", id, `
+        <strong>${entry.title}</strong>
+        <span>${entry.desc}</span>
+        <span>${entry.note}</span>
+        <span class="mini">${entry.ids.join(" / ")}</span>
+      `);
+      entryRow.appendChild(node);
+    });
+
+    const flowRow = document.getElementById("flowRow");
+    flow.forEach(item => {
+      const node = makeButton(`flow-node ${item.color}`, item.ids[0], `
+        <strong>${item.title}</strong>
+        <span>${item.desc}</span>
+        <span class="mini">${item.ids.slice(0, 5).join(" / ")}${item.ids.length > 5 ? " ..." : ""}</span>
+      `);
+      flowRow.appendChild(node);
+    });
+
+    const moduleMap = document.getElementById("moduleMap");
+    modules.forEach(module => {
+      const article = document.createElement("article");
+      article.className = "module-card";
+      article.innerHTML = `
+        <div class="module-head ${module.color}">
+          <span>${module.title}</span>
+          <span class="badge ${module.statusClass}">${module.status}</span>
+        </div>
+        <div class="module-body">
+          ${module.desc}
+          <div class="page-links"></div>
+        </div>
+      `;
+      const links = article.querySelector(".page-links");
+      module.ids.forEach(id => links.appendChild(pageLink(id)));
+      moduleMap.appendChild(article);
+    });
+
+    const shotList = document.getElementById("shots");
+    shots.forEach(shot => {
+      const button = document.createElement("button");
+      button.className = "shot";
+      button.type = "button";
+      button.dataset.shotCard = shot.id;
+      button.innerHTML = `
+        <img src="${shot.file}" alt="">
+        <span>
+          <span class="shot-title">${shot.title}</span>
+          <span class="shot-meta">${shot.meta}</span>
+        </span>
+      `;
+      button.addEventListener("click", () => selectShot(shot.id, button));
+      shotList.appendChild(button);
+    });
+
+    selectShot("01");
+  </script>
+</body>
+</html>
