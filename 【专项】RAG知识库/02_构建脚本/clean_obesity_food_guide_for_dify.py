@@ -32,6 +32,70 @@ VOLUMES = (
     ("食养方、判定标准与活动强度", range(63, 71), ("附录 4", "附录 6")),
 )
 
+REGIONS = (
+    ("一", "东北"),
+    ("二", "西北"),
+    ("三", "华北"),
+    ("四", "华东"),
+    ("五", "华中"),
+    ("六", "西南"),
+    ("七", "华南"),
+)
+
+
+def inject_before_once(content: str, marker: str, addition: str) -> str:
+    if marker not in content:
+        return content
+    return content.replace(marker, f"{addition}\n\n{marker}", 1)
+
+
+def add_retrieval_anchors(subtitle: str, content: str) -> str:
+    """Add concise query-oriented anchors next to high-value source material."""
+    if subtitle == "核心原则与食物选择":
+        return inject_before_once(
+            content,
+            "(一)控制总能量摄入,保持合理膳食。",
+            "**检索摘要 - 成人肥胖每日能量摄入建议**：每日能量摄入可平均降低 30%–50%或降低 500–1000kcal；"
+            "限能量平衡膳食可参考男性 1200–1500kcal/日、女性 1000–1200kcal/日，"
+            "并应结合基础代谢率和身体活动量个体化调整。",
+        )
+
+    if subtitle == "不同地区食谱示例":
+        for ordinal, region in REGIONS:
+            content = inject_before_once(
+                content,
+                f"{ordinal}、{region}地区",
+                f"**检索摘要 - {region}地区四季食谱**：本节提供{region}地区春、夏、秋、冬四季的 "
+                "1200kcal、1400kcal、1600kcal 成人肥胖食养食谱，可查询早餐、加餐、中餐、晚餐及油盐用量。",
+            )
+        content = inject_before_once(
+            content,
+            "春季食谱 1(总能量约 1200kcal)",
+            "**问：东北地区春季 1200kcal 食谱包括哪些食物？**\n\n"
+            "答：原表举例为早餐馒头、煮鸡蛋、低脂牛奶、凉拌菠菜；加餐苹果；"
+            "中餐二米饭和铁锅炖鱼；晚餐菜包饭、西兰花虾皮萝卜汤；"
+            "全天植物油 15g、盐<5g。",
+        )
+        return content
+
+    if subtitle == "食养方、判定标准与活动强度":
+        content = inject_before_once(
+            content,
+            "二、痰湿内盛证",
+            "**问：痰湿内盛证可以用哪些食养方？**\n\n"
+            "答：原文举例包括柚子皮茯苓炖牛尾骨、薏苡仁冬瓜汤和橘枣茶；"
+            "具体食用方法、频次及特殊人群注意事项应遵循原文并咨询专业人员。",
+        )
+        content = inject_before_once(
+            content,
+            "二、痰湿内盛证",
+            "**检索摘要 - 痰湿内盛证食养方**：本节列举柚子皮茯苓炖牛尾骨、薏苡仁冬瓜汤和橘枣茶；"
+            "食养方仅作原文举例，具体使用应遵医嘱或接受营养专业人员指导。",
+        )
+        return content
+
+    return content
+
 
 def clean_page(text: str) -> str:
     """Remove standalone printed page numbers while preserving tables and lines."""
@@ -68,6 +132,7 @@ def build_documents(pages: dict[int, str]) -> list[dict[str, str]]:
             + "\n\n".join(blocks)
             + "\n"
         )
+        content = add_retrieval_anchors(subtitle, content)
         missing = [marker for marker in expected_markers if marker not in content]
         if missing:
             raise ValueError(f"{subtitle} missing expected markers: {missing}")
