@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<svg version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="125px" height="46px" viewBox="650 0 125 46" xmlns="http://www.w3.org/2000/svg">
-  <path d="M 1 1  L 124 1  L 124 46  L 1 46  L 1 1  Z " fill-rule="nonzero" fill="rgba(246, 247, 250, 1)" stroke="none" transform="matrix(1 0 0 1 650 0 )" class="fill" />
-  <path d="M 0.5 1  L 0.5 46  " stroke-width="1" stroke-dasharray="0" stroke="rgba(242, 242, 242, 0.8431372549019608)" fill="none" transform="matrix(1 0 0 1 650 0 )" class="stroke" />
-  <path d="M 0 0.5  L 125 0.5  " stroke-width="1" stroke-dasharray="0" stroke="rgba(242, 242, 242, 0.8431372549019608)" fill="none" transform="matrix(1 0 0 1 650 0 )" class="stroke" />
-  <path d="M 124.5 1  L 124.5 46  " stroke-width="1" stroke-dasharray="0" stroke="rgba(242, 242, 242, 0.8431372549019608)" fill="none" transform="matrix(1 0 0 1 650 0 )" class="stroke" />
-</svg>
