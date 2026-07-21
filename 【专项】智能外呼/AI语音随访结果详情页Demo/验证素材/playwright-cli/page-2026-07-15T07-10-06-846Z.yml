@@ -1,0 +1,202 @@
+- generic [ref=e1]:
+  - link "跳至主要内容" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: H
+      - navigation "页面位置" [ref=e6]:
+        - generic [ref=e7]: 首页
+        - generic [ref=e8]: /
+        - generic [ref=e9]: 患者详情
+        - generic [ref=e10]: /
+        - strong [ref=e11]: 随访管理
+    - generic [ref=e12]:
+      - generic [ref=e13]: 慢病健康管理
+      - generic [ref=e15]: 王医生
+  - generic [ref=e17]:
+    - region "王淑华" [ref=e18]:
+      - generic [ref=e19]:
+        - generic [ref=e20]:
+          - generic [ref=e21]:
+            - generic [ref=e22]: 王淑华
+            - generic [ref=e23]: □
+            - generic [ref=e24]: 糖尿病患者
+          - generic [ref=e25]:
+            - generic [ref=e26]: 基本信息女 / 63 岁
+            - generic [ref=e27]: 健康档案2 型糖尿病 8 年
+            - generic [ref=e28]: 管理医生王医生
+        - generic [ref=e29]: ● 当前管理状态：需关注
+    - navigation "患者详情导航" [ref=e30]:
+      - generic [ref=e31]: 健康画像
+      - generic [ref=e32]: 患者档案
+      - generic [ref=e33]: 随访管理
+      - generic [ref=e34]: 干预方案
+      - generic [ref=e35]: 生活记录
+      - generic [ref=e36]: 签约记录
+    - main [ref=e37]:
+      - generic [ref=e38]:
+        - generic [ref=e39]:
+          - heading "AI 语音随访结果详情" [level=1] [ref=e40]
+          - text: 糖尿病患者健康随访 · 2026-07-15 10:06
+        - button "返回随访管理" [ref=e41]
+      - region [ref=e42]:
+        - heading "随访结果总览" [level=2] [ref=e44]
+        - generic [ref=e45]:
+          - article [ref=e46]:
+            - generic [ref=e47]: 接听情况
+            - generic [ref=e48]: 本人接听 · 已完成
+            - generic [ref=e49]: 4 分 38 秒 · 16 轮对话
+          - article [ref=e50]:
+            - generic [ref=e51]: 血糖情况
+            - generic [ref=e52]: 餐后血糖偏高
+            - generic [ref=e53]: 最高 12.6 mmol/L
+          - article [ref=e54]:
+            - generic [ref=e55]: 风险信号
+            - generic [ref=e56]: 疑似低血糖症状
+            - generic [ref=e57]: 需优先人工核验
+          - article [ref=e58]:
+            - generic [ref=e59]: 后续处理
+            - generic [ref=e60]: 已生成健管师待办
+            - generic [ref=e61]: 含患者主动联系请求
+      - generic [ref=e62]:
+        - generic [ref=e63]:
+          - region [ref=e64]:
+            - generic [ref=e65]:
+              - heading "AI 随访小结" [level=2] [ref=e67]
+              - paragraph [ref=e68]: 患者本人完成本次随访。AI 在自然对话中收集到近一周餐后血糖连续偏高、晚餐主食控制困难及运动中断等信息；患者还描述曾出现手抖、出汗并自行进食后缓解的情况，且主动希望健管师后续联系。系统已将异常信息、执行障碍和原话证据归集为人工待办。
+              - generic [ref=e69]: 提示：本小结为 AI 归纳，不替代诊断或医疗处置。
+          - region [ref=e70]:
+            - generic [ref=e71]:
+              - heading "收集到的资料" [level=2] [ref=e73]
+              - generic [ref=e74]:
+                - generic [ref=e75]:
+                  - generic [ref=e76]: 近 7 天血糖监测
+                  - strong [ref=e77]: 已测 5 次
+                - generic [ref=e78]:
+                  - generic [ref=e79]: 最高餐后血糖
+                  - strong [ref=e80]: 12.6 mmol/L
+                - generic [ref=e81]:
+                  - generic [ref=e82]: 空腹血糖范围
+                  - strong [ref=e83]: 7.4–8.1 mmol/L
+                - generic [ref=e84]:
+                  - generic [ref=e85]: 用药执行
+                  - strong [ref=e86]: 自述规律服用
+                - generic [ref=e87]:
+                  - generic [ref=e88]: 饮食与运动
+                  - strong [ref=e89]: 晚餐主食偏多、运动中断
+                - generic [ref=e90]:
+                  - generic [ref=e91]: 人工联系意愿
+                  - strong [ref=e92]: 患者主动要求人工联系
+          - region [ref=e93]:
+            - generic [ref=e94]:
+              - heading "基本信息评价" [level=2] [ref=e96]
+              - generic [ref=e97]:
+                - paragraph [ref=e98]: 本次结果提示患者近期血糖管理存在波动，主要关联晚餐饮食控制困难和运动中断。患者能够描述监测数值，并表达愿意继续配合管理，具备后续沟通基础。
+                - generic [ref=e99]:
+                  - strong [ref=e100]: 需健管师核验
+                  - generic [ref=e101]: AI 仅完成资料归纳、风险提示与待办建议；请结合患者既往病史和后续沟通决定管理动作。
+          - region [ref=e102]:
+            - generic [ref=e103]:
+              - heading "需要进一步关注的点" [level=2] [ref=e105]
+              - list [ref=e106]:
+                - listitem [ref=e107]:
+                  - generic [ref=e108]: 风险信号 · 优先核验
+                  - strong [ref=e109]: 疑似低血糖症状
+                  - text: ：患者描述空腹状态下曾出现手抖、出汗，进食后缓解，但未测血糖。
+                - listitem [ref=e110]:
+                  - generic [ref=e111]: 指标异常 · 持续观察
+                  - strong [ref=e112]: 餐后血糖偏高
+                  - text: ：患者自述最高值 12.6 mmol/L，需进一步确认测量时点与近期趋势。
+                - listitem [ref=e113]:
+                  - generic [ref=e114]: 执行障碍 · 可干预
+                  - strong [ref=e115]: 晚餐主食偏多、运动中断
+                  - text: ：患者明确说明近期家务增多，晚饭后散步没有坚持。
+        - complementary "随访辅助信息" [ref=e116]:
+          - region [ref=e117]:
+            - generic [ref=e118]:
+              - heading "建议下一步动作" [level=2] [ref=e120]
+              - list [ref=e121]:
+                - listitem [ref=e122]:
+                  - generic [ref=e123]:
+                    - generic [ref=e124]: 优先
+                    - text: 今日待办
+                  - text: 健管师电话核验疑似低血糖症状、发生时间及是否再次出现。
+                - listitem [ref=e125]:
+                  - generic [ref=e126]:
+                    - generic [ref=e127]: 跟进
+                    - text: 3 日内
+                  - text: 请患者补充空腹及餐后血糖记录，复核异常值与测量时点。
+                - listitem [ref=e128]:
+                  - generic [ref=e129]:
+                    - generic [ref=e130]: 复盘
+                    - text: 下次随访
+                  - text: 围绕晚餐结构和可执行运动安排进行复盘；如需方案调整，由医生或健管师确认后处理。
+          - region [ref=e131]:
+            - generic [ref=e132]:
+              - heading "通话证据" [level=2] [ref=e134]
+              - generic [ref=e135]:
+                - generic [ref=e136]:
+                  - generic [ref=e137]: 通话状态
+                  - strong [ref=e138]: 正常完成
+                - generic [ref=e139]:
+                  - generic [ref=e140]: 对话轮次
+                  - strong [ref=e141]: 16 轮
+                - generic [ref=e142]:
+                  - generic [ref=e143]: 关键标签
+                  - strong [ref=e144]: 6 项
+              - generic [ref=e145]:
+                - generic [ref=e146]: 本人接听
+                - generic [ref=e147]: 血糖偏高
+                - generic [ref=e148]: 疑似低血糖
+                - generic [ref=e149]: 饮食困难
+                - generic [ref=e150]: 请求人工联系
+      - region [ref=e151]:
+        - generic [ref=e152]:
+          - heading "通话证据" [level=2] [ref=e154]
+          - tablist "通话证据类型" [ref=e155]:
+            - tab "通话详情" [ref=e156] [cursor=pointer]
+            - tab "完整对话" [active] [selected] [ref=e157] [cursor=pointer]
+            - tab "AI 抽取依据" [ref=e158] [cursor=pointer]
+          - tabpanel "完整对话" [ref=e174]:
+            - generic [ref=e175]:
+              - generic [ref=e176]:
+                - generic [ref=e177]: AI
+                - generic [ref=e178]:
+                  - generic [ref=e179]: 10:06:02
+                  - generic [ref=e180]: 您好，请问是王淑华女士吗？我是智能健康随访助手，想用几分钟了解您近期的血糖和管理情况。
+              - generic [ref=e181]:
+                - generic [ref=e182]: 王
+                - generic [ref=e183]:
+                  - generic [ref=e184]: 10:06:13
+                  - generic [ref=e185]: 我是。你们为什么打电话？
+              - generic [ref=e186]:
+                - generic [ref=e187]: AI
+                - generic [ref=e188]:
+                  - generic [ref=e189]: 10:06:19
+                  - generic [ref=e190]: 这是一通糖尿病健康随访电话，主要帮健管师了解近况并安排后续跟进。方便继续吗？
+              - generic [ref=e191]:
+                - generic [ref=e192]: 王
+                - generic [ref=e193]:
+                  - generic [ref=e194]: 10:06:30
+                  - generic [ref=e195]: 行，你问吧。
+              - generic [ref=e196]:
+                - generic [ref=e197]: AI
+                - generic [ref=e198]:
+                  - generic [ref=e199]: 10:06:39
+                  - generic [ref=e200]: 您最近一周测过血糖吗？整体感觉怎么样？
+              - generic [ref=e201]:
+                - generic [ref=e202]: 王
+                - generic [ref=e203]:
+                  - generic [ref=e204]: 10:06:51
+                  - generic [ref=e205]: 测了五回，空腹都七点多到八点多。昨天晚饭后是 12.6，最近晚饭主食没控制好。
+              - generic [ref=e206]:
+                - generic [ref=e207]: AI
+                - generic [ref=e208]:
+                  - generic [ref=e209]: 10:07:29
+                  - generic [ref=e210]: 最近有没有心慌、手抖、出汗或其他明显不舒服？
+              - generic [ref=e211]:
+                - generic [ref=e212]: 王
+                - generic [ref=e213]:
+                  - generic [ref=e214]: 10:07:42
+                  - generic [ref=e215]: 有一回午饭没顾上吃，手有点抖、冒汗，吃了块糖就好了，没量血糖。还有，麻烦让健管师给我打个电话吧。
+      - generic [ref=e173]: 演示数据为虚构案例，仅用于展示 AI 随访结果的回收与管理闭环。

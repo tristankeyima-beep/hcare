@@ -1,0 +1,116 @@
+- generic [active] [ref=e1]:
+  - link "跳至主要内容" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: H
+      - navigation "页面位置" [ref=e6]:
+        - generic [ref=e7]: 首页
+        - generic [ref=e8]: /
+        - generic [ref=e9]: 患者详情
+        - generic [ref=e10]: /
+        - strong [ref=e11]: 随访管理
+    - generic [ref=e12]:
+      - generic [ref=e13]: XXXXXXXX
+      - generic [ref=e15]: XXXXXXXX
+  - generic [ref=e17]:
+    - region "患者详情" [ref=e18]:
+      - generic [ref=e19]:
+        - generic [ref=e20]:
+          - generic [ref=e21]:
+            - generic [ref=e22]: 患者详情
+            - generic [ref=e23]: □
+          - generic [ref=e24]:
+            - generic [ref=e25]: 患者姓名XXXXXXXX
+            - generic [ref=e26]: 基本信息XXXXXXXX
+            - generic [ref=e27]: 管理医生XXXXXXXX
+        - generic [ref=e28]: XXXXXXXX
+    - navigation "患者详情导航" [ref=e29]:
+      - generic [ref=e30]: 健康画像
+      - generic [ref=e31]: 患者档案
+      - generic [ref=e32]: 随访管理
+      - generic [ref=e33]: 干预方案
+      - generic [ref=e34]: 生活记录
+      - generic [ref=e35]: 签约记录
+    - main [ref=e36]:
+      - generic [ref=e37]:
+        - heading "AI 语音随访结果详情" [level=1] [ref=e38]
+        - button "XXXXXXXX" [ref=e39]
+      - region [ref=e40]:
+        - heading "随访结果总览" [level=2] [ref=e42]
+        - generic [ref=e43]:
+          - article [ref=e44]:
+            - generic [ref=e45]: 接听情况
+            - generic [ref=e46]: XXXXXXXX
+          - article [ref=e47]:
+            - generic [ref=e48]: 血糖情况
+            - generic [ref=e49]: XXXXXXXX
+          - article [ref=e50]:
+            - generic [ref=e51]: 风险信号
+            - generic [ref=e52]: XXXXXXXX
+          - article [ref=e53]:
+            - generic [ref=e54]: 后续处理
+            - generic [ref=e55]: XXXXXXXX
+      - generic [ref=e56]:
+        - generic [ref=e57]:
+          - region [ref=e58]:
+            - generic [ref=e59]:
+              - heading "AI 随访小结" [level=2] [ref=e61]
+              - paragraph [ref=e62]: XXXXXXXX
+          - region [ref=e63]:
+            - generic [ref=e64]:
+              - heading "收集到的资料" [level=2] [ref=e66]
+              - generic [ref=e67]:
+                - generic [ref=e68]:
+                  - generic [ref=e69]: XXXXXXXX
+                  - generic [ref=e70]: XXXXXXXX
+                - generic [ref=e71]:
+                  - generic [ref=e72]: XXXXXXXX
+                  - generic [ref=e73]: XXXXXXXX
+                - generic [ref=e74]:
+                  - generic [ref=e75]: XXXXXXXX
+                  - generic [ref=e76]: XXXXXXXX
+                - generic [ref=e77]:
+                  - generic [ref=e78]: XXXXXXXX
+                  - generic [ref=e79]: XXXXXXXX
+          - region [ref=e80]:
+            - generic [ref=e81]:
+              - heading "基本信息评价" [level=2] [ref=e83]
+              - paragraph [ref=e84]: XXXXXXXX
+          - region [ref=e85]:
+            - generic [ref=e86]:
+              - heading "需要进一步关注的点" [level=2] [ref=e88]
+              - list [ref=e89]:
+                - listitem [ref=e90]:
+                  - generic [ref=e91]: XXXXXXXX
+                  - text: XXXXXXXX
+                - listitem [ref=e92]:
+                  - generic [ref=e93]: XXXXXXXX
+                  - text: XXXXXXXX
+        - complementary "随访辅助信息" [ref=e94]:
+          - region [ref=e95]:
+            - generic [ref=e96]:
+              - heading "建议下一步动作" [level=2] [ref=e98]
+              - list [ref=e99]:
+                - listitem [ref=e100]:
+                  - generic [ref=e101]: XXXXXXXX
+                  - text: XXXXXXXX
+                - listitem [ref=e102]:
+                  - generic [ref=e103]: XXXXXXXX
+                  - text: XXXXXXXX
+                - listitem [ref=e104]:
+                  - generic [ref=e105]: XXXXXXXX
+                  - text: XXXXXXXX
+          - region [ref=e106]:
+            - generic [ref=e107]:
+              - heading "通话证据" [level=2] [ref=e109]
+              - paragraph [ref=e110]: XXXXXXXX
+      - region [ref=e111]:
+        - generic [ref=e112]:
+          - heading "通话证据" [level=2] [ref=e114]
+          - tablist "通话证据类型" [ref=e115]:
+            - tab "通话详情" [selected] [ref=e116]
+            - tab "完整对话" [ref=e117]
+            - tab "AI 抽取依据" [ref=e118]
+          - generic [ref=e119]: XXXXXXXX
+      - generic [ref=e120]: XXXXXXXX

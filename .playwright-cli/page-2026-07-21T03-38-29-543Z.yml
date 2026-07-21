@@ -1,0 +1,354 @@
+- generic [active] [ref=e1]:
+  - link "跳至主要内容" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: H
+      - navigation "页面位置" [ref=e6]:
+        - generic [ref=e7]: 首页
+        - generic [ref=e8]: /
+        - generic [ref=e9]: 患者详情
+        - generic [ref=e10]: /
+        - strong [ref=e11]: 随访管理
+    - generic [ref=e12]:
+      - generic [ref=e13]: 慢病健康管理
+      - generic [ref=e15]: 于磊磊
+  - generic [ref=e17]:
+    - region "张翠丽" [ref=e18]:
+      - generic [ref=e19]:
+        - generic [ref=e20]:
+          - generic [ref=e21]:
+            - generic [ref=e22]: 张翠丽
+            - generic [ref=e23]: □
+            - generic [ref=e24]: 糖尿病患者
+          - generic [ref=e25]:
+            - generic [ref=e26]: 基本信息女 / 61 岁 / 1964-09-12
+            - generic [ref=e27]: 健康档案2 型糖尿病 8 年
+            - generic [ref=e28]: 管理医生于磊磊 糖尿病代谢病科(泰安市中心医院)
+        - generic [ref=e29]: ● 当前管理状态：需关注
+    - navigation "患者详情导航" [ref=e30]:
+      - generic [ref=e31]: 健康画像
+      - generic [ref=e32]: 患者档案
+      - generic [ref=e33]: 随访管理
+      - generic [ref=e34]: 干预方案
+      - generic [ref=e35]: 生活记录
+      - generic [ref=e36]: 签约记录
+    - main [ref=e37]:
+      - generic [ref=e38]:
+        - generic [ref=e39]:
+          - heading "AI 语音随访结果详情" [level=1] [ref=e40]
+          - text: 糖尿病患者健康随访 · 2026-07-15 10:06
+        - button "返回随访管理" [ref=e41]
+      - region [ref=e42]:
+        - generic [ref=e43]:
+          - generic [ref=e44]:
+            - generic [ref=e45]:
+              - generic [ref=e46]:
+                - heading "AI 外呼执行信息" [level=2] [ref=e47]
+                - generic [ref=e48]: 阿里云原始回收数据
+              - paragraph [ref=e49]: 本次随访已完成：首次未接通，阿里云按重拨策略完成第二次外呼；慢管已回收通话结果。
+            - button "收起阿里云处理过程" [expanded] [ref=e254] [cursor=pointer]
+          - generic "外呼任务标识" [ref=e51]:
+            - generic [ref=e52]:
+              - generic [ref=e53]: AI 外呼状态
+              - strong [ref=e54]: 已完成
+            - generic [ref=e55]:
+              - generic [ref=e56]: JobGroupId
+              - strong [ref=e57]: jg-diabetes-20260715-001
+            - generic [ref=e58]:
+              - generic [ref=e59]: JobId
+              - strong [ref=e60]: job-followup-zhangcuili-001
+            - generic [ref=e61]:
+              - generic [ref=e62]: 外呼场景 / 结果同步时间
+              - strong [ref=e63]: 糖尿病健康随访 · 2026-07-15 10:11:05
+          - generic [ref=e255]:
+            - heading "阿里云处理时间线 Job / Task 调度记录" [level=3] [ref=e256]:
+              - text: 阿里云处理时间线
+              - generic [ref=e257]: Job / Task 调度记录
+            - list [ref=e258]:
+              - listitem [ref=e259]:
+                - time [ref=e260]: 09:56:20
+                - generic [ref=e261]:
+                  - strong [ref=e262]: 慢管创建外呼批次
+                  - generic [ref=e263]: 创建 JobGroup，并关联糖尿病健康随访场景。
+              - listitem [ref=e264]:
+                - time [ref=e265]: 09:58:00
+                - generic [ref=e266]:
+                  - strong [ref=e267]: 患者任务下发成功
+                  - generic [ref=e268]: 慢管调用 AssignJobs，生成当前患者 Job。
+              - listitem [ref=e269]:
+                - time [ref=e270]: 10:00:00
+                - generic [ref=e271]:
+                  - strong [ref=e272]: Task_001 首次外呼未接通
+                  - generic [ref=e273]: 振铃 25 秒，阿里云结果：NoAnswer。
+              - listitem [ref=e274]:
+                - time [ref=e275]: 10:00:25
+                - generic [ref=e276]:
+                  - strong [ref=e277]: 进入等待重拨
+                  - generic [ref=e278]: Job 保持 Scheduling，按外呼策略等待下一次尝试。
+              - listitem [ref=e279]:
+                - time [ref=e280]: 10:06:00
+                - generic [ref=e281]:
+                  - strong [ref=e282]: Task_002 第二次外呼接通并完成
+                  - generic [ref=e283]: 患者本人接听，通话 4 分 38 秒，结果：SucceededFinish。
+              - listitem [ref=e284]:
+                - time [ref=e285]: 10:11:05
+                - generic [ref=e286]:
+                  - strong [ref=e287]: 慢管完成结果回收
+                  - generic [ref=e288]: 已保存通话事实、对话文本、标签和录音任务标识。
+            - heading "实际通话 Task 列表 每次拨打记录" [level=3] [ref=e289]:
+              - text: 实际通话 Task 列表
+              - generic [ref=e290]: 每次拨打记录
+            - table [ref=e292]:
+              - rowgroup [ref=e293]:
+                - row [ref=e294]:
+                  - columnheader "TaskId" [ref=e295]
+                  - columnheader "计划 / 实际拨打时间" [ref=e296]
+                  - columnheader "执行结果" [ref=e297]
+                  - columnheader "结束原因" [ref=e298]
+                  - columnheader "通话时长" [ref=e299]
+                  - columnheader "录音" [ref=e300]
+              - rowgroup [ref=e301]:
+                - row [ref=e302]:
+                  - cell [ref=e303]:
+                    - strong [ref=e304]: Task_001
+                    - text: task-001-no-answer
+                  - cell "10:00:00 / 10:00:00" [ref=e305]
+                  - cell "未接通" [ref=e306]
+                  - cell "NoAnswer（振铃超时）" [ref=e308]
+                  - cell "0 秒" [ref=e309]
+                  - cell [ref=e310]:
+                    - button "无录音" [disabled] [ref=e311]
+                - row [ref=e312]:
+                  - cell [ref=e313]:
+                    - strong [ref=e314]: Task_002
+                    - text: task-002-succeeded
+                  - cell "10:06:00 / 10:06:00" [ref=e315]
+                  - cell "接通并完成" [ref=e316]
+                  - cell "SucceededFinish" [ref=e318]
+                  - cell "4 分 38 秒" [ref=e319]
+                  - cell [ref=e320]:
+                    - button "查看录音" [ref=e321] [cursor=pointer]
+            - paragraph [ref=e322]: Demo 提示：录音临时地址由慢管后端调用 DownloadRecording 后按需获取，不在前端永久保存。
+      - region [ref=e64]:
+        - heading "随访结果总览" [level=2] [ref=e66]
+        - generic [ref=e67]:
+          - button "接听情况 · 点击查看路径 本人接听 · 已完成 4 分 38 秒 · 16 轮对话" [ref=e68] [cursor=pointer]:
+            - generic [ref=e69]: 接听情况 · 点击查看路径
+            - generic [ref=e70]: 本人接听 · 已完成
+            - generic [ref=e71]: 4 分 38 秒 · 16 轮对话
+          - button "血糖情况 · 点击查看线索 餐后血糖偏高 最高 12.6 mmol/L" [ref=e72] [cursor=pointer]:
+            - generic [ref=e73]: 血糖情况 · 点击查看线索
+            - generic [ref=e74]: 餐后血糖偏高
+            - generic [ref=e75]: 最高 12.6 mmol/L
+          - button "风险信号 · 点击查看原话 疑似低血糖症状 需优先人工核验" [ref=e76] [cursor=pointer]:
+            - generic [ref=e77]: 风险信号 · 点击查看原话
+            - generic [ref=e78]: 疑似低血糖症状
+            - generic [ref=e79]: 需优先人工核验
+          - button "后续处理 · 点击查看闭环 已生成健管师待办 含患者主动联系请求" [ref=e80] [cursor=pointer]:
+            - generic [ref=e81]: 后续处理 · 点击查看闭环
+            - generic [ref=e82]: 已生成健管师待办
+            - generic [ref=e83]: 含患者主动联系请求
+      - region [ref=e84]:
+        - generic [ref=e85]:
+          - generic [ref=e86]:
+            - generic [ref=e87]:
+              - generic [ref=e88]:
+                - heading "随访线索图" [level=2] [ref=e89]
+                - generic [ref=e90]: AI
+              - paragraph [ref=e91]: 沿真实通话顺序，从 AI 提问展开到患者回答、风险线索与健管师待办。
+            - generic "线索图控制" [ref=e92]:
+              - button "▶ 播放随访路径" [ref=e93] [cursor=pointer]
+              - button "全部展开" [ref=e94] [cursor=pointer]
+              - button "重置" [ref=e95] [cursor=pointer]
+          - generic "线索阶段" [ref=e96]:
+            - generic [ref=e97]: AI 提问
+            - generic [ref=e98]: 患者回答
+            - generic [ref=e99]: AI 识别线索
+            - generic [ref=e100]: 管理动作
+          - generic [ref=e101]:
+            - generic [ref=e102]:
+              - generic: 悬浮看摘要 · 点击节点继续展开
+              - img "AI 提问、患者回答、风险线索与管理动作拓扑图" [ref=e103]:
+                - img [ref=e105]:
+                  - generic [ref=e107]: 身份确认
+            - complementary [ref=e110]:
+              - generic [ref=e111]: AI 提问 · 10:06:02
+              - generic [ref=e112]: 身份确认
+              - paragraph [ref=e113]: 确认接听人身份，并说明本次糖尿病健康随访目的。
+              - generic [ref=e114]:
+                - generic [ref=e115]:
+                  - generic [ref=e116]: 识别状态
+                  - strong [ref=e117]: 已提取
+                - generic [ref=e118]:
+                  - generic [ref=e119]: AI 置信度
+                  - strong [ref=e120]: —
+                - generic [ref=e121]:
+                  - generic [ref=e122]: 下一步
+                  - strong [ref=e123]: 点击节点展开 1 条后续线索
+              - button "查看患者原话" [ref=e124] [cursor=pointer]
+      - generic [ref=e125]:
+        - generic [ref=e126]:
+          - region [ref=e127]:
+            - generic [ref=e128]:
+              - generic [ref=e129]:
+                - heading "随访小结" [level=2] [ref=e130]
+                - generic [ref=e131]: AI
+              - paragraph [ref=e132]: 患者本人完成本次随访。AI 在自然对话中收集到近一周餐后血糖连续偏高、晚餐主食控制困难及运动中断等信息；患者还描述曾出现手抖、出汗并自行进食后缓解的情况，且主动希望健管师后续联系。系统已将异常信息、执行障碍和原话证据归集为人工待办。
+              - generic [ref=e133]: 基于原始通话数据生成，待健管师核验；不替代诊断或医疗处置。
+          - region [ref=e134]:
+            - generic [ref=e135]:
+              - heading "收集到的资料" [level=2] [ref=e137]
+              - generic [ref=e138]:
+                - generic [ref=e139]:
+                  - generic [ref=e140]: 近 7 天血糖监测
+                  - strong [ref=e141]: 已测 5 次
+                - generic [ref=e142]:
+                  - generic [ref=e143]: 最高餐后血糖
+                  - strong [ref=e144]: 12.6 mmol/L
+                - generic [ref=e145]:
+                  - generic [ref=e146]: 空腹血糖范围
+                  - strong [ref=e147]: 7.4–8.1 mmol/L
+                - generic [ref=e148]:
+                  - generic [ref=e149]: 用药执行
+                  - strong [ref=e150]: 自述规律服用
+                - generic [ref=e151]:
+                  - generic [ref=e152]: 饮食与运动
+                  - strong [ref=e153]: 晚餐主食偏多、运动中断
+                - generic [ref=e154]:
+                  - generic [ref=e155]: 人工联系意愿
+                  - strong [ref=e156]: 患者主动要求人工联系
+          - region [ref=e157]:
+            - generic [ref=e158]:
+              - generic [ref=e159]:
+                - heading "基本信息评价" [level=2] [ref=e160]
+                - generic [ref=e161]: AI
+              - generic [ref=e162]:
+                - paragraph [ref=e163]: 本次结果提示患者近期血糖管理存在波动，主要关联晚餐饮食控制困难和运动中断。患者能够描述监测数值，并表达愿意继续配合管理，具备后续沟通基础。
+                - generic [ref=e164]:
+                  - strong [ref=e165]: 需健管师核验
+                  - generic [ref=e166]: AI 仅完成资料归纳、风险提示与待办建议；请结合患者既往病史和后续沟通决定管理动作。
+          - region [ref=e167]:
+            - generic [ref=e168]:
+              - generic [ref=e169]:
+                - heading "需要进一步关注的点" [level=2] [ref=e170]
+                - generic [ref=e171]: AI
+              - list [ref=e172]:
+                - listitem [ref=e173]:
+                  - generic [ref=e174]: 风险信号 · 优先核验
+                  - strong [ref=e175]: 疑似低血糖症状
+                  - text: ：患者描述空腹状态下曾出现手抖、出汗，进食后缓解，但未测血糖。
+                - listitem [ref=e176]:
+                  - generic [ref=e177]: 指标异常 · 持续观察
+                  - strong [ref=e178]: 餐后血糖偏高
+                  - text: ：患者自述最高值 12.6 mmol/L，需进一步确认测量时点与近期趋势。
+                - listitem [ref=e179]:
+                  - generic [ref=e180]: 执行障碍 · 可干预
+                  - strong [ref=e181]: 晚餐主食偏多、运动中断
+                  - text: ：患者明确说明近期家务增多，晚饭后散步没有坚持。
+        - complementary "随访辅助信息" [ref=e182]:
+          - region [ref=e183]:
+            - generic [ref=e184]:
+              - generic [ref=e185]:
+                - heading "建议下一步动作" [level=2] [ref=e186]
+                - generic [ref=e187]: AI
+              - list [ref=e188]:
+                - listitem [ref=e189]:
+                  - button "优先 今日待办 健管师电话核验疑似低血糖症状、发生时间及是否再次出现。" [ref=e190] [cursor=pointer]:
+                    - generic [ref=e191]:
+                      - generic [ref=e192]:
+                        - generic [ref=e193]: 优先
+                        - text: 今日待办
+                      - text: 健管师电话核验疑似低血糖症状、发生时间及是否再次出现。
+                    - generic [ref=e194]: ⌄
+                - listitem [ref=e195]:
+                  - button "跟进 3 日内 请患者补充空腹及餐后血糖记录，复核异常值与测量时点。" [ref=e196] [cursor=pointer]:
+                    - generic [ref=e197]:
+                      - generic [ref=e198]:
+                        - generic [ref=e199]: 跟进
+                        - text: 3 日内
+                      - text: 请患者补充空腹及餐后血糖记录，复核异常值与测量时点。
+                    - generic [ref=e200]: ⌄
+                - listitem [ref=e201]:
+                  - button "复盘 下次随访 围绕晚餐结构和可执行运动安排进行复盘；如需方案调整，由医生或健管师确认后处理。" [ref=e202] [cursor=pointer]:
+                    - generic [ref=e203]:
+                      - generic [ref=e204]:
+                        - generic [ref=e205]: 复盘
+                        - text: 下次随访
+                      - text: 围绕晚餐结构和可执行运动安排进行复盘；如需方案调整，由医生或健管师确认后处理。
+                    - generic [ref=e206]: ⌄
+          - region [ref=e207]:
+            - generic [ref=e208]:
+              - generic [ref=e209]:
+                - heading "通话证据" [level=2] [ref=e210]
+                - generic [ref=e211]: 阿里云原始回收数据
+              - generic [ref=e212]:
+                - generic [ref=e213]:
+                  - generic [ref=e214]: 通话状态
+                  - strong [ref=e215]: 正常完成
+                - generic [ref=e216]:
+                  - generic [ref=e217]: 对话轮次
+                  - strong [ref=e218]: 16 轮
+                - generic [ref=e219]:
+                  - generic [ref=e220]: 关键标签
+                  - strong [ref=e221]: 6 项
+              - generic [ref=e222]:
+                - generic [ref=e223]: 本人接听
+                - generic [ref=e224]: 血糖偏高
+                - generic [ref=e225]: 疑似低血糖
+                - generic [ref=e226]: 饮食困难
+                - generic [ref=e227]: 请求人工联系
+      - region [ref=e228]:
+        - generic [ref=e229]:
+          - generic [ref=e230]:
+            - heading "通话证据" [level=2] [ref=e231]
+            - generic [ref=e232]: 阿里云原始回收数据
+          - tablist "通话证据类型" [ref=e233]:
+            - tab "通话详情" [ref=e234] [cursor=pointer]
+            - tab "完整对话" [selected] [ref=e235] [cursor=pointer]
+            - tab "AI 抽取依据" [ref=e236] [cursor=pointer]:
+              - generic [ref=e237]: AI
+              - text: 抽取依据
+          - tabpanel "完整对话" [ref=e323]:
+            - generic [ref=e324]:
+              - generic [ref=e325]:
+                - generic [ref=e326]: AI
+                - generic [ref=e327]:
+                  - button "10:06:02 · 定位线索" [ref=e328] [cursor=pointer]
+                  - generic [ref=e329]: 您好，请问是张翠丽女士吗？我是智能健康随访助手，想用几分钟了解您近期的血糖和管理情况。
+              - generic [ref=e330]:
+                - generic [ref=e331]: 张
+                - generic [ref=e332]:
+                  - button "10:06:13 · 定位线索" [ref=e333] [cursor=pointer]
+                  - generic [ref=e334]: 我是。你们为什么打电话？
+              - generic [ref=e335]:
+                - generic [ref=e336]: AI
+                - generic [ref=e337]:
+                  - button "10:06:19 · 定位线索" [ref=e338] [cursor=pointer]
+                  - generic [ref=e339]: 这是一通糖尿病健康随访电话，主要帮健管师了解近况并安排后续跟进。方便继续吗？
+              - generic [ref=e340]:
+                - generic [ref=e341]: 张
+                - generic [ref=e342]:
+                  - button "10:06:30 · 定位线索" [ref=e343] [cursor=pointer]
+                  - generic [ref=e344]: 行，你问吧。
+              - generic [ref=e345]:
+                - generic [ref=e346]: AI
+                - generic [ref=e347]:
+                  - button "10:06:39 · 定位线索" [ref=e348] [cursor=pointer]
+                  - generic [ref=e349]: 您最近一周测过血糖吗？整体感觉怎么样？
+              - generic [ref=e350]:
+                - generic [ref=e351]: 张
+                - generic [ref=e352]:
+                  - button "10:06:51 · 定位线索" [ref=e353] [cursor=pointer]
+                  - generic [ref=e354]: 测了五回，空腹都七点多到八点多。昨天晚饭后是 12.6，最近晚饭主食没控制好。
+              - generic [ref=e355]:
+                - generic [ref=e356]: AI
+                - generic [ref=e357]:
+                  - button "10:07:29 · 定位线索" [ref=e358] [cursor=pointer]
+                  - generic [ref=e359]: 最近有没有心慌、手抖、出汗或其他明显不舒服？
+              - generic [ref=e360]:
+                - generic [ref=e361]: 张
+                - generic [ref=e362]:
+                  - button "10:07:42 · 定位线索" [ref=e363] [cursor=pointer]
+                  - generic [ref=e364]: 有一回午饭没顾上吃，手有点抖、冒汗，吃了块糖就好了，没量血糖。还有，麻烦让健管师给我打个电话吧。
+      - generic [ref=e252]: 演示数据为虚构案例，仅用于展示 AI 随访结果的回收与管理闭环。
