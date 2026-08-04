@@ -375,7 +375,7 @@ stop        当前能力不足、预算耗尽或错误无法恢复
 | `get_diet_records` | `GET /patient-diet-sport/list-diet` | 查询指定时间段饮食记录 |
 | `get_sport_records` | `GET /patient-diet-sport/list-sport` | 查询指定时间段运动记录 |
 
-工具描述必须告诉 Agent 何时使用、支持哪些筛选、返回什么、数据时间含义和限制。Tool Middleware 在服务端注入租户、机构、健管师身份和访问令牌；这些字段不允许由模型自由传入。
+工具描述必须告诉 Agent 何时使用、支持哪些筛选、返回什么、数据时间含义和限制。AgentScope Java 通过 RuntimeContext/User POJO 注入可信业务上下文；复杂权限工具使用 `ToolBase.checkPermissions`。租户、机构、健管师身份和访问令牌不允许由模型自由传入。
 
 当前接口文档中的 `dmScale*`、`htmScale*`、`htnScale*` 疾病含义存在不一致，正式启用相应工具参数前必须通过实际响应确认映射。
 
@@ -897,22 +897,22 @@ AgentScope 只负责模型工作所需的通用运行能力；业务 Harness 决
 | 定时扫描触发 | 首期不依赖 AgentScope 调度 | 健管师责任患者范围和保存的查询目标 | 调度系统重放经确认的自然语言目标或结构化查询计划，随后复用同一套计划校验和查询工具 | 调度、批次、幂等、失败隔离和预算 |
 | 标准健康摘要装配 | `Msg`、Formatter | `/basic-archive`、`/chronic-archive`、`/measure-indicator` | Harness 取得基础档案、专病档案和近期指标，登记来源后形成带 `source_id` 的输入消息 | 来源登记、数据选择、摘要结构、脱敏和上下文大小控制 |
 | Agent 按需补查患者明细 | Toolkit、Tool、ReActAgent 工具循环 | 用药分组和明细、饮食、运动、指标上传记录接口 | Agent 根据自然语言问题和已有材料决定是否补查；工具只返回当前患者、当前时间范围的数据 | 每次调用复核权限、限制范围、次数、分页和超时 |
-| 工具权限、校验和审计 | Toolkit Tool Middleware | 慢管 Token、租户和机构 Header、业务权限 | Middleware 在工具执行前注入服务端身份、校验参数，执行后脱敏、转换错误并记录耗时；模型不得传入 Token 或自行指定可信身份 | 业务授权规则、Token 管理、限流、缓存和审计策略 |
+| 工具权限、校验和审计 | Java RuntimeContext/User POJO 注入、`ToolBase.checkPermissions` | 慢管 Token、租户和机构 Header、业务权限 | 工具执行前从服务端上下文取得可信身份并校验参数，执行后脱敏、转换错误并记录耗时；模型不得传入 Token 或自行指定可信身份 | 业务授权规则、Token 管理、限流、缓存和审计策略 |
 | 规则发现患者问题 | 不依赖 AgentScope | 慢管结构化指标、风险标记和分层数据 | 固定高风险和明确阈值由普通规则服务执行，结果作为分析 Agent 输入 | 规则内容、版本、优先级、命中来源和不可被模型降级的约束 |
 | Agent 判断语义条件和复杂问题 | ReActAgent、Model、Formatter、Toolkit | 候选患者档案、指标、用药、饮食和运动材料 | Agent 判断“控制不好”“值得干预”“情况变差”等不能下推到 API 的条件，并输出问题、说明和引用位置 | 分析 Prompt、医学边界、最大步骤、超时、成本和停止条件 |
-| 输出患者问题和管理建议 | ReActAgent Structured Output、`Msg.metadata` | 提供问题所依赖的患者数据，不直接生成结论 | 用 Pydantic 等结构约束问题、建议、重要程度、推理说明和来源定位 | 业务字段定义、语义校验、规则合并和最终入库判断 |
+| 输出患者问题和管理建议 | ReActAgent Structured Output、消息 metadata | 提供问题所依赖的患者数据，不直接生成结论 | 用 Java record、Jackson 和 JSON Schema 约束问题、建议、重要程度、推理说明和来源定位 | 业务字段定义、语义校验、规则合并和最终入库判断 |
 | 原始来源登记 | 不依赖 AgentScope | 慢管 API 响应、Chatbox 消息和上传材料 | AgentScope 消息只携带 `source_id` 与所需内容；业务来源库保存原始材料及定位 | 来源快照、哈希、时间、权限和回查能力 |
 | 引用真实性校验 | AgentScope 负责返回结构化定位 | 慢管原始响应和 Chatbox 原文可供回查 | Agent 输出 `source_id + locator + usage`；Harness 回查原始材料并验证内容 | 来源归属、位置、数字、单位、时间和限定词校验；成功后生成 `evidence_id` |
 | 重复患者问题合并 | 不依赖 AgentScope | 可提供患者唯一 ID 和最新健康数据 | 不使用 Agent Memory 去重；业务数据库按患者、问题类型和有效时间归并 | 更新证据、趋势、优先级、状态和重新提醒规则 |
 | 连续追问 | Memory、Message | Chatbox 会话、当前患者和当前页面引用 | 保存当前候选集合、患者、已查来源和患者问题引用，理解“第一个”“这几个人”“再看用药” | 会话与业务对象绑定、过期、切换患者和指代冲突处理 |
 | 人工查看和选择建议 | 可选 Agent State；首期主要不依赖 | 慢管工作台或 Agent 页面承载问题详情和选择操作 | 页面展示问题、证据和建议；健管师选择后发起新的生成请求 | 选择记录、用户身份、问题状态和请求幂等 |
 | 生成干预方案或作品 | ReActAgent、Structured Output、Message 多模态内容 | 提供患者及管理场景上下文；首期不写回慢管 | 独立生成配置根据患者问题、已验证证据、被选建议和作品要求生成多个草稿 | 模板、内容校验、版本、编辑、审核、患者关联和草稿箱 |
-| 任务内上下文 | InMemoryMemory 或数据库 Memory | 提供当前会话和业务对象引用 | 保存单次查询、分析或生成过程，支持多轮工具调用和上下文压缩 | Memory 不是患者档案或问题库；正式结果进入业务数据库 |
+| 任务内上下文 | AgentScope Java Memory、AgentState 和 RuntimeContext | 提供当前会话和业务对象引用 | 保存单次查询、分析或生成过程，支持多轮工具调用；使用 `userId + sessionId` 隔离会话 | Memory 不是患者档案或问题库；正式结果进入业务数据库 |
 | 中断与恢复 | Agent State、`state_dict`、`load_state_dict`、ReActAgent 中断处理 | 可保留当前页面和会话入口 | 对耗时查询、分析或创作保存运行状态并恢复 | 业务运行 ID、重新鉴权、过期策略和结果幂等 |
 | 运行追踪 | Tracing、OpenTelemetry、模型用量和工具调用事件 | 慢管接口链路 ID、HTTP 状态和业务码 | 串联自然语言、查询计划、模型调用、工具调用、患者问题和交付物运行链路 | 敏感数据脱敏、业务指标、版本和审计保留策略 |
 | 成本控制 | Agent 最大步骤和工具限制；可选 Budget Control Middleware | 慢管接口分页和返回规模 | 限制单次 ReAct 循环、候选数、深度分析人数、工具调用和 Token 预算 | 不同指令的预算、批量并发、超预算降级和运营告警 |
 | 对外服务和部署 | AgentScope Service、Agent-as-a-Service、OpenTelemetry | 现有慢管后端和鉴权体系 | 分析或生成 Agent 可作为服务部署，也可嵌入慢管后端 | 业务 API、鉴权、队列、数据库、调度、租户隔离和发布运维 |
-| 未来慢管写入执行 | Toolkit 写工具、Tool Middleware、Agent 中断或人工确认 | 后续提供干预方案等写接口 | 为审批通过的动作单独开放受控写工具；调用前确认，调用后结构化返回 | 权限、审批、幂等键、写后验证、补偿、审计和风险分级 |
+| 未来慢管写入执行 | Java `ToolBase` 权限系统、Agent 中断或人工确认 | 后续提供干预方案等写接口 | 为审批通过的动作单独开放受控写工具；调用前确认，调用后结构化返回 | 权限、审批、幂等键、写后验证、补偿、审计和风险分级 |
 
 ### 13.2 两类 Agent 配置
 
@@ -931,7 +931,7 @@ AgentScope 只负责模型工作所需的通用运行能力；业务 Harness 决
 - **RAG 作为患者档案主存储**：慢管 API 是患者事实来源，不能用向量检索替代精确查询。只有长篇指南、宣教知识或大量上传材料需要语义检索时再引入 RAG。
 - **Long-term Memory 保存患者事实**：患者档案、患者问题、证据和作品必须进入业务数据库。长期记忆只适合未来保存经过治理的交互偏好，不能成为医疗事实的权威来源。
 - **Workspace 作为用户的“云主机”或作品草稿箱**：文本和结构化交付物直接保存到业务草稿箱。只有未来需要运行代码、处理文件或生成复杂文件时，才在后台使用隔离 Workspace；不向用户暴露主机或文件系统心智。
-- **MCP 作为必选接入层**：现有慢管 API 可以直接封装为 Python Tool。只有需要把同一组工具开放给多个 Agent 框架或团队时，再考虑 MCP 标准化。
+- **MCP 作为必选接入层**：现有慢管 API 可以直接封装为 AgentScope Java `@Tool` 方法或 `ToolBase`。只有需要把同一组工具开放给多个 Agent 框架或团队时，再考虑 MCP 标准化。
 - **Plan 模块接管固定业务流程**：自然语言查询需要 ReAct 制定查询计划，但权限、规则、保存和人工控制仍是确定性流程，不能由模型动态改写。首期查询计划使用 Structured Output 和工具循环即可，不要求启用更重的自主任务规划。
 
 ### 13.4 责任边界结论
